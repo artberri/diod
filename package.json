@@ -1,0 +1,45 @@
+{
+  "name": "diod",
+  "version": "1.0.0-rc",
+  "description": "A different inversion of control container for Typescript (suitable for Node.js or vanilla JS also).",
+  "main": "index.js",
+  "scripts": {
+    "hook:commit-msg": "commitlint -e",
+    "hook:pre-commit": "lint-staged",
+    "lint": "eslint .",
+    "qa": "npm run lint && npm run type-check && npm run test",
+    "test": "tap --ts",
+    "test:watch": "tap --ts --watch",
+    "type-check": "tsc -p tsconfig.json --noEmit"
+  },
+  "author": {
+    "name": "Alberto Varela",
+    "email": "alberto@berriart.com",
+    "url": "http://www.berriart.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artberri/diod.git"
+  },
+  "bugs": {
+    "url": "https://github.com/artberri/diod/issues"
+  },
+  "homepage": "https://github.com/artberri/diod#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "@types/tap": "^15.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "reflect-metadata": "^0.1.13",
+    "tap": "^15.0.6",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  }
+}

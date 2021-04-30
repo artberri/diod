@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+npm run hook:commit-msg $1

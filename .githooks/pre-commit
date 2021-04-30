@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+yarn hook:pre-commit
+yarn_precommit_exit_status=$?
+if [ $yarn_precommit_exit_status -ne 0 ]; then
+    exit 1
+fi
