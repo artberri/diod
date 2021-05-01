@@ -5,7 +5,7 @@ import { ConsoleLogger } from './fixtures/console-logger'
 
 t.test('returns registered parameter-less constructor class instance', (t) => {
   const container = new Container()
-  container.add(Clock)
+  container.register(Clock)
 
   // Act
   const clock = container.get(Clock)
@@ -18,7 +18,7 @@ t.test('returns registered parameter-less constructor class instance', (t) => {
 t.test('throws error when asked for an unregistered service', (t) => {
   // Arrange
   const container = new Container()
-  container.add(Clock)
+  container.register(Clock)
 
   // Assert
   t.throws(() => {

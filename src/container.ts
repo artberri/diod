@@ -16,7 +16,7 @@ export class Container {
     return new (service.implementation as Newable<T>)()
   }
 
-  public add<T>(implementation: Newable<T>): void {
+  public register<T>(implementation: Newable<T>): void {
     this.services.set(implementation, {
       implementation,
     })
