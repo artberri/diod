@@ -8,6 +8,7 @@ export interface Abstract<T> {
 
 export type ServiceIdentifier<T> = Newable<T> | Abstract<T>
 
-export type Service<T> = {
+export type ServiceMetadata<T> = {
   implementation: Newable<T>
+  dependencies: Array<ServiceIdentifier<unknown>>
 }

@@ -17,11 +17,13 @@ module.exports = {
     'no-unused-expressions': ['off'],
     'no-unused-vars': ['off'],
     'prefer-template': ['error'],
+    'object-shorthand': ['error'],
     'import/no-default-export': ['error'],
     '@typescript-eslint/explicit-member-accessibility': ['error'],
     '@typescript-eslint/prefer-readonly': ['error'],
     '@typescript-eslint/explicit-function-return-type': ['error'],
     '@typescript-eslint/no-unused-expressions': ['error'],
     '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
   },
 }
