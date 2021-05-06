@@ -8,15 +8,43 @@ export class Container {
   > = new Map<ServiceIdentifier<unknown>, ServiceMetadata<unknown>>()
 
   public get<T>(identifier: ServiceIdentifier<T>): T {
+    const metadata = this.findServiceMetadataOrThrow(identifier)
+    const dependencies = this.findServiceDependenciesOrThrow(
+      identifier.name,
+      metadata
+    )
+
+    return new metadata.implementation(...dependencies)
+  }
+
+  public register<T>(implementation: Newable<T>): void {
+    const dependencies = getDependencies(implementation)
+
+    this.services.set(implementation, {
+      implementation,
+      dependencies,
+    })
+  }
+
+  private findServiceMetadataOrThrow<T>(
+    identifier: ServiceIdentifier<T>
+  ): ServiceMetadata<T> {
     const service = this.services.get(identifier)
 
     if (!service) {
       throw new Error(`Service not registered for: ${identifier.name}`)
     }
 
+    return service as ServiceMetadata<T>
+  }
+
+  private findServiceDependenciesOrThrow<T>(
+    serviceName: string,
+    metadata: ServiceMetadata<T>
+  ): unknown[] {
     const missing = new Array<string>()
     const dependencies = new Array<unknown>()
-    for (const dependencyIdentifier of service.dependencies) {
+    for (const dependencyIdentifier of metadata.dependencies) {
       try {
         const dependency = this.get(dependencyIdentifier)
         dependencies.push(dependency)
@@ -27,27 +55,12 @@ export class Container {
 
     if (missing.length > 0) {
       throw new Error(
-        `Service not registered for the following dependencies of ${
-          identifier.name
-        }: ${missing.join(', ')}`
+        `Service not registered for the following dependencies of ${serviceName}: ${missing.join(
+          ', '
+        )}`
       )
     }
 
-    return new (service.implementation as Newable<T>)(...dependencies)
-  }
-
-  public register<T>(implementation: Newable<T>): void {
-    // if (!isService(implementation)) {
-    //   decorate(ServiceDecorator(), implementation)
-    // }
-
-    const dependencies = getDependencies(implementation)
-
-    console.log(`dependencies ${implementation.name}`, dependencies)
-
-    this.services.set(implementation, {
-      implementation,
-      dependencies,
-    })
+    return dependencies
   }
 }

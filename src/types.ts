@@ -1,8 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type Newable<T> = new (...args: any[]) => T
+export interface Newable<T> extends Function {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  new (...args: any[]): T
+}
 
-export interface Abstract<T> {
-  name: string
+export interface Abstract<T> extends Function {
   prototype: T
 }
 
