@@ -10,10 +10,7 @@ export class Container {
 
   public get<T>(identifier: ServiceIdentifier<T>): T {
     const metadata = this.findServiceMetadataOrThrow(identifier)
-    const dependencies = this.findServiceDependenciesOrThrow(
-      identifier.name,
-      metadata
-    )
+    const dependencies = this.getDependencies(metadata.dependencies)
 
     return new metadata.implementation(...dependencies)
   }
@@ -30,27 +27,12 @@ export class Container {
     return service as ServiceMetadata<T>
   }
 
-  private findServiceDependenciesOrThrow<T>(
-    serviceName: string,
-    metadata: ServiceMetadata<T>
+  private getDependencies(
+    dependencyIdentifiers: Array<ServiceIdentifier<unknown>>
   ): unknown[] {
-    const missing = new Array<string>()
     const dependencies = new Array<unknown>()
-    for (const dependencyIdentifier of metadata.dependencies) {
-      try {
-        const dependency = this.get(dependencyIdentifier)
-        dependencies.push(dependency)
-      } catch {
-        missing.push(dependencyIdentifier.name)
-      }
-    }
-
-    if (missing.length > 0) {
-      throw new Error(
-        `Service not registered for the following dependencies of ${serviceName}: ${missing.join(
-          ', '
-        )}`
-      )
+    for (const dependencyIdentifier of dependencyIdentifiers) {
+      dependencies.push(this.get(dependencyIdentifier))
     }
 
     return dependencies
