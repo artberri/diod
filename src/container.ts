@@ -1,11 +1,12 @@
-import { getDependencies } from './reflection'
-import { Newable, ServiceIdentifier, ServiceMetadata } from './types'
+import { ServiceIdentifier, ServiceMetadata } from './types'
 
 export class Container {
-  private readonly services: Map<
-    ServiceIdentifier<unknown>,
-    ServiceMetadata<unknown>
-  > = new Map<ServiceIdentifier<unknown>, ServiceMetadata<unknown>>()
+  public constructor(
+    private readonly services: ReadonlyMap<
+      ServiceIdentifier<unknown>,
+      ServiceMetadata<unknown>
+    >
+  ) {}
 
   public get<T>(identifier: ServiceIdentifier<T>): T {
     const metadata = this.findServiceMetadataOrThrow(identifier)
@@ -15,15 +16,6 @@ export class Container {
     )
 
     return new metadata.implementation(...dependencies)
-  }
-
-  public register<T>(implementation: Newable<T>): void {
-    const dependencies = getDependencies(implementation)
-
-    this.services.set(implementation, {
-      implementation,
-      dependencies,
-    })
   }
 
   private findServiceMetadataOrThrow<T>(

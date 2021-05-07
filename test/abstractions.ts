@@ -1,17 +1,18 @@
 import 'reflect-metadata'
-import t from 'tap'
-import { Container } from '../src/diod'
+import tap from 'tap'
+import { ContainerBuilder } from '../src/diod'
 import { ConsoleLogger } from './fixtures/console-logger'
 import { NotPerson } from './fixtures/not-person'
 import { Person } from './fixtures/person'
 
-t.test(
+tap.test(
   'the constructor of the extended class is injected if target has not constructor',
   (t) => {
     // Arrange
-    const container = new Container()
-    container.register(Person)
-    container.register(ConsoleLogger)
+    const builder = new ContainerBuilder()
+    builder.register(Person)
+    builder.register(ConsoleLogger)
+    const container = builder.build()
 
     // Act
     const person = container.get(Person)
@@ -23,16 +24,16 @@ t.test(
   }
 )
 
-t.test(
+tap.test(
   'throws error when service without contructor extends not decorated service with constructor dependencies',
   (t) => {
     // Arrange
-    const container = new Container()
+    const builder = new ContainerBuilder()
 
     // Assert
     t.throws(() => {
       // Act
-      container.register(NotPerson)
+      builder.register(NotPerson)
     }, new Error('Service not decorated: NotDecorated'))
     t.end()
   }

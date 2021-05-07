@@ -1,17 +1,18 @@
 import 'reflect-metadata'
-import t from 'tap'
-import { Container } from '../src/diod'
+import tap from 'tap'
+import { ContainerBuilder } from '../src/diod'
 import { Agenda } from './fixtures/agenda'
 import { Calendar } from './fixtures/calendar'
 import { Clock } from './fixtures/clock'
 import { NotDecorated } from './fixtures/not-decorated'
 
-t.test('returns registered instance with basic dependencies', (t) => {
+tap.test('returns registered instance with basic dependencies', (t) => {
   // Arrange
-  const container = new Container()
-  container.register(Clock)
-  container.register(Calendar)
-  container.register(Agenda)
+  const builder = new ContainerBuilder()
+  builder.register(Clock)
+  builder.register(Calendar)
+  builder.register(Agenda)
+  const container = builder.build()
 
   // Act
   const agenda = container.get(Agenda)
@@ -22,12 +23,13 @@ t.test('returns registered instance with basic dependencies', (t) => {
   t.end()
 })
 
-t.test(
+tap.test(
   'throws error when asked for a registered service with unregistered dependencies',
   (t) => {
     // Arrange
-    const container = new Container()
-    container.register(Agenda)
+    const builder = new ContainerBuilder()
+    builder.register(Agenda)
+    const container = builder.build()
 
     // Assert
     t.throws(() => {
@@ -38,16 +40,16 @@ t.test(
   }
 )
 
-t.test(
+tap.test(
   'throws error when asked for a not decorated service with constructor dependencies',
   (t) => {
     // Arrange
-    const container = new Container()
+    const builder = new ContainerBuilder()
 
     // Assert
     t.throws(() => {
       // Act
-      container.register(NotDecorated)
+      builder.register(NotDecorated)
     }, new Error('Service not decorated: NotDecorated'))
     t.end()
   }

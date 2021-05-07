@@ -16,9 +16,11 @@ module.exports = {
   rules: {
     'no-unused-expressions': ['off'],
     'no-unused-vars': ['off'],
+    'no-shadow': ['off'],
     'prefer-template': ['error'],
     'object-shorthand': ['error'],
     'import/no-default-export': ['error'],
+    '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/explicit-member-accessibility': ['error'],
     '@typescript-eslint/prefer-readonly': ['error'],
     '@typescript-eslint/explicit-function-return-type': ['error'],

@@ -11,5 +11,6 @@ export type ServiceIdentifier<T> = Newable<T> | Abstract<T>
 
 export type ServiceMetadata<T> = {
   implementation: Newable<T>
+  abstraction?: Abstract<T>
   dependencies: Array<ServiceIdentifier<unknown>>
 }
