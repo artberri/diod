@@ -1,10 +1,17 @@
 import { Container } from './container'
-import { getDependencies } from './reflection'
-import { Newable, ServiceIdentifier, ServiceMetadata } from './types'
+import { getDependencies, getDependencyCount } from './reflection'
+import {
+  BuildOptions,
+  Newable,
+  RegisterOptions,
+  ServiceIdentifier,
+  ServiceMetadata,
+  ServiceRegistration,
+} from './types'
 
 export class ContainerBuilder {
-  private readonly implementations: Set<Newable<unknown>> = new Set<
-    Newable<unknown>
+  private readonly registrations: Set<ServiceRegistration<unknown>> = new Set<
+    ServiceRegistration<unknown>
   >()
 
   private readonly services: Map<
@@ -12,27 +19,73 @@ export class ContainerBuilder {
     ServiceMetadata<unknown>
   > = new Map<ServiceIdentifier<unknown>, ServiceMetadata<unknown>>()
 
-  public register<T>(implementation: Newable<T>): void {
-    this.implementations.add(implementation)
+  public register<T>(implementation: Newable<T>): void
+  public register<T>(implementation: Newable<T>, options: RegisterOptions): void
+  public register<T>(
+    implementation: Newable<T>,
+    dependencies: Array<ServiceIdentifier<unknown>>
+  ): void
+  public register<T>(
+    implementation: Newable<T>,
+    optionsOrDependencies?: RegisterOptions | Array<ServiceIdentifier<unknown>>
+  ): void {
+    const options = this.getRegisterOptions(optionsOrDependencies)
+    this.registrations.add({
+      implementation,
+      identifier: implementation,
+      autowire: options.autowire,
+      dependencies: options.dependencies,
+    })
   }
 
-  public build(): Container {
-    this.buildAllMetadata()
+  public build(options: BuildOptions = {}): Container {
+    options.autowire = options.autowire ?? true
+    this.buildAllMetadata(options)
     this.verifyAllMetadata()
     return new Container(this.services)
   }
 
-  private buildAllMetadata(): void {
-    for (const implementation of this.implementations) {
-      this.buildMetadata(implementation)
+  private getRegisterOptions(
+    optionsOrDependencies?: RegisterOptions | Array<ServiceIdentifier<unknown>>
+  ): RegisterOptions {
+    if (Array.isArray(optionsOrDependencies)) {
+      return {
+        autowire: false,
+        dependencies: optionsOrDependencies,
+      }
+    }
+
+    return optionsOrDependencies || { autowire: true, dependencies: [] }
+  }
+
+  private buildAllMetadata(options: BuildOptions): void {
+    for (const registration of this.registrations) {
+      this.buildMetadata(registration, options)
     }
   }
 
-  private buildMetadata<T>(implementation: Newable<T>): void {
-    const dependencies = getDependencies(implementation)
+  private buildMetadata<T>(
+    registration: ServiceRegistration<T>,
+    options: BuildOptions
+  ): void {
+    const autowire = options.autowire && registration.autowire
+    if (
+      !autowire &&
+      registration.implementation &&
+      getDependencyCount(registration.identifier) >
+        registration.dependencies.length
+    ) {
+      throw new Error(
+        `Dependencies must be provided fot non autowired services. Service with missing dependencies: ${registration.identifier.name}`
+      )
+    }
 
-    this.services.set(implementation, {
-      implementation,
+    const dependencies = autowire
+      ? getDependencies(registration.implementation)
+      : registration.dependencies
+
+    this.services.set(registration.identifier, {
+      implementation: registration.implementation,
       dependencies,
     })
   }
