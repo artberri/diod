@@ -41,7 +41,7 @@ export class ContainerBuilder {
   public build(options: BuildOptions = {}): Container {
     options.autowire = options.autowire ?? true
     this.buildAllMetadata(options)
-    this.verifyAllMetadata()
+    this.verify()
     return new Container(this.services)
   }
 
@@ -90,9 +90,10 @@ export class ContainerBuilder {
     })
   }
 
-  private verifyAllMetadata(): void {
+  private verify(): void {
     for (const [identifier, metadata] of this.services) {
       this.verifyMetadata(identifier, metadata)
+      this.verifyCircularDependencies(identifier, metadata)
     }
   }
 
@@ -113,6 +114,31 @@ export class ContainerBuilder {
           identifier.name
         }: ${missing.join(', ')}`
       )
+    }
+  }
+
+  private verifyCircularDependencies<T>(
+    identifier: ServiceIdentifier<T>,
+    metadata: ServiceMetadata<T>,
+    dependencyTree: string[] = []
+  ): void {
+    for (const dependencyIdentifier of metadata.dependencies) {
+      if (identifier.name === dependencyIdentifier.name) {
+        throw new Error(
+          `Circular dependency detected: ${
+            identifier.name
+          } -> ${dependencyTree.join(' -> ')} -> ${identifier.name}`
+        )
+      }
+      const dependencyMetadata = this.services.get(
+        dependencyIdentifier
+      ) as ServiceMetadata<unknown>
+      if (dependencyMetadata.dependencies.length > 0) {
+        this.verifyCircularDependencies(identifier, dependencyMetadata, [
+          ...dependencyTree,
+          dependencyIdentifier.name,
+        ])
+      }
     }
   }
 }

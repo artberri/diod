@@ -2,6 +2,7 @@ import 'reflect-metadata'
 import tap from 'tap'
 import { ContainerBuilder } from '../src/diod'
 import { Agenda } from './fixtures/agenda'
+import { Circular1, Circular2, Circular3 } from './fixtures/circular'
 import { NotDecorated } from './fixtures/not-decorated'
 import { NotPerson } from './fixtures/not-person'
 import { BankUser } from './fixtures/user'
@@ -69,3 +70,18 @@ tap.test(
     t.end()
   }
 )
+
+tap.test('throws error if circular dependencies are detected', (t) => {
+  // Arrange
+  const builder = new ContainerBuilder()
+  builder.register(Circular1, [Circular2])
+  builder.register(Circular2, [Circular3])
+  builder.register(Circular3, [Circular1])
+
+  // Assert
+  t.throws(() => {
+    // Act
+    builder.build({ autowire: false })
+  }, new Error('Circular dependency detected: Circular1 -> Circular2 -> Circular3 -> Circular1'))
+  t.end()
+})
