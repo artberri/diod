@@ -7,4 +7,6 @@ Todo:
 - auto registration
 - register Factory
 - Registrar clases abstractas para ser parent simeplemente
-- Build no verify
+- registerAs
+- public private
+- transient, singleto, per request

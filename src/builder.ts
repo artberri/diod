@@ -8,6 +8,7 @@ import {
   ServiceMetadata,
   ServiceRegistration,
 } from './types'
+import { Verifier } from './verifier'
 
 export class ContainerBuilder {
   private readonly registrations: Set<ServiceRegistration<unknown>> = new Set<
@@ -41,7 +42,9 @@ export class ContainerBuilder {
   public build(options: BuildOptions = {}): Container {
     options.autowire = options.autowire ?? true
     this.buildAllMetadata(options)
-    this.verify()
+
+    const verifier = new Verifier(this.services)
+    verifier.verify()
     return new Container(this.services)
   }
 
@@ -88,57 +91,5 @@ export class ContainerBuilder {
       implementation: registration.implementation,
       dependencies,
     })
-  }
-
-  private verify(): void {
-    for (const [identifier, metadata] of this.services) {
-      this.verifyMetadata(identifier, metadata)
-      this.verifyCircularDependencies(identifier, metadata)
-    }
-  }
-
-  private verifyMetadata<T>(
-    identifier: ServiceIdentifier<T>,
-    metadata: ServiceMetadata<T>
-  ): void {
-    const missing = new Array<string>()
-    for (const dependencyIdentifier of metadata.dependencies) {
-      if (!this.services.has(dependencyIdentifier)) {
-        missing.push(dependencyIdentifier.name)
-      }
-    }
-
-    if (missing.length > 0) {
-      throw new Error(
-        `Service not registered for the following dependencies of ${
-          identifier.name
-        }: ${missing.join(', ')}`
-      )
-    }
-  }
-
-  private verifyCircularDependencies<T>(
-    identifier: ServiceIdentifier<T>,
-    metadata: ServiceMetadata<T>,
-    dependencyTree: string[] = []
-  ): void {
-    for (const dependencyIdentifier of metadata.dependencies) {
-      if (identifier.name === dependencyIdentifier.name) {
-        throw new Error(
-          `Circular dependency detected: ${
-            identifier.name
-          } -> ${dependencyTree.join(' -> ')} -> ${identifier.name}`
-        )
-      }
-      const dependencyMetadata = this.services.get(
-        dependencyIdentifier
-      ) as ServiceMetadata<unknown>
-      if (dependencyMetadata.dependencies.length > 0) {
-        this.verifyCircularDependencies(identifier, dependencyMetadata, [
-          ...dependencyTree,
-          dependencyIdentifier.name,
-        ])
-      }
-    }
   }
 }
