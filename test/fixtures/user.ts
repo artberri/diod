@@ -18,7 +18,7 @@ export class ShoppingCart {
   }
 }
 
-export class User {
+abstract class User {
   public name!: string
 
   public constructor(private readonly sessionManager: SessionManager) {}

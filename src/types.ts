@@ -21,6 +21,11 @@ export type ServiceRegistration<T> = {
   autowire: boolean
 }
 
+export type ServiceListMetadata = Map<
+  ServiceIdentifier<unknown>,
+  ServiceMetadata<unknown>
+>
+
 export type RegisterOptions =
   | {
       dependencies: Array<ServiceIdentifier<unknown>>
