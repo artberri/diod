@@ -9,7 +9,7 @@ tap.test(
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
-    builder.register(Clock)
+    builder.register(Clock).asSelf()
     const container = builder.build()
 
     // Act
@@ -25,7 +25,7 @@ tap.test(
 tap.test('throws error when asked for an unregistered service', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
-  builder.register(Clock)
+  builder.register(Clock).asSelf()
   const container = builder.build()
 
   // Assert

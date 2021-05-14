@@ -13,10 +13,13 @@ tap.test(
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
-    builder.register(BankUser, [SessionManager])
-    builder.register(ShopUser, [SessionManager, ShoppingCart])
-    builder.register(SessionManager, [])
-    builder.register(ShoppingCart)
+    builder.register(BankUser).as(BankUser).withDependencies([SessionManager])
+    builder
+      .register(ShopUser)
+      .withDependencies([SessionManager, ShoppingCart])
+      .asSelf()
+    builder.register(SessionManager).asSelf().withDependencies([])
+    builder.register(ShoppingCart).asSelf()
     const container = builder.build()
 
     // Act

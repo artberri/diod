@@ -1,7 +1,7 @@
 {
   "name": "diod",
   "version": "1.0.0-rc",
-  "description": "A different inversion of control container for Typescript (suitable for Node.js or vanilla JS also).",
+  "description": "A very opinionated and different inversion of control container and dependency injector for Node.js or browser apps",
   "main": "index.js",
   "scripts": {
     "prebuild": "npm run clean",

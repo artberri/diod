@@ -1,54 +1,26 @@
 import { Container } from './container'
-import { buildMetadata } from './metadata-builder'
-import {
-  BuildOptions,
-  Newable,
-  RegisterOptions,
-  ServiceIdentifier,
-  ServiceRegistration,
-} from './types'
+import { ClassRegistration } from './registrations/class-registration'
+import { BuildableRegistration } from './registrations/registration'
+import { Abstract, BuildOptions, Newable, ServiceData } from './types'
 import { verify } from './verifier'
 
-const getRegisterOptions = (
-  optionsOrDependencies?: RegisterOptions | Array<ServiceIdentifier<unknown>>
-): RegisterOptions => {
-  if (Array.isArray(optionsOrDependencies)) {
-    return {
-      autowire: false,
-      dependencies: optionsOrDependencies,
-    }
-  }
-
-  return optionsOrDependencies || { autowire: true, dependencies: [] }
-}
-
 export class ContainerBuilder {
-  private readonly registrations: Set<ServiceRegistration<unknown>> = new Set<
-    ServiceRegistration<unknown>
-  >()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private readonly buildables = new Set<BuildableRegistration<any, unknown>>()
 
-  public register<T>(implementation: Newable<T>): void
-  public register<T>(implementation: Newable<T>, options: RegisterOptions): void
-  public register<T>(
-    implementation: Newable<T>,
-    dependencies: Array<ServiceIdentifier<unknown>>
-  ): void
-  public register<T>(
-    implementation: Newable<T>,
-    optionsOrDependencies?: RegisterOptions | Array<ServiceIdentifier<unknown>>
-  ): void {
-    const options = getRegisterOptions(optionsOrDependencies)
-    this.registrations.add({
-      implementation,
-      identifier: implementation,
-      autowire: options.autowire,
-      dependencies: options.dependencies,
-    })
+  public register<T>(newable: Newable<T>): ClassRegistration<T> {
+    const buildable = ClassRegistration.createBuildable(newable)
+    this.buildables.add(buildable)
+    return buildable.registration
   }
 
   public build(options: BuildOptions = {}): Container {
     options.autowire = options.autowire ?? true
-    const services = buildMetadata(this.registrations, options)
+    const services = new Map<Abstract<unknown>, ServiceData<unknown>>()
+    for (const buildable of this.buildables) {
+      const data = buildable.build(options)
+      services.set(data.identifier, data)
+    }
     verify(services)
     return new Container(services)
   }

@@ -1,12 +1,8 @@
-import {
-  ServiceIdentifier,
-  ServiceListMetadata,
-  ServiceMetadata,
-} from './types'
+import { Abstract, ServiceData, ServiceListMetadata } from './types'
 
 const verifyMetadata = <T>(
-  identifier: ServiceIdentifier<T>,
-  metadata: ServiceMetadata<T>,
+  identifier: Abstract<T>,
+  metadata: ServiceData<T>,
   services: ServiceListMetadata
 ): void => {
   const missing = new Array<string>()
@@ -26,8 +22,8 @@ const verifyMetadata = <T>(
 }
 
 const verifyCircularDependencies = <T>(
-  identifier: ServiceIdentifier<T>,
-  metadata: ServiceMetadata<T>,
+  identifier: Abstract<T>,
+  metadata: ServiceData<T>,
   services: ServiceListMetadata,
   dependencyTree: string[] = []
 ): void => {
@@ -41,7 +37,7 @@ const verifyCircularDependencies = <T>(
     }
     const dependencyMetadata = services.get(
       dependencyIdentifier
-    ) as ServiceMetadata<unknown>
+    ) as ServiceData<unknown>
     if (dependencyMetadata.dependencies.length > 0) {
       verifyCircularDependencies(identifier, dependencyMetadata, services, [
         ...dependencyTree,

@@ -1,6 +1,113 @@
 # DIoD
 
-A different inversion of control container for Typescript (Node.js or browser).
+A very opinionated inversion of control (IoC) container and dependency injector for Node.js or browser apps. It is available for vanilla Javascript usage but its true power will be shown by building Typescript apps.
+
+## Quick Start Guide
+
+### Installation
+
+```sh
+npm install diod
+# or
+yarn add diod
+```
+
+#### Usage with Typescript
+
+Modify your `tsconfig.json` to include the following settings
+
+```json
+{
+  "compilerOptions": {
+    // ...
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}
+```
+
+Add a polyfill for the Reflect API (example below use reflect-metadata). You can use:
+
+- [reflect-metadata](https://www.npmjs.com/package/reflect-metadata)
+- [core-js (core-js/es7/reflect)](https://www.npmjs.com/package/core-js)
+- [reflection](https://www.npmjs.com/package/@abraham/reflection)
+
+The Reflect polyfill import should be added only once in your code base, and before DIoD is used:
+
+```sh
+npm install reflect-metadata
+# or
+yarn add reflect-metadata
+```
+
+```ts
+// main.ts
+import 'reflect-metadata'
+
+// Your code here...
+```
+
+### Basic usage
+
+```ts
+// application/use-cases/SignUpUseCase.ts
+import { Service } from 'diod'
+
+@Service()
+export class SignUpUseCase {
+  constructor(
+    private readonly userRepository: UserRepository,
+    private readonly mailer: Mailer
+  ) {}
+
+  execute(userData: UserDto): void {
+    const user = this.userRepository.create(userData)
+    this.mailer.sendConfirmationEmail(user)
+  }
+}
+```
+
+```ts
+// application/services/Mailer.ts
+export abstract class Mailer {
+  sendConfirmationEmail(userData: user): void
+  sendResetPasswordEmail(userData: user): void
+}
+```
+
+```ts
+// domain/UserRepository.ts
+export abstract class UserRepository {
+  create(userData: UserDto): User
+  findBy(userData: UserCriteria): User[]
+}
+```
+
+```ts
+// infrastructure/AcmeMailer.ts
+import { Service } from 'diod'
+import { Mailer } from '../application/services/Mailer'
+
+@Service()
+export class AcmeMailer implements Mailer {
+  sendConfirmationEmail(userData: user): void {
+    // ...
+  }
+  sendResetPasswordEmail(userData: user): void {
+    // ...
+  }
+}
+```
+
+```ts
+// domain/UserRepository.ts
+export abstract class UserRepository {
+  public create(userData: UserDto): User
+  public findBy(userData: UserCriteria): User[]
+}
+```
+
+## Why
 
 Todo:
 

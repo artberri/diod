@@ -1,11 +1,11 @@
-import { ServiceIdentifier } from './types'
+import { Abstract } from './types'
 
 const PARAM_TYPES = 'design:paramtypes'
 
 const getDependenciesFromDecoratedServiceOrThrow = <T>(
-  target: ServiceIdentifier<T>,
+  target: Abstract<T>,
   parents: string[]
-): Array<ServiceIdentifier<unknown>> => {
+): Array<Abstract<unknown>> => {
   const dependencies = Reflect.getMetadata(PARAM_TYPES, target) || []
   if (dependencies.length < target.length) {
     throw new Error(
@@ -17,8 +17,8 @@ const getDependenciesFromDecoratedServiceOrThrow = <T>(
 }
 
 const getBaseClass = <T extends B, B>(
-  target: ServiceIdentifier<T>
-): ServiceIdentifier<B> | undefined => {
+  target: Abstract<T>
+): Abstract<B> | undefined => {
   const baseClass = Object.getPrototypeOf(target.prototype).constructor
   if (baseClass === Object) {
     return undefined
@@ -28,9 +28,9 @@ const getBaseClass = <T extends B, B>(
 }
 
 export const getDependencies = <T>(
-  target: ServiceIdentifier<T>,
+  target: Abstract<T>,
   parents: string[] = []
-): Array<ServiceIdentifier<unknown>> => {
+): Array<Abstract<unknown>> => {
   const dependencies = getDependenciesFromDecoratedServiceOrThrow(
     target,
     parents
@@ -48,7 +48,7 @@ export const getDependencies = <T>(
   return []
 }
 
-export const getDependencyCount = <T>(target: ServiceIdentifier<T>): number => {
+export const getDependencyCount = <T>(target: Abstract<T>): number => {
   if (target.length > 0) {
     return target.length
   }

@@ -7,12 +7,25 @@ import { NotDecorated } from './fixtures/not-decorated'
 import { NotPerson } from './fixtures/not-person'
 import { BankUser } from './fixtures/user'
 
+tap.test('throws error when there is not completed registration', (t) => {
+  // Arrange
+  const builder = new ContainerBuilder()
+  builder.register(NotDecorated)
+
+  // Assert
+  t.throws(() => {
+    // Act
+    builder.build()
+  }, new Error('Service NotDecorated registration is not completed. Use .asSelf() or .as(SomeAbstraction) to finish its registration'))
+  t.end()
+})
+
 tap.test(
   'throws error when asked for a not decorated service with constructor dependencies',
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
-    builder.register(NotDecorated)
+    builder.register(NotDecorated).asSelf()
 
     // Assert
     t.throws(() => {
@@ -28,7 +41,7 @@ tap.test(
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
-    builder.register(Agenda)
+    builder.register(Agenda).asSelf()
 
     // Assert
     t.throws(() => {
@@ -44,7 +57,7 @@ tap.test(
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
-    builder.register(NotPerson)
+    builder.register(NotPerson).asSelf()
 
     // Assert
     t.throws(() => {
@@ -60,13 +73,13 @@ tap.test(
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
-    builder.register(BankUser)
+    builder.register(BankUser).asSelf()
 
     // Assert
     t.throws(() => {
       // Act
       builder.build({ autowire: false })
-    }, new Error('Dependencies must be provided fot non autowired services. Service with missing dependencies: BankUser'))
+    }, new Error('Dependencies must be provided for non autowired services. Service with missing dependencies: BankUser'))
     t.end()
   }
 )
@@ -74,9 +87,9 @@ tap.test(
 tap.test('throws error if circular dependencies are detected', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
-  builder.register(Circular1, [Circular2])
-  builder.register(Circular2, [Circular3])
-  builder.register(Circular3, [Circular1])
+  builder.register(Circular1).withDependencies([Circular2]).asSelf()
+  builder.register(Circular2).withDependencies([Circular3]).asSelf()
+  builder.register(Circular3).withDependencies([Circular1]).asSelf()
 
   // Assert
   t.throws(() => {

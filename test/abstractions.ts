@@ -9,8 +9,8 @@ tap.test(
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
-    builder.register(Person)
-    builder.register(ConsoleLogger)
+    builder.register(Person).asSelf()
+    builder.register(ConsoleLogger).asSelf()
     const container = builder.build()
 
     // Act
