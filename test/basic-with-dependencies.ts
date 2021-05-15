@@ -8,9 +8,9 @@ import { Clock } from './fixtures/clock'
 tap.test('returns registered instance with basic dependencies', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
-  builder.register(Clock).asSelf()
-  builder.register(Calendar).asSelf()
-  builder.register(Agenda).asSelf()
+  builder.register(Clock).use(Clock)
+  builder.registerAndUse(Calendar)
+  builder.register(Agenda).useClass(Agenda)
   const container = builder.build()
 
   // Act

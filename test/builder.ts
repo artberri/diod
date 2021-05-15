@@ -16,7 +16,7 @@ tap.test('throws error when there is not completed registration', (t) => {
   t.throws(() => {
     // Act
     builder.build()
-  }, new Error('Service NotDecorated registration is not completed. Use .asSelf() or .as(SomeAbstraction) to finish its registration'))
+  }, new Error('Service NotDecorated registration is not completed. Use .registerAndUse(NotDecorated) instead of .register(NotDecorated) to use it directly or set any other registration use'))
   t.end()
 })
 
@@ -25,7 +25,7 @@ tap.test(
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
-    builder.register(NotDecorated).asSelf()
+    builder.registerAndUse(NotDecorated)
 
     // Assert
     t.throws(() => {
@@ -41,7 +41,7 @@ tap.test(
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
-    builder.register(Agenda).asSelf()
+    builder.registerAndUse(Agenda)
 
     // Assert
     t.throws(() => {
@@ -57,7 +57,7 @@ tap.test(
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
-    builder.register(NotPerson).asSelf()
+    builder.registerAndUse(NotPerson)
 
     // Assert
     t.throws(() => {
@@ -73,7 +73,7 @@ tap.test(
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
-    builder.register(BankUser).asSelf()
+    builder.registerAndUse(BankUser)
 
     // Assert
     t.throws(() => {
@@ -87,9 +87,9 @@ tap.test(
 tap.test('throws error if circular dependencies are detected', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
-  builder.register(Circular1).withDependencies([Circular2]).asSelf()
-  builder.register(Circular2).withDependencies([Circular3]).asSelf()
-  builder.register(Circular3).withDependencies([Circular1]).asSelf()
+  builder.registerAndUse(Circular1).withDependencies([Circular2])
+  builder.registerAndUse(Circular2).withDependencies([Circular3])
+  builder.registerAndUse(Circular3).withDependencies([Circular1])
 
   // Assert
   t.throws(() => {

@@ -1,36 +1,31 @@
 import { getDependencies, getDependencyCount } from '../reflection'
 import {
   Abstract,
+  Buildable,
   BuildOptions,
+  Identifier,
   Newable,
   RegistrationType,
   ServiceData,
 } from '../types'
-import { BuildableRegistration, Registration } from './registration'
+import { Use } from './use'
 
-export class ClassRegistration<T> extends Registration<T> {
-  private dependencies: Array<Abstract<unknown>> = []
+export class UseClass<T> extends Use<T> {
+  private dependencies: Array<Identifier<unknown>> = []
   private autowire = true
 
   private constructor(private readonly newable: Newable<T>) {
     super()
   }
 
-  public asSelf(): ClassRegistration<T> {
-    this.identifier = this.newable
-    return this
-  }
-
-  public withDependencies(
-    dependencies: Array<Abstract<unknown>>
-  ): ClassRegistration<T> {
+  public withDependencies(dependencies: Array<Abstract<unknown>>): UseClass<T> {
     this.dependencies = dependencies
     this.autowire = false
     return this
   }
 
   private setDependencyInformationIfNotExist(
-    identifier: Abstract<T>,
+    identifier: Newable<T>,
     options: BuildOptions
   ): void {
     const autowire = options.autowire && this.autowire
@@ -49,31 +44,24 @@ export class ClassRegistration<T> extends Registration<T> {
   }
 
   protected build(options: BuildOptions): ServiceData<T> {
-    if (this.identifier === undefined) {
-      throw new Error(
-        `Service ${this.newable.name} registration is not completed. Use .asSelf() or .as(SomeAbstraction) to finish its registration`
-      )
-    }
-
-    this.setDependencyInformationIfNotExist(this.identifier, options)
+    this.setDependencyInformationIfNotExist(this.newable, options)
 
     return {
       type: RegistrationType.Class,
-      identifier: this.identifier,
       class: this.newable,
       dependencies: this.dependencies,
       autowire: this.autowire,
     }
   }
 
-  public static createBuildable<TCreate>(
-    newable: Newable<TCreate>
-  ): BuildableRegistration<ClassRegistration<TCreate>, TCreate> {
-    const registration = new ClassRegistration(newable)
+  public static createBuildable<TIdentifier>(
+    newable: Newable<TIdentifier>
+  ): Buildable<UseClass<TIdentifier>, TIdentifier> {
+    const use = new UseClass(newable)
     return {
-      registration,
-      build: (options: BuildOptions): ServiceData<TCreate> =>
-        registration.build(options),
+      instance: use,
+      build: (options: BuildOptions): ServiceData<TIdentifier> =>
+        use.build(options),
     }
   }
 }

@@ -6,22 +6,20 @@ export type Newable<T> = Function & {
 
 export type Abstract<T> = Function & { prototype: T }
 
+export type Identifier<T> = Newable<T> | Abstract<T>
+
 export type Factory<T> = () => T
 
 export type Instance<T extends Object> = T
 
-export type BasicServiceRegistration<T> = {
-  identifier: Abstract<T>
-}
-
-export type ClassServiceData<T> = BasicServiceRegistration<T> & {
+export type ClassServiceData<T> = {
   class: Newable<T>
   autowire: boolean
   type: RegistrationType.Class
   dependencies: Array<Abstract<unknown>>
 }
 
-export type FactoryServiceData<T> = BasicServiceRegistration<T> & {
+export type FactoryServiceData<T> = {
   factory: Factory<T>
   dependencies: never[]
   type: RegistrationType.Factory
@@ -31,7 +29,7 @@ export type InstanceServiceData<T> = {
   instance: Instance<T>
   type: RegistrationType.Instance
   dependencies: never[]
-} & BasicServiceRegistration<T>
+}
 
 export type ServiceData<T> =
   | ClassServiceData<T>
@@ -48,4 +46,9 @@ export enum RegistrationType {
   Class = 'class',
   Factory = 'factory',
   Instance = 'instance',
+}
+
+export type Buildable<C, T> = {
+  instance: C
+  build: (options: BuildOptions) => ServiceData<T>
 }
