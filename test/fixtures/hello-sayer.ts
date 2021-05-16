@@ -1,10 +1,10 @@
 import { Service } from '../../src/decorators'
-import { ConsoleLogger } from './console-logger'
+import { Logger } from './logger'
 import { Sayer } from './sayer'
 
 @Service()
 class OtherSayer {
-  public constructor(protected readonly logger: ConsoleLogger) {}
+  public constructor(protected readonly logger: Logger) {}
 }
 
 @Service()
