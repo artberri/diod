@@ -4,19 +4,27 @@
 
 A very opinionated inversion of control (IoC) container and dependency injector for Node.js or browser apps. It is available for vanilla Javascript usage but its true power will be shown by building Typescript apps.
 
+[Quick Start Guide](#quick-start-guide) | [Documentation](./docs/README.md)
+
 ### Motivation
 
 > 💡 Do not want to waste your time on unnecessary documentation? Jump to the [Quick Start Guide](#quick-start-guide).
 
 These are the reasons that have led me to reinvent the wheel and create DIoD:
 
-- I don't like the string-based solutions that current Typescript dependency injection libraries use to bypass the Typescript compiler inabilty to emit Javascript constructs. DIoD autowiring will always be based on constructor typings, even when it implies to work with abstract classes instead of interfaces, and property injection will be avoided.
-- I don't like to couple my domain or application layers (see [hexagonal arquitecture](<https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>)) with a dependency injection library. Despite DIoD provides a decorator for ease of usage, you are free to create and use your own keeping your inner layers free of DIoD.
+- I don't like the string-based solutions that current Typescript dependency injection libraries use to bypass the Typescript compiler inabilty to emit Javascript constructs. DIoD autowiring will always be based on constructor typings and property injection will be avoided, even when it implies to work with abstract classes instead of interfaces.
+- I don't like to couple my domain or application layers (see [hexagonal arquitecture](<https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>)) with a dependency injection library. Despite DIoD provides a decorator for ease of usage, you are encouraged to [create and use your own](.docs/custom-decorator.md) keeping your inner layers free of DIoD.
+
+Both reasons are related with some TypeScript constraints: whenever you want to work with type information in runtime (in compiled JS), you inevitably need to use decorators. Even so, you won't be able to have information about interfaces at runtime.
+
+It might sound ridiculous but [Typescript needs types](https://www.typescriptneedstypes.com).
 
 ### Features
 
 - **Autowire**  
   When you ask for a service, DIoD reads the type-hints on your constructor and automatically passes the correct service dependencies to it. The same process will be used to create the required dependencies.
+- **Custom decorators**  
+  DIoD requires decorators for dependency guessing while autowiring, but it accepts any class decorator if you don't want to use the one it provides.
 - **Compiler**  
   After all needed services are registered the container needs to be built. During this build, DIoD will check for errors like missing dependencies, wrong configurations or circular dependencies. An inmutable container will be finally created if there aren't any errors in the building.
 - **Support for vanilla JS**  
@@ -26,8 +34,6 @@ These are the reasons that have led me to reinvent the wheel and create DIoD:
 
 #### Coming soon
 
-- **Custom decorators**  
-  Use user defined decoratorto avoid coupling inner layers to DIoD.
 - **Factory**  
   Using a factory to create services.
 - **Instance**  
@@ -58,7 +64,6 @@ Modify your `tsconfig.json` to include the following settings
 ```json
 {
   "compilerOptions": {
-    // ...
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   }
@@ -108,7 +113,7 @@ export class SignUpUseCase {
 }
 ```
 
-The D of the [SOLI**D**](https://en.wikipedia.org/wiki/SOLID) principles refers to [dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle). This principle encourages developers to use abstractions to define dependencies in certain situations. Abstractions are usually defined with interfaces in other languages, but Typescript interfaces are not available at runtime and that's why DIoD requires abstract classes for abstractions if you want them to be autowired. More information available in the [Motivation](#motivation) section.
+The **D** of the [SOLID](https://en.wikipedia.org/wiki/SOLID) principles refers to [dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle). This principle encourages developers to use abstractions to define dependencies in certain situations. Abstractions are usually defined with interfaces in other languages, but Typescript interfaces are not available at runtime and that's why DIoD requires abstract classes for abstractions if you want them to be autowired. More information available in the [Motivation](#motivation) section.
 
 ```ts
 // application/services/Mailer.ts
@@ -179,13 +184,15 @@ export class SqliteUserRepository implements UserRepository {
 }
 ```
 
+More usage information in the [official documentation](./docs/README.md).
+
 ## Acknowledgements
 
 A special thanks to every open source contributor that helped or inspired me to create DIoD, including but not limited to all the contributors of the following libraries: [InversifyJS](https://github.com/inversify/InversifyJS), [Node Dependency Injection](https://github.com/zazoomauro/node-dependency-injection), [TSyringe](https://github.com/microsoft/tsyringe), [Autofac](https://github.com/autofac/Autofac), [Ninject](https://github.com/ninject/Ninject) and the [Symfony DependencyInjection Component](https://github.com/symfony/dependency-injection)
 
 ## Pronunciation and name origin
 
-DIoD will be pronounced like the English word 'diode' _/ˈdaɪəʊd/_. DIoD is the abbreviation of 'Dependency Injection or Die', which is the first and only thing I was able to elaborate after I realised that the short `diod` package name was free on the NPM registry.
+DIoD will be pronounced like the English word 'diode' _/ˈdaɪəʊd/_. DIoD is the abbreviation of **Dependency Injection or Die**, which is the first and only thing I was able to elaborate after I realised that the short `diod` package name was free on the NPM registry.
 
 ## License
 
