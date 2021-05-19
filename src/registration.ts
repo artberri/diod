@@ -1,12 +1,5 @@
-import {
-  Buildable,
-  BuildOptions,
-  Factory,
-  Identifier,
-  Instance,
-  Newable,
-  ServiceData,
-} from './types'
+import { Buildable, ServiceData } from './internal-types'
+import { BuildOptions, Factory, Identifier, Instance, Newable } from './types'
 import { Use } from './uses/use'
 import { UseClass } from './uses/use-class'
 import { UseFactory } from './uses/use-factory'
@@ -49,6 +42,9 @@ export class Registration<T> {
     return this.buildable.build(options)
   }
 
+  /**
+   * @internal
+   */
   public static createBuildable<TIdentifier>(
     identifier: Identifier<TIdentifier>
   ): Buildable<Registration<TIdentifier>, TIdentifier> {

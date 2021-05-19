@@ -1,4 +1,6 @@
-import { Buildable, Instance, RegistrationType, ServiceData } from '../types'
+import { Buildable, ServiceData } from '../internal-types'
+import { RegistrationType } from '../registration-type'
+import { Instance } from '../types'
 import { Use } from './use'
 
 export class UseInstance<T> extends Use<T> {

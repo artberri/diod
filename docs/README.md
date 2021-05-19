@@ -9,3 +9,4 @@ Welcome to the DIoD Documentation!
 - [Inheritance](./inheritance.md)
 - [Using vanilla JavaScript](./javascript.md)
 - [Disabling autowire (or declaring dependencies manually)](./disable-autowire.md)
+- [API Reference](./api/README.md)

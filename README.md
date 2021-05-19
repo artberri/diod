@@ -93,6 +93,8 @@ import 'reflect-metadata'
 
 ### Basic usage
 
+All the registered services must be decorated because [this is the only way to make type metadata available at runtime](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata) in Typescript. DIoD provides the `@Service()` decorator for ease of usage, but you can [create your own decorator](./docs/custom-decorator.md) to avoid coupling your inner arquitecture layers with DIoD.
+
 Imagine that you want to have a class like this:
 
 ```ts

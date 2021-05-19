@@ -1,15 +1,13 @@
 import { Container } from './container'
+import { Buildable, ServiceData } from './internal-types'
 import { Registration } from './registration'
-import {
-  Buildable,
-  BuildOptions,
-  Identifier,
-  Newable,
-  ServiceData,
-} from './types'
+import { BuildOptions, Identifier, Newable } from './types'
 import { UseClass } from './uses/use-class'
 import { verify } from './verifier'
 
+/**
+ * Used to build an [[Container]] from service registrations.
+ */
 export class ContainerBuilder {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private readonly buildables = new Map<
@@ -17,6 +15,14 @@ export class ContainerBuilder {
     Buildable<Registration<unknown>, unknown>
   >()
 
+  /**
+   * Registers a service.
+   * @param identifier The class that identifies this service. This class
+   * identifier must be used to get the service from the container or when
+   * defining it as a dependency.
+   * @typeParam T The type of the service.
+   * @returns
+   */
   public register<T>(identifier: Identifier<T>): Registration<T> {
     if (this.buildables.has(identifier)) {
       throw new Error(
@@ -29,6 +35,11 @@ export class ContainerBuilder {
     return buildable.instance
   }
 
+  /**
+   * Unregister previously registered service.
+   * @param identifier The class that identifies this service to be unregistered.
+   * @typeParam T The type of the service.
+   */
   public unregister<T>(identifier: Identifier<T>): void {
     if (!this.buildables.has(identifier)) {
       throw new Error(`There is no service registered as ${identifier.name}.`)
@@ -37,19 +48,35 @@ export class ContainerBuilder {
     this.buildables.delete(identifier)
   }
 
+  /**
+   * Checks whether a service is registered or not.
+   * @param identifier The class that identifies this service to be checked.
+   * @typeParam T The type of the service.
+   * @returns
+   */
   public isRegistered<T>(identifier: Identifier<T>): boolean {
     return this.buildables.has(identifier)
   }
 
+  /**
+   * Alias for `.register(newable).use(newable)`.
+   * @param newable The concrete class implementation to be registered as itself.
+   * @typeParam T The type of the service.
+   * @returns
+   */
   public registerAndUse<T>(newable: Newable<T>): UseClass<T> {
     return this.register(newable).use(newable)
   }
 
-  public build(options: BuildOptions = {}): Container {
-    options.autowire = options.autowire ?? true
+  /**
+   * Builds an inmutable [[Container]].
+   * @param options Build options.
+   * @returns
+   */
+  public build({ autowire = true }: BuildOptions = {}): Container {
     const services = new Map<Identifier<unknown>, ServiceData<unknown>>()
     for (const [identifier, buildable] of this.buildables) {
-      const data = buildable.build(options)
+      const data = buildable.build({ autowire })
       services.set(identifier, data)
     }
     verify(services)

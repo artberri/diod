@@ -1,4 +1,5 @@
-import { Abstract, ServiceData, ServiceListMetadata } from './types'
+import { ServiceData, ServiceListMetadata } from './internal-types'
+import { Abstract } from './types'
 
 const verifyMetadata = <T>(
   identifier: Abstract<T>,

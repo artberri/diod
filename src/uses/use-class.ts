@@ -1,13 +1,7 @@
+import { Buildable, ServiceData } from '../internal-types'
 import { getDependencies, getDependencyCount } from '../reflection'
-import {
-  Abstract,
-  Buildable,
-  BuildOptions,
-  Identifier,
-  Newable,
-  RegistrationType,
-  ServiceData,
-} from '../types'
+import { RegistrationType } from '../registration-type'
+import { Abstract, BuildOptions, Identifier, Newable } from '../types'
 import { Use } from './use'
 
 export class UseClass<T> extends Use<T> {
