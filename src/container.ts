@@ -1,21 +1,21 @@
-import { Abstract, ClassServiceData, ServiceData } from './types'
+import { ClassServiceData, Identifier, ServiceData } from './types'
 
 export class Container {
   public constructor(
     private readonly services: ReadonlyMap<
-      Abstract<unknown>,
+      Identifier<unknown>,
       ServiceData<unknown>
     >
   ) {}
 
-  public get<T>(identifier: Abstract<T>): T {
+  public get<T>(identifier: Identifier<T>): T {
     const data = this.findServiceDataOrThrow(identifier) as ClassServiceData<T>
     const dependencies = this.getDependencies(data.dependencies)
 
     return new data.class(...dependencies)
   }
 
-  private findServiceDataOrThrow<T>(identifier: Abstract<T>): ServiceData<T> {
+  private findServiceDataOrThrow<T>(identifier: Identifier<T>): ServiceData<T> {
     const service = this.services.get(identifier)
 
     if (!service) {
@@ -26,7 +26,7 @@ export class Container {
   }
 
   private getDependencies(
-    dependencyIdentifiers: Array<Abstract<unknown>>
+    dependencyIdentifiers: Array<Identifier<unknown>>
   ): unknown[] {
     const dependencies = new Array<unknown>()
     for (const dependencyIdentifier of dependencyIdentifiers) {

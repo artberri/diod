@@ -12,14 +12,33 @@ import { verify } from './verifier'
 
 export class ContainerBuilder {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private readonly buildables = new Set<
+  private readonly buildables = new Map<
+    Identifier<unknown>,
     Buildable<Registration<unknown>, unknown>
   >()
 
   public register<T>(identifier: Identifier<T>): Registration<T> {
+    if (this.buildables.has(identifier)) {
+      throw new Error(
+        `A service identified as ${identifier.name} has been already registered. You need to unregister it before you can register it again.`
+      )
+    }
+
     const buildable = Registration.createBuildable(identifier)
-    this.buildables.add(buildable)
+    this.buildables.set(identifier, buildable)
     return buildable.instance
+  }
+
+  public unregister<T>(identifier: Identifier<T>): void {
+    if (!this.buildables.has(identifier)) {
+      throw new Error(`There is no service registered as ${identifier.name}.`)
+    }
+
+    this.buildables.delete(identifier)
+  }
+
+  public isRegistered<T>(identifier: Identifier<T>): boolean {
+    return this.buildables.has(identifier)
   }
 
   public registerAndUse<T>(newable: Newable<T>): UseClass<T> {
@@ -29,9 +48,9 @@ export class ContainerBuilder {
   public build(options: BuildOptions = {}): Container {
     options.autowire = options.autowire ?? true
     const services = new Map<Identifier<unknown>, ServiceData<unknown>>()
-    for (const buildable of this.buildables) {
+    for (const [identifier, buildable] of this.buildables) {
       const data = buildable.build(options)
-      services.set(buildable.instance.identifier, data)
+      services.set(identifier, data)
     }
     verify(services)
     return new Container(services)

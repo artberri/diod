@@ -3,6 +3,7 @@ import tap from 'tap'
 import { ContainerBuilder } from '../src/diod'
 import { Agenda } from './fixtures/agenda'
 import { Circular1, Circular2, Circular3 } from './fixtures/circular'
+import { Clock } from './fixtures/clock'
 import { NotDecorated } from './fixtures/not-decorated'
 import { NotPerson } from './fixtures/not-person'
 import { BankUser } from './fixtures/user'
@@ -96,5 +97,72 @@ tap.test('throws error if circular dependencies are detected', (t) => {
     // Act
     builder.build({ autowire: false })
   }, new Error('Circular dependency detected: Circular1 -> Circular2 -> Circular3 -> Circular1'))
+  t.end()
+})
+
+tap.test('throws error if service is registered twice', (t) => {
+  // Arrange
+  const builder = new ContainerBuilder()
+  builder.registerAndUse(Clock)
+
+  // Assert
+  t.throws(() => {
+    // Act
+    builder.registerAndUse(Clock)
+  }, new Error('A service identified as Clock has been already registered. You need to unregister it before you can register it again.'))
+  t.end()
+})
+
+tap.test('throws unregistering not registered service', (t) => {
+  // Arrange
+  const builder = new ContainerBuilder()
+  builder.registerAndUse(Clock)
+
+  // Assert
+  t.throws(() => {
+    // Act
+    builder.unregister(Circular1)
+  }, new Error('There is no service registered as Circular1.'))
+  t.end()
+})
+
+tap.test('throws unregistering not registered service', (t) => {
+  // Arrange
+  const builder = new ContainerBuilder()
+  builder.registerAndUse(Clock)
+
+  // Assert
+  t.throws(() => {
+    // Act
+    builder.unregister(Circular1)
+  }, new Error('There is no service registered as Circular1.'))
+  t.end()
+})
+
+tap.test('services can be unregistered', (t) => {
+  // Arrange
+  const builder = new ContainerBuilder()
+  builder.registerAndUse(Clock)
+
+  // Act
+  builder.unregister(Clock)
+
+  // Assert
+  t.equal(builder.isRegistered(Clock), false)
+  t.end()
+})
+
+tap.test('can query if a service is registered', (t) => {
+  // Arrange
+  const builder = new ContainerBuilder()
+  builder.registerAndUse(Clock)
+
+  // Act
+  const isClockRegistered = builder.isRegistered(Clock)
+  const isCircular1Registered = builder.isRegistered(Circular1)
+
+  // Assert
+  t.equal(isClockRegistered, true)
+  t.equal(isCircular1Registered, false)
   t.end()
 })
