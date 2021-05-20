@@ -1,6 +1,6 @@
 /**
  * Decorator for injectable classes. Every registered service must
- * decorated because without decorators Typescript won't emit
+ * be decorated because without decorators Typescript won't emit
  * constructor metadata.
  * @returns
  */

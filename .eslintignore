@@ -1,4 +1,6 @@
 .eslintrc.js
 commitlint.config.js
+rollup.config.js
 build/
 coverage/
+dist/

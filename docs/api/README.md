@@ -2,6 +2,7 @@
 
 ## Classes
 
+- [ClassConfiguration](classes/classconfiguration.md)
 - [Container](classes/container.md)
 - [ContainerBuilder](classes/containerbuilder.md)
 - [Registration](classes/registration.md)
@@ -15,29 +16,29 @@
 
 ### BuildOptions
 
-Ƭ **BuildOptions**: _object_
+Ƭ **BuildOptions**: *object*
 
 Options for the [Container](classes/container.md) build method.
 
 #### Type declaration
 
-| Name        | Type      | Description                                                                    |
-| :---------- | :-------- | :----------------------------------------------------------------------------- |
-| `autowire?` | _boolean_ | Whether to autowire dependencies based on types or not. Default value: `true`. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `autowire?` | *boolean* | Whether to autowire dependencies based on types or not. Default value: `true`. |
 
----
+___
 
 ### Identifier
 
-Ƭ **Identifier**<T\>: [_Newable_](interfaces/newable.md)<T\> \| [_Abstract_](interfaces/abstract.md)<T\>
+Ƭ **Identifier**<T\>: [*Newable*](interfaces/newable.md)<T\> \| [*Abstract*](interfaces/abstract.md)<T\>
 
 Service identifier. Can be a concrete implementation or an abstraction.
 
 #### Type parameters
 
 | Name | Description |
-| :--- | :---------- |
-| `T`  | Class type. |
+| :------ | :------ |
+| `T` | Class type. |
 
 ## Functions
 
@@ -46,7 +47,7 @@ Service identifier. Can be a concrete implementation or an abstraction.
 ▸ `Const` **Service**(): ClassDecorator
 
 Decorator for injectable classes. Every registered service must
-decorated because without decorators Typescript won't emit
+be decorated because without decorators Typescript won't emit
 constructor metadata.
 
 **Returns:** ClassDecorator

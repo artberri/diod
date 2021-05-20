@@ -1,8 +1,8 @@
+import { ClassConfiguration } from './configurations/class-configuration'
 import { Container } from './container'
 import { Buildable, ServiceData } from './internal-types'
 import { Registration } from './registration'
 import { BuildOptions, Identifier, Newable } from './types'
-import { UseClass } from './uses/use-class'
 import { verify } from './verifier'
 
 /**
@@ -64,7 +64,7 @@ export class ContainerBuilder {
    * @typeParam T The type of the service.
    * @returns
    */
-  public registerAndUse<T>(newable: Newable<T>): UseClass<T> {
+  public registerAndUse<T>(newable: Newable<T>): ClassConfiguration<T> {
     return this.register(newable).use(newable)
   }
 

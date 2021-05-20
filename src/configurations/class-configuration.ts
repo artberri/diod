@@ -1,10 +1,10 @@
 import { Buildable, ServiceData } from '../internal-types'
 import { getDependencies, getDependencyCount } from '../reflection'
 import { RegistrationType } from '../registration-type'
-import { Abstract, BuildOptions, Identifier, Newable } from '../types'
-import { Use } from './use'
+import { BuildOptions, Identifier, Newable } from '../types'
+import { ServiceConfiguration } from './service-configuration'
 
-export class UseClass<T> extends Use<T> {
+export class ClassConfiguration<T> extends ServiceConfiguration<T> {
   private dependencies: Array<Identifier<unknown>> = []
   private autowire = true
 
@@ -12,7 +12,15 @@ export class UseClass<T> extends Use<T> {
     super()
   }
 
-  public withDependencies(dependencies: Array<Abstract<unknown>>): UseClass<T> {
+  /**
+   * Declare class dependencies manually
+   * @param dependencies List of class dependency identifiers to inject in
+   * order to the constructor.
+   * @returns
+   */
+  public withDependencies(
+    dependencies: Array<Identifier<unknown>>
+  ): ClassConfiguration<T> {
     this.dependencies = dependencies
     this.autowire = false
     return this
@@ -48,10 +56,13 @@ export class UseClass<T> extends Use<T> {
     }
   }
 
+  /**
+   * @internal
+   */
   public static createBuildable<TIdentifier>(
     newable: Newable<TIdentifier>
-  ): Buildable<UseClass<TIdentifier>, TIdentifier> {
-    const use = new UseClass(newable)
+  ): Buildable<ClassConfiguration<TIdentifier>, TIdentifier> {
+    const use = new ClassConfiguration(newable)
     return {
       instance: use,
       build: (options: BuildOptions): ServiceData<TIdentifier> =>

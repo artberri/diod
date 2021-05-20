@@ -16,35 +16,42 @@
 
 ### use
 
-▸ **use**(`newable`: [*Newable*](../interfaces/newable.md)<T\>): *UseClass*<T\>
+▸ **use**(`newable`: [*Newable*](../interfaces/newable.md)<T\>): [*ClassConfiguration*](classconfiguration.md)<T\>
+
+Configure the class implementation that the identifier will provide.
+Alias of `useClass`.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `newable` | [*Newable*](../interfaces/newable.md)<T\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `newable` | [*Newable*](../interfaces/newable.md)<T\> | The implementation that the identifier will provide. |
 
-**Returns:** *UseClass*<T\>
+**Returns:** [*ClassConfiguration*](classconfiguration.md)<T\>
+
+Configu fluent API for
 
 ___
 
 ### useClass
 
-▸ **useClass**(`newable`: [*Newable*](../interfaces/newable.md)<T\>): *UseClass*<T\>
+▸ **useClass**(`newable`: [*Newable*](../interfaces/newable.md)<T\>): [*ClassConfiguration*](classconfiguration.md)<T\>
+
+Configure the class implementation that the identifier will provide.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `newable` | [*Newable*](../interfaces/newable.md)<T\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `newable` | [*Newable*](../interfaces/newable.md)<T\> | The implementation that the identifier will provide. |
 
-**Returns:** *UseClass*<T\>
+**Returns:** [*ClassConfiguration*](classconfiguration.md)<T\>
 
 ___
 
 ### useFactory
 
-▸ **useFactory**(`factory`: *Factory*<T\>): *UseFactory*<T\>
+▸ **useFactory**(`factory`: *Factory*<T\>): *void*
 
 #### Parameters
 
@@ -52,13 +59,13 @@ ___
 | :------ | :------ |
 | `factory` | *Factory*<T\> |
 
-**Returns:** *UseFactory*<T\>
+**Returns:** *void*
 
 ___
 
 ### useInstance
 
-▸ **useInstance**(`instance`: T): *UseInstance*<T\>
+▸ **useInstance**(`instance`: T): *void*
 
 #### Parameters
 
@@ -66,24 +73,4 @@ ___
 | :------ | :------ |
 | `instance` | T |
 
-**Returns:** *UseInstance*<T\>
-
-___
-
-### createBuildable
-
-▸ `Static` **createBuildable**<TIdentifier\>(`identifier`: [*Identifier*](../README.md#identifier)<TIdentifier\>): *Buildable*<[*Registration*](registration.md)<TIdentifier\>, TIdentifier\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `TIdentifier` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `identifier` | [*Identifier*](../README.md#identifier)<TIdentifier\> |
-
-**Returns:** *Buildable*<[*Registration*](registration.md)<TIdentifier\>, TIdentifier\>
+**Returns:** *void*

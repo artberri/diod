@@ -1,34 +1,43 @@
+import { ClassConfiguration } from './configurations/class-configuration'
+import { FactoryConfiguration } from './configurations/factory-configuration'
+import { InstanceConfiguration } from './configurations/instance-configuration'
+import { ServiceConfiguration } from './configurations/service-configuration'
 import { Buildable, ServiceData } from './internal-types'
 import { BuildOptions, Factory, Identifier, Instance, Newable } from './types'
-import { Use } from './uses/use'
-import { UseClass } from './uses/use-class'
-import { UseFactory } from './uses/use-factory'
-import { UseInstance } from './uses/use-instance'
 
 export class Registration<T> {
-  private buildable: Buildable<Use<T>, T> | undefined
+  private buildable: Buildable<ServiceConfiguration<T>, T> | undefined
 
   private constructor(public readonly identifier: Identifier<T>) {}
 
-  public useInstance(instance: Instance<T>): UseInstance<T> {
-    const buildable = UseInstance.createBuildable(instance)
+  public useInstance(instance: Instance<T>): void {
+    const buildable = InstanceConfiguration.createBuildable(instance)
+    this.buildable = buildable
+  }
+
+  public useFactory(factory: Factory<T>): void {
+    const buildable = FactoryConfiguration.createBuildable(factory)
+    this.buildable = buildable
+  }
+
+  /**
+   * Configure the class implementation that the identifier will provide.
+   * @param newable The implementation that the identifier will provide.
+   * @returns
+   */
+  public useClass(newable: Newable<T>): ClassConfiguration<T> {
+    const buildable = ClassConfiguration.createBuildable(newable)
     this.buildable = buildable
     return buildable.instance
   }
 
-  public useFactory(factory: Factory<T>): UseFactory<T> {
-    const buildable = UseFactory.createBuildable(factory)
-    this.buildable = buildable
-    return buildable.instance
-  }
-
-  public useClass(newable: Newable<T>): UseClass<T> {
-    const buildable = UseClass.createBuildable(newable)
-    this.buildable = buildable
-    return buildable.instance
-  }
-
-  public use(newable: Newable<T>): UseClass<T> {
+  /**
+   * Configure the class implementation that the identifier will provide.
+   * Alias of `useClass`.
+   * @param newable The implementation that the identifier will provide.
+   * @returns Configu fluent API for
+   */
+  public use(newable: Newable<T>): ClassConfiguration<T> {
     return this.useClass(newable)
   }
 

@@ -1,5 +1,6 @@
-export * from './container'
+export type { ClassConfiguration } from './configurations/class-configuration'
+export type { Container } from './container'
 export * from './container-builder'
 export * from './decorators'
-export * from './registration'
+export type { Registration } from './registration'
 export * from './types'

@@ -74,7 +74,7 @@ ___
 
 ### registerAndUse
 
-▸ **registerAndUse**<T\>(`newable`: [*Newable*](../interfaces/newable.md)<T\>): *UseClass*<T\>
+▸ **registerAndUse**<T\>(`newable`: [*Newable*](../interfaces/newable.md)<T\>): [*ClassConfiguration*](classconfiguration.md)<T\>
 
 Alias for `.register(newable).use(newable)`.
 
@@ -90,7 +90,7 @@ Alias for `.register(newable).use(newable)`.
 | :------ | :------ | :------ |
 | `newable` | [*Newable*](../interfaces/newable.md)<T\> | The concrete class implementation to be registered as itself. |
 
-**Returns:** *UseClass*<T\>
+**Returns:** [*ClassConfiguration*](classconfiguration.md)<T\>
 
 ___
 

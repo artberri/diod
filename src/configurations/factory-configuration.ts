@@ -1,9 +1,9 @@
 import { Buildable, ServiceData } from '../internal-types'
 import { RegistrationType } from '../registration-type'
 import { Factory } from '../types'
-import { Use } from './use'
+import { ServiceConfiguration } from './service-configuration'
 
-export class UseFactory<T> extends Use<T> {
+export class FactoryConfiguration<T> extends ServiceConfiguration<T> {
   private constructor(private readonly factory: Factory<T>) {
     super()
   }
@@ -16,10 +16,13 @@ export class UseFactory<T> extends Use<T> {
     }
   }
 
+  /**
+   * @internal
+   */
   public static createBuildable<TIdentifier>(
     factory: Factory<TIdentifier>
-  ): Buildable<UseFactory<TIdentifier>, TIdentifier> {
-    const use = new UseFactory(factory)
+  ): Buildable<FactoryConfiguration<TIdentifier>, TIdentifier> {
+    const use = new FactoryConfiguration(factory)
     return {
       instance: use,
       build: (): ServiceData<TIdentifier> => use.build(),

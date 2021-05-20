@@ -1,9 +1,9 @@
 import { Buildable, ServiceData } from '../internal-types'
 import { RegistrationType } from '../registration-type'
 import { Instance } from '../types'
-import { Use } from './use'
+import { ServiceConfiguration } from './service-configuration'
 
-export class UseInstance<T> extends Use<T> {
+export class InstanceConfiguration<T> extends ServiceConfiguration<T> {
   private constructor(private readonly instance: Instance<T>) {
     super()
   }
@@ -16,10 +16,13 @@ export class UseInstance<T> extends Use<T> {
     }
   }
 
+  /**
+   * @internal
+   */
   public static createBuildable<TIdentifier>(
     instance: Instance<TIdentifier>
-  ): Buildable<UseInstance<TIdentifier>, TIdentifier> {
-    const use = new UseInstance(instance)
+  ): Buildable<InstanceConfiguration<TIdentifier>, TIdentifier> {
+    const use = new InstanceConfiguration(instance)
     return {
       instance: use,
       build: (): ServiceData<TIdentifier> => use.build(),
