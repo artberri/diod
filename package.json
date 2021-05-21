@@ -1,6 +1,6 @@
 {
   "name": "diod",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.1",
   "description": "A very opinionated and different inversion of control container and dependency injector for Typescript, Node.js or browser apps",
   "keywords": [
     "dependency injection",
@@ -28,6 +28,7 @@
     "hook:pre-commit": "npm run qa",
     "lint": "eslint .",
     "qa": "npm run lint && npm run type-check && npm run test",
+    "prepack": "npm run qa && npm run build",
     "pretest": "npm run clean",
     "test": "cross-env TS_NODE_PROJECT=tsconfig.json tap --node-arg=--require=ts-node/register",
     "test:watch": "cross-env TS_NODE_PROJECT=tsconfig.json tap --node-arg=--require=ts-node/register --watch",
