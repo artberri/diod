@@ -5,7 +5,7 @@ import { OtherServiceWithCustomDecorator } from './fixtures/other-service-with-c
 import { ServiceWithCustomDecorator } from './fixtures/service-with-custom-decorator'
 import { Truer } from './fixtures/truer'
 
-tap.test('user defined decorators can be used', (t) => {
+void tap.test('user defined decorators can be used', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
   builder.registerAndUse(ServiceWithCustomDecorator)

@@ -26,11 +26,13 @@ module.exports = {
     'brace-style': ['error'],
     '@typescript-eslint/brace-style': ['error'],
 
+    '@typescript-eslint/no-floating-promises': ['error'],
     '@typescript-eslint/explicit-member-accessibility': ['error'],
     '@typescript-eslint/prefer-readonly': ['error'],
     '@typescript-eslint/explicit-function-return-type': ['error'],
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
 
+    'import/no-unresolved': ['error'],
     'import/no-default-export': ['error'],
   },
 }

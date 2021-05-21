@@ -35,7 +35,7 @@ export class Container {
       return data.instance
     }
 
-    return data.factory()
+    return data.factory(this)
   }
 
   private findServiceDataOrThrow<T>(identifier: Identifier<T>): ServiceData<T> {

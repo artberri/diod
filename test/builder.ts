@@ -8,7 +8,7 @@ import { NotDecorated } from './fixtures/not-decorated'
 import { NotPerson } from './fixtures/not-person'
 import { BankUser } from './fixtures/user'
 
-tap.test('throws error when there is not completed registration', (t) => {
+void tap.test('throws error when there is not completed registration', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
   builder.register(NotDecorated)
@@ -21,7 +21,7 @@ tap.test('throws error when there is not completed registration', (t) => {
   t.end()
 })
 
-tap.test(
+void tap.test(
   'throws error when asked for a not decorated service with constructor dependencies',
   (t) => {
     // Arrange
@@ -37,7 +37,7 @@ tap.test(
   }
 )
 
-tap.test(
+void tap.test(
   'throws error building a container with a registered service which has unregistered dependencies',
   (t) => {
     // Arrange
@@ -53,7 +53,7 @@ tap.test(
   }
 )
 
-tap.test(
+void tap.test(
   'throws error when service without contructor extends not decorated service with constructor dependencies',
   (t) => {
     // Arrange
@@ -69,7 +69,7 @@ tap.test(
   }
 )
 
-tap.test(
+void tap.test(
   'throws error when needed dependencies are not provided for non autowired service',
   (t) => {
     // Arrange
@@ -85,22 +85,25 @@ tap.test(
   }
 )
 
-tap.test('throws error if circular dependencies are detected', (t) => {
-  // Arrange
-  const builder = new ContainerBuilder()
-  builder.registerAndUse(Circular1).withDependencies([Circular2])
-  builder.registerAndUse(Circular2).withDependencies([Circular3])
-  builder.registerAndUse(Circular3).withDependencies([Circular1])
+void void tap.test(
+  'throws error if circular dependencies are detected',
+  (t) => {
+    // Arrange
+    const builder = new ContainerBuilder()
+    builder.registerAndUse(Circular1).withDependencies([Circular2])
+    builder.registerAndUse(Circular2).withDependencies([Circular3])
+    builder.registerAndUse(Circular3).withDependencies([Circular1])
 
-  // Assert
-  t.throws(() => {
-    // Act
-    builder.build({ autowire: false })
-  }, new Error('Circular dependency detected: Circular1 -> Circular2 -> Circular3 -> Circular1'))
-  t.end()
-})
+    // Assert
+    t.throws(() => {
+      // Act
+      builder.build({ autowire: false })
+    }, new Error('Circular dependency detected: Circular1 -> Circular2 -> Circular3 -> Circular1'))
+    t.end()
+  }
+)
 
-tap.test('throws error if service is registered twice', (t) => {
+void tap.test('throws error if service is registered twice', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
   builder.registerAndUse(Clock)
@@ -113,7 +116,7 @@ tap.test('throws error if service is registered twice', (t) => {
   t.end()
 })
 
-tap.test('throws unregistering not registered service', (t) => {
+void tap.test('throws unregistering not registered service', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
   builder.registerAndUse(Clock)
@@ -126,7 +129,7 @@ tap.test('throws unregistering not registered service', (t) => {
   t.end()
 })
 
-tap.test('throws unregistering not registered service', (t) => {
+void tap.test('throws unregistering not registered service', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
   builder.registerAndUse(Clock)
@@ -139,7 +142,7 @@ tap.test('throws unregistering not registered service', (t) => {
   t.end()
 })
 
-tap.test('services can be unregistered', (t) => {
+void tap.test('services can be unregistered', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
   builder.registerAndUse(Clock)
@@ -152,7 +155,7 @@ tap.test('services can be unregistered', (t) => {
   t.end()
 })
 
-tap.test('can query if a service is registered', (t) => {
+void tap.test('can query if a service is registered', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
   builder.registerAndUse(Clock)

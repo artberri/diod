@@ -28,6 +28,34 @@ Options for the [Container](classes/container.md) build method.
 
 ___
 
+### Factory
+
+Ƭ **Factory**<T\>: (`container`: [*Container*](classes/container.md)) => T
+
+Represents a factory to create instances of a class.
+The [Container](classes/container.md) will be passed to the registered factory to be able to
+get any other service.
+
+#### Type parameters
+
+| Name | Description |
+| :------ | :------ |
+| `T` | Class type. |
+
+#### Type declaration
+
+▸ (`container`: [*Container*](classes/container.md)): T
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `container` | [*Container*](classes/container.md) |
+
+**Returns:** T
+
+___
+
 ### Identifier
 
 Ƭ **Identifier**<T\>: [*Newable*](interfaces/newable.md)<T\> \| [*Abstract*](interfaces/abstract.md)<T\>

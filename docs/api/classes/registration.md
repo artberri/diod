@@ -29,7 +29,7 @@ Alias of `useClass`.
 
 **Returns:** [*ClassConfiguration*](classconfiguration.md)<T\>
 
-Configu fluent API for
+Configuration fluent API for classes
 
 ___
 
@@ -51,13 +51,15 @@ ___
 
 ### useFactory
 
-▸ **useFactory**(`factory`: *Factory*<T\>): *void*
+▸ **useFactory**(`factory`: [*Factory*](../README.md#factory)<T\>): *void*
+
+Configure a factory that returns the instance that the identifier will provide.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `factory` | *Factory*<T\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `factory` | [*Factory*](../README.md#factory)<T\> | The factory that will be executed when the identifier is requested. |
 
 **Returns:** *void*
 
@@ -67,10 +69,12 @@ ___
 
 ▸ **useInstance**(`instance`: T): *void*
 
+Configure the instance that the identifier will provide.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `instance` | T |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `instance` | T | The instance that the identifier will provide. |
 
 **Returns:** *void*

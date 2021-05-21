@@ -8,7 +8,7 @@ import { ConsoleLogger } from './fixtures/console-logger'
 import { Person } from './fixtures/person'
 import { Sayer } from './fixtures/sayer'
 
-tap.test('returns manually created class instance', (t) => {
+void tap.test('returns manually created class instance', (t) => {
   // Arrange
   const clock = new Clock()
   const person = new Person(new ConsoleLogger())
@@ -25,5 +25,6 @@ tap.test('returns manually created class instance', (t) => {
   // Assert
   t.equal(container.get(Sayer).rand, person.rand)
   t.equal(container.get(Clock).rand, clock.rand)
+  t.equal(container.get(Agenda).clock.rand, clock.rand)
   t.end()
 })

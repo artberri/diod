@@ -10,16 +10,6 @@ export class Registration<T> {
 
   private constructor(public readonly identifier: Identifier<T>) {}
 
-  public useInstance(instance: Instance<T>): void {
-    const buildable = InstanceConfiguration.createBuildable(instance)
-    this.buildable = buildable
-  }
-
-  public useFactory(factory: Factory<T>): void {
-    const buildable = FactoryConfiguration.createBuildable(factory)
-    this.buildable = buildable
-  }
-
   /**
    * Configure the class implementation that the identifier will provide.
    * @param newable The implementation that the identifier will provide.
@@ -35,10 +25,28 @@ export class Registration<T> {
    * Configure the class implementation that the identifier will provide.
    * Alias of `useClass`.
    * @param newable The implementation that the identifier will provide.
-   * @returns Configu fluent API for
+   * @returns Configuration fluent API for classes
    */
   public use(newable: Newable<T>): ClassConfiguration<T> {
     return this.useClass(newable)
+  }
+
+  /**
+   * Configure the instance that the identifier will provide.
+   * @param instance The instance that the identifier will provide.
+   */
+  public useInstance(instance: Instance<T>): void {
+    const buildable = InstanceConfiguration.createBuildable(instance)
+    this.buildable = buildable
+  }
+
+  /**
+   * Configure a factory that returns the instance that the identifier will provide.
+   * @param factory The factory that will be executed when the identifier is requested.
+   */
+  public useFactory(factory: Factory<T>): void {
+    const buildable = FactoryConfiguration.createBuildable(factory)
+    this.buildable = buildable
   }
 
   private build(options: BuildOptions): ServiceData<T> {

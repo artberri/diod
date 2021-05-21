@@ -4,7 +4,7 @@ import { ContainerBuilder } from '../src/diod'
 import { Clock } from './fixtures/clock'
 import { ConsoleLogger } from './fixtures/console-logger'
 
-tap.test(
+void tap.test(
   'returns registered parameter-less constructor class instance',
   (t) => {
     // Arrange
@@ -22,7 +22,7 @@ tap.test(
   }
 )
 
-tap.test('throws error when asked for an unregistered service', (t) => {
+void tap.test('throws error when asked for an unregistered service', (t) => {
   // Arrange
   const builder = new ContainerBuilder()
   builder.registerAndUse(Clock)

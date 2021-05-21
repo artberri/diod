@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
+
+import { Container } from './container'
+
 /**
  * Represents a newable class.
  * @typeParam T Class type.
@@ -23,10 +26,12 @@ export interface Abstract<T> extends Function {
 export type Identifier<T> = Newable<T> | Abstract<T>
 
 /**
- * Service factory.
- * @internal
+ * Represents a factory to create instances of a class.
+ * The [[Container]] will be passed to the registered factory to be able to
+ * get any other service.
+ * @typeParam T Class type.
  */
-export type Factory<T> = () => T
+export type Factory<T> = (container: Container) => T
 
 /**
  * Service instance.

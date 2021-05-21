@@ -7,7 +7,7 @@ import { Logger } from './fixtures/logger'
 import { Person } from './fixtures/person'
 import { Sayer } from './fixtures/sayer'
 
-tap.test(
+void tap.test(
   'the constructor of the extended class is injected if target has not constructor',
   (t) => {
     // Arrange
@@ -26,7 +26,7 @@ tap.test(
   }
 )
 
-tap.test(
+void tap.test(
   'abstractions can be used as identifiers but concrete class instances are recovered',
   (t) => {
     // Arrange

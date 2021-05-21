@@ -8,7 +8,7 @@ import {
   ShopUser,
 } from './fixtures/user'
 
-tap.test(
+void tap.test(
   'the constructor of the extended class is injected if target has not constructor',
   (t) => {
     // Arrange

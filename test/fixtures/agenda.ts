@@ -7,11 +7,11 @@ export class Agenda {
   public readonly rand = Math.random()
 
   public constructor(
-    private readonly clock: Clock,
+    public readonly clock: Clock,
     private readonly calendar: Calendar
   ) {}
 
   public now(): string {
-    return `${this.calendar.now()}-${this.clock.now()}`
+    return `${this.calendar.nowCalendar()}-${this.clock.now()}`
   }
 }
