@@ -1,10 +1,14 @@
 # DIoD
 
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](./CODE_OF_CONDUCT.md)
+
 ## About
 
 A very opinionated inversion of control (IoC) container and dependency injector for Node.js or browser apps. It is available for vanilla Javascript usage but its true power will be shown by building Typescript apps.
 
-[Quick Start Guide](#quick-start-guide) | [Documentation](./docs/README.md)
+[Quick Start Guide](#quick-start-guide) |
+[Documentation](./docs/README.md) |
+[Contributing](./CONTRIBUTING.md)
 
 ### Motivation
 
