@@ -1,4 +1,4 @@
-# Using classes
+# Injecting classes
 
 Imagine you have these services:
 

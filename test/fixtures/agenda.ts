@@ -4,6 +4,8 @@ import { Clock } from './clock'
 
 @Service()
 export class Agenda {
+  public readonly rand = Math.random()
+
   public constructor(
     private readonly clock: Clock,
     private readonly calendar: Calendar

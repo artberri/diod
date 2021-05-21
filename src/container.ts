@@ -1,4 +1,5 @@
-import { ClassServiceData, ServiceData } from './internal-types'
+import { ServiceData } from './internal-types'
+import { RegistrationType } from './registration-type'
 import { Identifier } from './types'
 
 /**
@@ -23,10 +24,18 @@ export class Container {
    * @returns
    */
   public get<T>(identifier: Identifier<T>): T {
-    const data = this.findServiceDataOrThrow(identifier) as ClassServiceData<T>
+    const data = this.findServiceDataOrThrow(identifier)
     const dependencies = this.getDependencies(data.dependencies)
 
-    return new data.class(...dependencies)
+    if (data.type === RegistrationType.Class) {
+      return new data.class(...dependencies)
+    }
+
+    if (data.type === RegistrationType.Instance) {
+      return data.instance
+    }
+
+    return data.factory()
   }
 
   private findServiceDataOrThrow<T>(identifier: Identifier<T>): ServiceData<T> {
