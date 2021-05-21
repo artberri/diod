@@ -1,6 +1,6 @@
 {
   "name": "diod",
-  "version": "1.0.0-rc",
+  "version": "1.0.0-beta0",
   "description": "A very opinionated and different inversion of control container and dependency injector for Node.js or browser apps",
   "main": "dist/diod.js",
   "module": "dist/diod.mjs",
@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "npm run clean",
     "build": "rollup -c",
-    "clean": "rimraf build/ dist/ .nyc_output/ coverage/",
+    "clean": "rimraf dist/ .nyc_output/ coverage/",
     "coverage:html": "tap --coverage-report=html",
     "docs": "rimraf docs/api && typedoc",
     "hook:commit-msg": "commitlint -e",
