@@ -1,14 +1,27 @@
 {
   "name": "diod",
-  "version": "1.0.0-beta0",
-  "description": "A very opinionated and different inversion of control container and dependency injector for Node.js or browser apps",
-  "main": "dist/diod.js",
-  "module": "dist/diod.mjs",
-  "typings": "dist/diod.d.ts",
+  "version": "1.0.0-alpha",
+  "description": "A very opinionated and different inversion of control container and dependency injector for Typescript, Node.js or browser apps",
+  "keywords": [
+    "dependency injection",
+    "inversion of control",
+    "service locator",
+    "dependency",
+    "injection",
+    "service",
+    "container",
+    "typescript"
+  ],
+  "main": "lib/diod.js",
+  "module": "lib/diod.mjs",
+  "typings": "lib/diod.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "prebuild": "npm run clean",
     "build": "rollup -c",
-    "clean": "rimraf dist/ .nyc_output/ coverage/",
+    "clean": "rimraf lib/ .nyc_output/ coverage/",
     "coverage:html": "tap --coverage-report=html",
     "docs": "rimraf docs/api && typedoc",
     "hook:commit-msg": "commitlint -e",
@@ -28,7 +41,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/artberri/diod.git"
+    "url": "https://github.com/artberri/diod.git"
   },
   "bugs": {
     "url": "https://github.com/artberri/diod/issues"

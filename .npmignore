@@ -1,0 +1,7 @@
+.githooks/
+.github/
+.nyc_output/
+.vscode/
+docs/
+test/
+.nvmrc

@@ -11,7 +11,7 @@ const bundle = (config) => ({
 
 export default [
   bundle({
-    plugins: [esbuild()],
+    plugins: [esbuild({ target: 'es2015' })],
     output: [
       {
         file: `${name}.js`,
