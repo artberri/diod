@@ -9,6 +9,7 @@ Welcome to the DIoD Documentation!
 - [Inheritance](./inheritance.md)
 - [Injecting externally created instances](./instances.md)
 - [Registering factories to create instances](./factories.md)
+- [Scope of the dependencies](./scope.md)
 - [Using vanilla JavaScript](./javascript.md)
 - [Disabling autowire (or declaring dependencies manually)](./disable-autowire.md)
 - [API Reference](./api/README.md)

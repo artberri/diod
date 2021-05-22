@@ -1,4 +1,5 @@
 export type { ClassConfiguration } from './configurations/class-configuration'
+export type { FactoryConfiguration } from './configurations/factory-configuration'
 export type { Container } from './container'
 export * from './container-builder'
 export * from './decorators'

@@ -1,10 +1,15 @@
 import { Buildable, ServiceData } from '../internal-types'
 import { getDependencies, getDependencyCount } from '../reflection'
 import { RegistrationType } from '../registration-type'
+import { ScopeType } from '../scope-type'
 import { BuildOptions, Identifier, Newable } from '../types'
 import { ServiceConfiguration } from './service-configuration'
+import { WithScopeChange } from './with-scope-change'
 
-export class ClassConfiguration<T> extends ServiceConfiguration<T> {
+export class ClassConfiguration<T>
+  extends ServiceConfiguration<T>
+  implements WithScopeChange<ClassConfiguration<T>> {
+  protected scope = ScopeType.Transient
   private dependencies: Array<Identifier<unknown>> = []
   private autowire = true
 
@@ -18,12 +23,35 @@ export class ClassConfiguration<T> extends ServiceConfiguration<T> {
    * order to the constructor.
    * @returns
    */
-  public withDependencies(
-    dependencies: Array<Identifier<unknown>>
-  ): ClassConfiguration<T> {
+  public withDependencies(dependencies: Array<Identifier<unknown>>): this {
     this.dependencies = dependencies
     this.autowire = false
     return this
+  }
+
+  /**
+   * Configure the service so that always gets a new instance.
+   * @returns
+   */
+  public asTransient(): this {
+    return super.asTransient()
+  }
+
+  /**
+   * Configure the service so that always gets the same, shared instance.
+   * @returns
+   */
+  public asSingleton(): this {
+    return super.asSingleton()
+  }
+
+  /**
+   * Configure the service so that the same shared instance is used during
+   * within a [[Container]].get request.
+   * @returns
+   */
+  public asInstancePerRequest(): this {
+    return super.asInstancePerRequest()
   }
 
   private setDependencyInformationIfNotExist(
@@ -49,6 +77,7 @@ export class ClassConfiguration<T> extends ServiceConfiguration<T> {
     this.setDependencyInformationIfNotExist(this.newable, options)
 
     return {
+      scope: this.scope,
       type: RegistrationType.Class,
       class: this.newable,
       dependencies: this.dependencies,

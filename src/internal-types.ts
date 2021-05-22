@@ -1,7 +1,9 @@
 import { RegistrationType } from './registration-type'
+import { ScopeType } from './scope-type'
 import { Abstract, BuildOptions, Factory, Instance, Newable } from './types'
 
 export type ClassServiceData<T> = {
+  scope: ScopeType
   class: Newable<T>
   autowire: boolean
   type: RegistrationType.Class
@@ -9,12 +11,14 @@ export type ClassServiceData<T> = {
 }
 
 export type FactoryServiceData<T> = {
+  scope: ScopeType
   factory: Factory<T>
   dependencies: never[]
   type: RegistrationType.Factory
 }
 
 export type InstanceServiceData<T> = {
+  scope: ScopeType.Singleton
   instance: Instance<T>
   type: RegistrationType.Instance
   dependencies: never[]

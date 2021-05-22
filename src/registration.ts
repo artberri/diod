@@ -43,10 +43,12 @@ export class Registration<T> {
   /**
    * Configure a factory that returns the instance that the identifier will provide.
    * @param factory The factory that will be executed when the identifier is requested.
+   * @returns Configuration fluent API for factories
    */
-  public useFactory(factory: Factory<T>): void {
+  public useFactory(factory: Factory<T>): FactoryConfiguration<T> {
     const buildable = FactoryConfiguration.createBuildable(factory)
     this.buildable = buildable
+    return buildable.instance
   }
 
   private build(options: BuildOptions): ServiceData<T> {

@@ -1,10 +1,11 @@
-# DIoD - v1.0.0-rc
+# DIoD - v1.0.0-alpha.2
 
 ## Classes
 
 - [ClassConfiguration](classes/classconfiguration.md)
 - [Container](classes/container.md)
 - [ContainerBuilder](classes/containerbuilder.md)
+- [FactoryConfiguration](classes/factoryconfiguration.md)
 - [Registration](classes/registration.md)
 
 ## Interfaces

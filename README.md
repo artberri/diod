@@ -35,15 +35,15 @@ It might sound ridiculous but [Typescript needs types](https://www.typescriptnee
   Usage with vanilla Javascript is possible by manually defining service dependencies.
 - **Multiple containers**  
   It is possible to create multiple IoC containers.
-
-#### Coming soon
-
 - **Factory**  
   Using a factory to create services.
 - **Instance**  
-  Using a manually created instanceto define a service.
-- **Lifetime**  
-  By default every service is transient. Singleton and request scoped services will be allowed.
+  Using a manually created instance to define a service.
+- **Scope**  
+  By default every service is transient, but they can be registered as singletons or as 'per request' (the same instance of a service will be used within a single request).
+
+#### Coming soon
+
 - **Visibility**  
   Creating private services will be allowed. This means creating services not allowed to be directly getted but used only as dependencies.
 - **Tagging**  

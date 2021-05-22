@@ -8,7 +8,7 @@ export class Agenda {
 
   public constructor(
     public readonly clock: Clock,
-    private readonly calendar: Calendar
+    public readonly calendar: Calendar
   ) {}
 
   public now(): string {

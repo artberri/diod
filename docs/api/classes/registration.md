@@ -51,7 +51,7 @@ ___
 
 ### useFactory
 
-▸ **useFactory**(`factory`: [*Factory*](../README.md#factory)<T\>): *void*
+▸ **useFactory**(`factory`: [*Factory*](../README.md#factory)<T\>): [*FactoryConfiguration*](factoryconfiguration.md)<T\>
 
 Configure a factory that returns the instance that the identifier will provide.
 
@@ -61,7 +61,9 @@ Configure a factory that returns the instance that the identifier will provide.
 | :------ | :------ | :------ |
 | `factory` | [*Factory*](../README.md#factory)<T\> | The factory that will be executed when the identifier is requested. |
 
-**Returns:** *void*
+**Returns:** [*FactoryConfiguration*](factoryconfiguration.md)<T\>
+
+Configuration fluent API for factories
 
 ___
 
