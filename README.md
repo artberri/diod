@@ -2,6 +2,8 @@
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](./CODE_OF_CONDUCT.md)
 [![MIT license](https://img.shields.io/npm/l/diod)](./LICENSE)
+[![Build status](https://github.com/artberri/diod/actions/workflows/qa.yml/badge.svg)](https://github.com/artberri/diod/actions)
+[![codecov](https://codecov.io/gh/artberri/diod/branch/main/graph/badge.svg?token=AGYQWMUQCA)](https://codecov.io/gh/artberri/diod)
 
 ## About
 
