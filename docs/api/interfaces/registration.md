@@ -10,7 +10,7 @@
 
 ### use
 
-▸ **use**(`newable`: [*Newable*](newable.md)<T\>): [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
+▸ **use**(`newable`: [*Newable*](newable.md)<T\>): [*ConfigurableRegistration*](configurableregistration.md) & [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
 
 Configure the class implementation that the identifier will provide.
 Alias of `useClass`.
@@ -21,7 +21,7 @@ Alias of `useClass`.
 | :------ | :------ | :------ |
 | `newable` | [*Newable*](newable.md)<T\> | The implementation that the identifier will provide. |
 
-**Returns:** [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
+**Returns:** [*ConfigurableRegistration*](configurableregistration.md) & [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
 
 Configuration fluent API for classes
 
@@ -29,7 +29,7 @@ ___
 
 ### useClass
 
-▸ **useClass**(`newable`: [*Newable*](newable.md)<T\>): [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
+▸ **useClass**(`newable`: [*Newable*](newable.md)<T\>): [*ConfigurableRegistration*](configurableregistration.md) & [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
 
 Configure the class implementation that the identifier will provide.
 
@@ -39,7 +39,7 @@ Configure the class implementation that the identifier will provide.
 | :------ | :------ | :------ |
 | `newable` | [*Newable*](newable.md)<T\> | The implementation that the identifier will provide. |
 
-**Returns:** [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
+**Returns:** [*ConfigurableRegistration*](configurableregistration.md) & [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 ### useInstance
 
-▸ **useInstance**(`instance`: T): *void*
+▸ **useInstance**(`instance`: T): [*ConfigurableRegistration*](configurableregistration.md)
 
 Configure the instance that the identifier will provide.
 
@@ -73,4 +73,4 @@ Configure the instance that the identifier will provide.
 | :------ | :------ | :------ |
 | `instance` | T | The instance that the identifier will provide. |
 
-**Returns:** *void*
+**Returns:** [*ConfigurableRegistration*](configurableregistration.md)

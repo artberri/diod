@@ -1,7 +1,5 @@
 # Interface: WithScopeChange
 
-Configuration that allows scope change
-
 ## Methods
 
 ### asInstancePerRequest

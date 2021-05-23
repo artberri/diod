@@ -5,11 +5,14 @@ import { ServiceConfiguration } from './configurations/service-configuration'
 import { Buildable, ServiceData } from './internal-types'
 import {
   BuildOptions,
+  ConfigurableRegistration,
   Factory,
   Identifier,
   Instance,
   Newable,
   Registration,
+  WithDependencies,
+  WithScopeChange,
 } from './types'
 
 export class DiodRegistration<T> implements Registration<T> {
@@ -17,42 +20,29 @@ export class DiodRegistration<T> implements Registration<T> {
 
   private constructor(public readonly identifier: Identifier<T>) {}
 
-  /**
-   * Configure the class implementation that the identifier will provide.
-   * @param newable The implementation that the identifier will provide.
-   * @returns
-   */
-  public useClass(newable: Newable<T>): ClassConfiguration<T> {
+  public useClass(
+    newable: Newable<T>
+  ): ConfigurableRegistration & WithScopeChange & WithDependencies {
     const buildable = ClassConfiguration.createBuildable(newable)
     this.buildable = buildable
     return buildable.instance
   }
 
-  /**
-   * Configure the class implementation that the identifier will provide.
-   * Alias of `useClass`.
-   * @param newable The implementation that the identifier will provide.
-   * @returns Configuration fluent API for classes
-   */
-  public use(newable: Newable<T>): ClassConfiguration<T> {
+  public use(
+    newable: Newable<T>
+  ): ConfigurableRegistration & WithScopeChange & WithDependencies {
     return this.useClass(newable)
   }
 
-  /**
-   * Configure the instance that the identifier will provide.
-   * @param instance The instance that the identifier will provide.
-   */
-  public useInstance(instance: Instance<T>): void {
+  public useInstance(instance: Instance<T>): ConfigurableRegistration {
     const buildable = InstanceConfiguration.createBuildable(instance)
     this.buildable = buildable
+    return buildable.instance
   }
 
-  /**
-   * Configure a factory that returns the instance that the identifier will provide.
-   * @param factory The factory that will be executed when the identifier is requested.
-   * @returns Configuration fluent API for factories
-   */
-  public useFactory(factory: Factory<T>): FactoryConfiguration<T> {
+  public useFactory(
+    factory: Factory<T>
+  ): ConfigurableRegistration & WithScopeChange {
     const buildable = FactoryConfiguration.createBuildable(factory)
     this.buildable = buildable
     return buildable.instance
@@ -68,9 +58,6 @@ export class DiodRegistration<T> implements Registration<T> {
     return this.buildable.build(options)
   }
 
-  /**
-   * @internal
-   */
   public static createBuildable<TIdentifier>(
     identifier: Identifier<TIdentifier>
   ): Buildable<Registration<TIdentifier>, TIdentifier> {

@@ -13,6 +13,7 @@ export class InstanceConfiguration<T> extends ServiceConfiguration<T> {
 
   protected build(): ServiceData<T> {
     return {
+      isPrivate: this.isPrivate,
       scope: this.scope,
       type: RegistrationType.Instance,
       instance: this.instance,

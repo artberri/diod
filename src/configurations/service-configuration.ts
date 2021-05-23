@@ -1,9 +1,22 @@
 import { ServiceData } from '../internal-types'
 import { ScopeType } from '../scope-type'
-import { BuildOptions } from '../types'
+import { BuildOptions, ConfigurableRegistration } from '../types'
 
-export abstract class ServiceConfiguration<T> {
+export abstract class ServiceConfiguration<T>
+  implements ConfigurableRegistration {
   protected abstract scope: ScopeType
+  protected isPrivate = false
+
+  public public(): this {
+    this.isPrivate = false
+    return this
+  }
+
+  public private(): this {
+    this.isPrivate = true
+    return this
+  }
+
   protected abstract build(options: BuildOptions): ServiceData<T>
 
   protected asTransient(): this {

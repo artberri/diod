@@ -1,6 +1,6 @@
 {
   "name": "diod",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "A very opinionated and different inversion of control container and dependency injector for Typescript, Node.js or browser apps",
   "keywords": [
     "dependency injection",
@@ -13,7 +13,9 @@
     "typescript"
   ],
   "main": "lib/diod.js",
-  "module": "lib/diod.mjs",
+  "module": "lib/diod.es.js",
+  "es2015": "lib/diod.es.js",
+  "browser": "lib/diod.umd.js",
   "typings": "lib/diod.d.ts",
   "files": [
     "lib"
@@ -78,7 +80,7 @@
   "size-limit": [
     {
       "limit": "2 kB",
-      "path": "lib/diod.mjs"
+      "path": "lib/diod.es.js"
     }
   ]
 }

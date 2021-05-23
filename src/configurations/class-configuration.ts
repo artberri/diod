@@ -63,6 +63,7 @@ export class ClassConfiguration<T>
     this.setDependencyInformationIfNotExist(this.newable, options)
 
     return {
+      isPrivate: this.isPrivate,
       scope: this.scope,
       type: RegistrationType.Class,
       class: this.newable,

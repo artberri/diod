@@ -19,8 +19,14 @@ export default [
         sourcemap: false,
       },
       {
-        file: `${name}.mjs`,
+        file: `${name}.es.js`,
         format: 'es',
+        sourcemap: false,
+      },
+      {
+        file: `${name}.umd.js`,
+        format: 'umd',
+        name: 'diod',
         sourcemap: false,
       },
     ],

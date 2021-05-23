@@ -62,6 +62,19 @@ export type BuildOptions = {
 /**
  * Configuration that allows scope change
  */
+export interface ConfigurableRegistration {
+  /**
+   * The service can be used as a dependency and it can be queried from the container.
+   * @returns
+   */
+  public(): this
+  /**
+   * The service can only be used as a dependency and it can't be queried from the container.
+   * @returns
+   */
+  private(): this
+}
+
 export interface WithScopeChange {
   /**
    * Configure the service so that always gets a new instance.
@@ -100,7 +113,9 @@ export interface Registration<T> {
    * @param newable The implementation that the identifier will provide.
    * @returns
    */
-  useClass(newable: Newable<T>): WithScopeChange & WithDependencies
+  useClass(
+    newable: Newable<T>
+  ): ConfigurableRegistration & WithScopeChange & WithDependencies
 
   /**
    * Configure the class implementation that the identifier will provide.
@@ -108,13 +123,15 @@ export interface Registration<T> {
    * @param newable The implementation that the identifier will provide.
    * @returns Configuration fluent API for classes
    */
-  use(newable: Newable<T>): WithScopeChange & WithDependencies
+  use(
+    newable: Newable<T>
+  ): ConfigurableRegistration & WithScopeChange & WithDependencies
 
   /**
    * Configure the instance that the identifier will provide.
    * @param instance The instance that the identifier will provide.
    */
-  useInstance(instance: Instance<T>): void
+  useInstance(instance: Instance<T>): ConfigurableRegistration
 
   /**
    * Configure a factory that returns the instance that the identifier will provide.

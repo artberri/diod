@@ -12,4 +12,5 @@ Welcome to the DIoD Documentation!
 - [Scope of the dependencies](./scope.md)
 - [Using vanilla JavaScript](./javascript.md)
 - [Disabling autowire (or declaring dependencies manually)](./disable-autowire.md)
+- [Register private services](./visibility.md)
 - [API Reference](./api/README.md)

@@ -14,14 +14,20 @@ export class DiodContainer implements Container {
   ) {}
 
   public get<T>(identifier: Identifier<T>): T {
-    return this.getService(identifier, new Map<Identifier<unknown>, unknown>())
+    return this.getService(
+      identifier,
+      new Map<Identifier<unknown>, unknown>(),
+      false
+    )
   }
 
   private getService<T>(
     identifier: Identifier<T>,
-    perRequestServices: Map<Identifier<unknown>, unknown>
+    perRequestServices: Map<Identifier<unknown>, unknown>,
+    isDependency: boolean
   ): T {
-    const data = this.findServiceDataOrThrow(identifier)
+    const data = this.findServiceDataOrThrow(identifier, isDependency)
+
     if (data.scope === ScopeType.Singleton && this.singletons.has(identifier)) {
       return this.singletons.get(identifier) as T
     } else if (
@@ -43,7 +49,7 @@ export class DiodContainer implements Container {
     } else {
       instance = data.factory({
         get: <TNew>(id: Identifier<TNew>): TNew => {
-          return this.getService(id, perRequestServices)
+          return this.getService(id, perRequestServices, true)
         },
       })
     }
@@ -57,11 +63,22 @@ export class DiodContainer implements Container {
     return instance
   }
 
-  private findServiceDataOrThrow<T>(identifier: Identifier<T>): ServiceData<T> {
+  private findServiceDataOrThrow<T>(
+    identifier: Identifier<T>,
+    isDependency: boolean
+  ): ServiceData<T> {
     const service = this.services.get(identifier)
 
     if (!service) {
       throw new Error(`Service not registered for: ${identifier.name}`)
+    }
+
+    const data = service as ServiceData<T>
+
+    if (!isDependency && data.isPrivate) {
+      throw new Error(
+        `The ${identifier.name} service has been registered as private and can not be directly get from the container`
+      )
     }
 
     return service as ServiceData<T>
@@ -74,7 +91,7 @@ export class DiodContainer implements Container {
     const dependencies = new Array<unknown>()
     for (const dependencyIdentifier of dependencyIdentifiers) {
       dependencies.push(
-        this.getService(dependencyIdentifier, perRequestServices)
+        this.getService(dependencyIdentifier, perRequestServices, true)
       )
     }
 

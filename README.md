@@ -1,10 +1,11 @@
 # DIoD
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](./CODE_OF_CONDUCT.md)
+[![MIT license](https://img.shields.io/npm/l/diod)](./LICENSE)
 
 ## About
 
-A very opinionated and lightweight (under 1.5kB minified and gzipped) inversion of control container and dependency injector for Node.js or browser apps. It is available for vanilla Javascript usage but its true power will be shown by building Typescript apps.
+A very opinionated and lightweight (under 2kB minified and gzipped) inversion of control container and dependency injector for Node.js or browser apps. It is available for vanilla Javascript usage but its true power will be shown by building Typescript apps.
 
 [Quick Start Guide](#quick-start-guide) |
 [Documentation](./docs/README.md) |
@@ -41,11 +42,11 @@ It might sound ridiculous but [Typescript needs types](https://www.typescriptnee
   Using a manually created instance to define a service.
 - **Scope**  
   By default every service is transient, but they can be registered as singletons or as 'per request' (the same instance of a service will be used within a single request).
+- **Visibility**  
+  Services can be marked as private. Private services will be available only as dependencies and they will not be able to be queried from the IoC container.
 
 #### Coming soon
 
-- **Visibility**  
-  Creating private services will be allowed. This means creating services not allowed to be directly getted but used only as dependencies.
 - **Tagging**  
   Ability to tag services in the container and to query services based on tags.
 - **Auto registration**  

@@ -27,6 +27,7 @@ export class FactoryConfiguration<T>
 
   protected build(): ServiceData<T> {
     return {
+      isPrivate: this.isPrivate,
       scope: this.scope,
       type: RegistrationType.Factory,
       factory: this.factory,

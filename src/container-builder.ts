@@ -3,6 +3,7 @@ import { Buildable, ServiceData } from './internal-types'
 import { DiodRegistration } from './registration'
 import {
   BuildOptions,
+  ConfigurableRegistration,
   Container,
   Identifier,
   Newable,
@@ -73,7 +74,7 @@ export class ContainerBuilder {
    */
   public registerAndUse<T>(
     newable: Newable<T>
-  ): WithScopeChange & WithDependencies {
+  ): ConfigurableRegistration & WithScopeChange & WithDependencies {
     return this.register(newable).use(newable)
   }
 

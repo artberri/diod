@@ -74,7 +74,7 @@ ___
 
 ### registerAndUse
 
-▸ **registerAndUse**<T\>(`newable`: [*Newable*](../interfaces/newable.md)<T\>): [*WithScopeChange*](../interfaces/withscopechange.md) & [*WithDependencies*](../interfaces/withdependencies.md)
+▸ **registerAndUse**<T\>(`newable`: [*Newable*](../interfaces/newable.md)<T\>): [*ConfigurableRegistration*](../interfaces/configurableregistration.md) & [*WithScopeChange*](../interfaces/withscopechange.md) & [*WithDependencies*](../interfaces/withdependencies.md)
 
 Alias for `.register(newable).use(newable)`.
 
@@ -90,7 +90,7 @@ Alias for `.register(newable).use(newable)`.
 | :------ | :------ | :------ |
 | `newable` | [*Newable*](../interfaces/newable.md)<T\> | The concrete class implementation to be registered as itself. |
 
-**Returns:** [*WithScopeChange*](../interfaces/withscopechange.md) & [*WithDependencies*](../interfaces/withdependencies.md)
+**Returns:** [*ConfigurableRegistration*](../interfaces/configurableregistration.md) & [*WithScopeChange*](../interfaces/withscopechange.md) & [*WithDependencies*](../interfaces/withdependencies.md)
 
 ___
 

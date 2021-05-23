@@ -3,6 +3,7 @@ import { ScopeType } from './scope-type'
 import { Abstract, BuildOptions, Factory, Instance, Newable } from './types'
 
 export type ClassServiceData<T> = {
+  isPrivate: boolean
   scope: ScopeType
   class: Newable<T>
   autowire: boolean
@@ -11,6 +12,7 @@ export type ClassServiceData<T> = {
 }
 
 export type FactoryServiceData<T> = {
+  isPrivate: boolean
   scope: ScopeType
   factory: Factory<T>
   dependencies: never[]
@@ -18,6 +20,7 @@ export type FactoryServiceData<T> = {
 }
 
 export type InstanceServiceData<T> = {
+  isPrivate: boolean
   scope: ScopeType.Singleton
   instance: Instance<T>
   type: RegistrationType.Instance

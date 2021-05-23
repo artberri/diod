@@ -1,4 +1,4 @@
-# DIoD - v1.0.0-alpha.2
+# DIoD - v1.0.0-alpha.3
 
 ## Classes
 
@@ -7,6 +7,7 @@
 ## Interfaces
 
 - [Abstract](interfaces/abstract.md)
+- [ConfigurableRegistration](interfaces/configurableregistration.md)
 - [Container](interfaces/container.md)
 - [Newable](interfaces/newable.md)
 - [Registration](interfaces/registration.md)
