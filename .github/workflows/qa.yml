@@ -17,4 +17,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
       - run: npm run qa
-      - run: npm run coverage:codecov
+      - run: npm run coverage:cobertura
+      - uses: codecov/codecov-action@v1
+        with:
+          directory: ./coverage/
