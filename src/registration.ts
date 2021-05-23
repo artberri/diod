@@ -3,9 +3,16 @@ import { FactoryConfiguration } from './configurations/factory-configuration'
 import { InstanceConfiguration } from './configurations/instance-configuration'
 import { ServiceConfiguration } from './configurations/service-configuration'
 import { Buildable, ServiceData } from './internal-types'
-import { BuildOptions, Factory, Identifier, Instance, Newable } from './types'
+import {
+  BuildOptions,
+  Factory,
+  Identifier,
+  Instance,
+  Newable,
+  Registration,
+} from './types'
 
-export class Registration<T> {
+export class DiodRegistration<T> implements Registration<T> {
   private buildable: Buildable<ServiceConfiguration<T>, T> | undefined
 
   private constructor(public readonly identifier: Identifier<T>) {}
@@ -67,7 +74,7 @@ export class Registration<T> {
   public static createBuildable<TIdentifier>(
     identifier: Identifier<TIdentifier>
   ): Buildable<Registration<TIdentifier>, TIdentifier> {
-    const registration = new Registration(identifier)
+    const registration = new DiodRegistration(identifier)
     return {
       instance: registration,
       build: (options: BuildOptions): ServiceData<TIdentifier> =>

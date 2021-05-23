@@ -104,6 +104,7 @@ void tap.test(
     t.not(agenda.rand, agenda2.rand)
     t.equal(multiAgenda.agenda1.rand, multiAgenda.agenda2.rand)
     t.equal(multiAgenda.agenda1.clock.rand, multiAgenda.agenda2.clock.rand)
+    t.equal(multiAgenda.agenda1.clock.rand, multiAgenda.clock.rand)
     t.not(multiAgenda.agenda1.clock.rand, clock.rand)
     t.not(multiAgenda.agenda2.clock.rand, clock.rand)
     t.equal(multiAgenda.agenda1.calendar.rand, calendar.rand)

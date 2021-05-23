@@ -1,4 +1,4 @@
-# Class: Registration<T\>
+# Interface: Registration<T\>
 
 ## Type parameters
 
@@ -6,17 +6,11 @@
 | :------ |
 | `T` |
 
-## Properties
-
-### identifier
-
-• `Readonly` **identifier**: [*Identifier*](../README.md#identifier)<T\>
-
 ## Methods
 
 ### use
 
-▸ **use**(`newable`: [*Newable*](../interfaces/newable.md)<T\>): [*ClassConfiguration*](classconfiguration.md)<T\>
+▸ **use**(`newable`: [*Newable*](newable.md)<T\>): [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
 
 Configure the class implementation that the identifier will provide.
 Alias of `useClass`.
@@ -25,9 +19,9 @@ Alias of `useClass`.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `newable` | [*Newable*](../interfaces/newable.md)<T\> | The implementation that the identifier will provide. |
+| `newable` | [*Newable*](newable.md)<T\> | The implementation that the identifier will provide. |
 
-**Returns:** [*ClassConfiguration*](classconfiguration.md)<T\>
+**Returns:** [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
 
 Configuration fluent API for classes
 
@@ -35,7 +29,7 @@ ___
 
 ### useClass
 
-▸ **useClass**(`newable`: [*Newable*](../interfaces/newable.md)<T\>): [*ClassConfiguration*](classconfiguration.md)<T\>
+▸ **useClass**(`newable`: [*Newable*](newable.md)<T\>): [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
 
 Configure the class implementation that the identifier will provide.
 
@@ -43,15 +37,15 @@ Configure the class implementation that the identifier will provide.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `newable` | [*Newable*](../interfaces/newable.md)<T\> | The implementation that the identifier will provide. |
+| `newable` | [*Newable*](newable.md)<T\> | The implementation that the identifier will provide. |
 
-**Returns:** [*ClassConfiguration*](classconfiguration.md)<T\>
+**Returns:** [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
 
 ___
 
 ### useFactory
 
-▸ **useFactory**(`factory`: [*Factory*](../README.md#factory)<T\>): [*FactoryConfiguration*](factoryconfiguration.md)<T\>
+▸ **useFactory**(`factory`: [*Factory*](../README.md#factory)<T\>): [*WithScopeChange*](withscopechange.md)
 
 Configure a factory that returns the instance that the identifier will provide.
 
@@ -61,7 +55,7 @@ Configure a factory that returns the instance that the identifier will provide.
 | :------ | :------ | :------ |
 | `factory` | [*Factory*](../README.md#factory)<T\> | The factory that will be executed when the identifier is requested. |
 
-**Returns:** [*FactoryConfiguration*](factoryconfiguration.md)<T\>
+**Returns:** [*WithScopeChange*](withscopechange.md)
 
 Configuration fluent API for factories
 

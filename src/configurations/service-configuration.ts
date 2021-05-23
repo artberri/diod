@@ -10,10 +10,12 @@ export abstract class ServiceConfiguration<T> {
     this.scope = ScopeType.Transient
     return this
   }
+
   protected asSingleton(): this {
     this.scope = ScopeType.Singleton
     return this
   }
+
   protected asInstancePerRequest(): this {
     this.scope = ScopeType.Request
     return this

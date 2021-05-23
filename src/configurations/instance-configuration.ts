@@ -20,9 +20,6 @@ export class InstanceConfiguration<T> extends ServiceConfiguration<T> {
     }
   }
 
-  /**
-   * @internal
-   */
   public static createBuildable<TIdentifier>(
     instance: Instance<TIdentifier>
   ): Buildable<InstanceConfiguration<TIdentifier>, TIdentifier> {

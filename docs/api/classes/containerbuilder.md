@@ -1,6 +1,6 @@
 # Class: ContainerBuilder
 
-Used to build an [Container](container.md) from service registrations.
+Used to build an [Container](../interfaces/container.md) from service registrations.
 
 ## Constructors
 
@@ -14,9 +14,9 @@ Used to build an [Container](container.md) from service registrations.
 
 ### build
 
-▸ **build**(`__namedParameters?`: [*BuildOptions*](../README.md#buildoptions)): [*Container*](container.md)
+▸ **build**(`__namedParameters?`: [*BuildOptions*](../README.md#buildoptions)): [*Container*](../interfaces/container.md)
 
-Builds an inmutable [Container](container.md).
+Builds an inmutable [Container](../interfaces/container.md).
 
 #### Parameters
 
@@ -24,7 +24,7 @@ Builds an inmutable [Container](container.md).
 | :------ | :------ | :------ |
 | `__namedParameters` | [*BuildOptions*](../README.md#buildoptions) | {} |
 
-**Returns:** [*Container*](container.md)
+**Returns:** [*Container*](../interfaces/container.md)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 ### register
 
-▸ **register**<T\>(`identifier`: [*Identifier*](../README.md#identifier)<T\>): [*Registration*](registration.md)<T\>
+▸ **register**<T\>(`identifier`: [*Identifier*](../README.md#identifier)<T\>): [*Registration*](../interfaces/registration.md)<T\>
 
 Registers a service.
 
@@ -68,13 +68,13 @@ Registers a service.
 | :------ | :------ | :------ |
 | `identifier` | [*Identifier*](../README.md#identifier)<T\> | The class that identifies this service. This class identifier must be used to get the service from the container or when defining it as a dependency. |
 
-**Returns:** [*Registration*](registration.md)<T\>
+**Returns:** [*Registration*](../interfaces/registration.md)<T\>
 
 ___
 
 ### registerAndUse
 
-▸ **registerAndUse**<T\>(`newable`: [*Newable*](../interfaces/newable.md)<T\>): [*ClassConfiguration*](classconfiguration.md)<T\>
+▸ **registerAndUse**<T\>(`newable`: [*Newable*](../interfaces/newable.md)<T\>): [*WithScopeChange*](../interfaces/withscopechange.md) & [*WithDependencies*](../interfaces/withdependencies.md)
 
 Alias for `.register(newable).use(newable)`.
 
@@ -90,7 +90,7 @@ Alias for `.register(newable).use(newable)`.
 | :------ | :------ | :------ |
 | `newable` | [*Newable*](../interfaces/newable.md)<T\> | The concrete class implementation to be registered as itself. |
 
-**Returns:** [*ClassConfiguration*](classconfiguration.md)<T\>
+**Returns:** [*WithScopeChange*](../interfaces/withscopechange.md) & [*WithDependencies*](../interfaces/withdependencies.md)
 
 ___
 

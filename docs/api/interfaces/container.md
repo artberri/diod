@@ -1,7 +1,7 @@
-# Class: Container
+# Interface: Container
 
 Creates, wires dependencies and manages lifetime for a set of services.
-Most instances of Container are created by a [ContainerBuilder](containerbuilder.md).
+Instances of Container are created by a [ContainerBuilder](../classes/containerbuilder.md).
 
 ## Methods
 

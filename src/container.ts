@@ -1,18 +1,11 @@
 import { ServiceData } from './internal-types'
 import { RegistrationType } from './registration-type'
 import { ScopeType } from './scope-type'
-import { Identifier } from './types'
+import { Container, Identifier } from './types'
 
-/**
- * Creates, wires dependencies and manages lifetime for a set of services.
- * Most instances of Container are created by a [[ContainerBuilder]].
- */
-export class Container {
+export class DiodContainer implements Container {
   private readonly singletons = new Map<Identifier<unknown>, unknown>()
 
-  /**
-   * @internal
-   */
   public constructor(
     private readonly services: ReadonlyMap<
       Identifier<unknown>,
@@ -20,12 +13,6 @@ export class Container {
     >
   ) {}
 
-  /**
-   * Gets the service object of the registered identifier.
-   * @param identifier Class of the service to get.
-   * @typeParam T The type of the service.
-   * @returns
-   */
   public get<T>(identifier: Identifier<T>): T {
     return this.getService(identifier, new Map<Identifier<unknown>, unknown>())
   }
@@ -54,7 +41,11 @@ export class Container {
       )
       instance = new data.class(...dependencies)
     } else {
-      instance = data.factory(this)
+      instance = data.factory({
+        get: <TNew>(id: Identifier<TNew>): TNew => {
+          return this.getService(id, perRequestServices)
+        },
+      })
     }
 
     if (data.scope === ScopeType.Singleton) {

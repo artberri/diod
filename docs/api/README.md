@@ -2,16 +2,16 @@
 
 ## Classes
 
-- [ClassConfiguration](classes/classconfiguration.md)
-- [Container](classes/container.md)
 - [ContainerBuilder](classes/containerbuilder.md)
-- [FactoryConfiguration](classes/factoryconfiguration.md)
-- [Registration](classes/registration.md)
 
 ## Interfaces
 
 - [Abstract](interfaces/abstract.md)
+- [Container](interfaces/container.md)
 - [Newable](interfaces/newable.md)
+- [Registration](interfaces/registration.md)
+- [WithDependencies](interfaces/withdependencies.md)
+- [WithScopeChange](interfaces/withscopechange.md)
 
 ## Type aliases
 
@@ -19,7 +19,7 @@
 
 Ƭ **BuildOptions**: *object*
 
-Options for the [Container](classes/container.md) build method.
+Options for the [Container](interfaces/container.md) build method.
 
 #### Type declaration
 
@@ -31,10 +31,10 @@ ___
 
 ### Factory
 
-Ƭ **Factory**<T\>: (`container`: [*Container*](classes/container.md)) => T
+Ƭ **Factory**<T\>: (`container`: [*Container*](interfaces/container.md)) => T
 
 Represents a factory to create instances of a class.
-The [Container](classes/container.md) will be passed to the registered factory to be able to
+The [Container](interfaces/container.md) will be passed to the registered factory to be able to
 get any other service.
 
 #### Type parameters
@@ -45,13 +45,13 @@ get any other service.
 
 #### Type declaration
 
-▸ (`container`: [*Container*](classes/container.md)): T
+▸ (`container`: [*Container*](interfaces/container.md)): T
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `container` | [*Container*](classes/container.md) |
+| `container` | [*Container*](interfaces/container.md) |
 
 **Returns:** T
 

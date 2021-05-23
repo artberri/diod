@@ -1,8 +1,15 @@
-import { ClassConfiguration } from './configurations/class-configuration'
-import { Container } from './container'
+import { DiodContainer } from './container'
 import { Buildable, ServiceData } from './internal-types'
-import { Registration } from './registration'
-import { BuildOptions, Identifier, Newable } from './types'
+import { DiodRegistration } from './registration'
+import {
+  BuildOptions,
+  Container,
+  Identifier,
+  Newable,
+  Registration,
+  WithDependencies,
+  WithScopeChange,
+} from './types'
 import { verify } from './verifier'
 
 /**
@@ -30,7 +37,7 @@ export class ContainerBuilder {
       )
     }
 
-    const buildable = Registration.createBuildable(identifier)
+    const buildable = DiodRegistration.createBuildable(identifier)
     this.buildables.set(identifier, buildable)
     return buildable.instance
   }
@@ -64,7 +71,9 @@ export class ContainerBuilder {
    * @typeParam T The type of the service.
    * @returns
    */
-  public registerAndUse<T>(newable: Newable<T>): ClassConfiguration<T> {
+  public registerAndUse<T>(
+    newable: Newable<T>
+  ): WithScopeChange & WithDependencies {
     return this.register(newable).use(newable)
   }
 
@@ -80,6 +89,6 @@ export class ContainerBuilder {
       services.set(identifier, data)
     }
     verify(services)
-    return new Container(services)
+    return new DiodContainer(services)
   }
 }
