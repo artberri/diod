@@ -4,7 +4,7 @@
 
 ## About
 
-A very opinionated inversion of control (IoC) container and dependency injector for Node.js or browser apps. It is available for vanilla Javascript usage but its true power will be shown by building Typescript apps.
+A very opinionated and lightweight (under 1.5kB minified and gzipped) inversion of control container and dependency injector for Node.js or browser apps. It is available for vanilla Javascript usage but its true power will be shown by building Typescript apps.
 
 [Quick Start Guide](#quick-start-guide) |
 [Documentation](./docs/README.md) |
