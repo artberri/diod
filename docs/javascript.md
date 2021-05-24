@@ -1,6 +1,6 @@
 # Using vanilla JavaScript
 
-DIoD's true power will be shown by building Typescript apps, but you can use it with vanilla JS also. The downside is that you will need to manually define all dependencies because without typing information DIoD won't be able to discover them from the constructors of the registered services.
+DIOD's true power will be shown by building Typescript apps, but you can use it with vanilla JS also. The downside is that you will need to manually define all dependencies because without typing information DIOD won't be able to discover them from the constructors of the registered services.
 
 Imagine you have these services:
 

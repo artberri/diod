@@ -31,7 +31,7 @@ Add a polyfill for the Reflect API (example below use reflect-metadata). You can
 - [core-js (core-js/es7/reflect)](https://www.npmjs.com/package/core-js)
 - [reflection](https://www.npmjs.com/package/@abraham/reflection)
 
-The Reflect polyfill import should be added only once in your code base and before DIoD is used:
+The Reflect polyfill import should be added only once in your code base and before DIOD is used:
 
 ```sh
 npm install reflect-metadata

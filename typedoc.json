@@ -1,5 +1,5 @@
 {
-  "name": "DIoD",
+  "name": "DIOD",
   "includeVersion": true,
   "entryPoints": ["./src/diod.ts"],
   "out": "docs/api",

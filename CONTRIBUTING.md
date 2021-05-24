@@ -1,4 +1,4 @@
-# Contributing to DIoD
+# Contributing to DIOD
 
 Help is welcome and much appreciated, whether you are an experienced developer or just looking for sending your first pull request. Please check the open issues. Be sure to follow the [Contributor Code of Conduct](./CODE_OF_CONDUCT.md).
 

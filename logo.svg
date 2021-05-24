@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="500"
+   height="300"
+   viewBox="0 0 132.29167 79.374998"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (1.0.2+r75+1)"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="176.08071"
+     inkscape:cy="227.06412"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="2560"
+     inkscape:window-height="1376"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.43041px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.135761"
+       x="25.42145"
+       y="69.556755"
+       id="text839"><tspan
+         sodipodi:role="line"
+         id="tspan837"
+         x="25.42145"
+         y="69.556755"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sawasdee;-inkscape-font-specification:Sawasdee;stroke-width:0.135761">Dependency Injection On Demand</tspan></text>
+    <g
+       id="g981"
+       transform="matrix(1.6452488,0,0,1.6452488,-99.459916,-60.827515)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:39.9644px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.999111"
+         x="81.121101"
+         y="71.624855"
+         id="text835"><tspan
+           sodipodi:role="line"
+           id="tspan833"
+           x="81.121101"
+           y="71.624855"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arccos;-inkscape-font-specification:Arccos;stroke-width:0.999111">IOD</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:39.9644px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.999111"
+         x="65.128815"
+         y="71.664818"
+         id="text835-93"><tspan
+           sodipodi:role="line"
+           id="tspan833-6"
+           x="65.128815"
+           y="71.664818"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arccos;-inkscape-font-specification:Arccos;stroke-width:0.999111">D</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -1,6 +1,6 @@
-# DIoD Documentation
+# DIOD Documentation
 
-Welcome to the DIoD Documentation!
+Welcome to the DIOD Documentation!
 
 - [Installation](./installation.md)
 - [Injecting classes](./classes.md)

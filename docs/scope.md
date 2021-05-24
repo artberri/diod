@@ -1,6 +1,6 @@
 # Scope of the dependencies
 
-Instance scope determines how an instance is shared between requests for the same service. When a request is made for a service, DIoD can return a new instance (transient) which is the default behaviour, a single instance (singleton) or a single instance within the same request (request).
+Instance scope determines how an instance is shared between requests for the same service. When a request is made for a service, DIOD can return a new instance (transient) which is the default behaviour, a single instance (singleton) or a single instance within the same request (request).
 
 This applies to instances returned from an explicit `container.get(/* */)` call as well as instances created internally by the container to satisfy the dependencies of another service.
 

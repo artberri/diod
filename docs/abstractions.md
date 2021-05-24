@@ -1,6 +1,6 @@
 # Using abstractions to define your dependencies
 
-The **D** of the [SOLID](https://en.wikipedia.org/wiki/SOLID) principles refers to [dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle). This principle encourages developers to use abstractions to define dependencies in certain situations. Abstractions are usually defined with interfaces in other languages, but Typescript interfaces are not available at runtime and that's why DIoD requires abstract classes for abstractions if you want them to be autowired.
+The **D** of the [SOLID](https://en.wikipedia.org/wiki/SOLID) principles refers to [dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle). This principle encourages developers to use abstractions to define dependencies in certain situations. Abstractions are usually defined with interfaces in other languages, but Typescript interfaces are not available at runtime and that's why DIOD requires abstract classes for abstractions if you want them to be autowired.
 
 Imagine that you want to have a class like this:
 
