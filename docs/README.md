@@ -13,4 +13,5 @@ Welcome to the DIoD Documentation!
 - [Using vanilla JavaScript](./javascript.md)
 - [Disabling autowire (or declaring dependencies manually)](./disable-autowire.md)
 - [Register private services](./visibility.md)
+- [Tagging services](./tagging.md)
 - [API Reference](./api/README.md)

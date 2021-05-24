@@ -6,6 +6,7 @@ export abstract class ServiceConfiguration<T>
   implements ConfigurableRegistration {
   protected abstract scope: ScopeType
   protected isPrivate = false
+  protected tags: string[] = []
 
   public public(): this {
     this.isPrivate = false
@@ -14,6 +15,11 @@ export abstract class ServiceConfiguration<T>
 
   public private(): this {
     this.isPrivate = true
+    return this
+  }
+
+  public addTag(tag: string): this {
+    this.tags = [...this.tags, tag]
     return this
   }
 

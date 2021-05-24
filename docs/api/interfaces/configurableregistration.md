@@ -4,6 +4,22 @@ Configuration that allows scope change
 
 ## Methods
 
+### addTag
+
+▸ **addTag**(`tag`: *string*): [*ConfigurableRegistration*](configurableregistration.md)
+
+Tag the service (the tag will be added to previously added tags if there are).
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `tag` | *string* |
+
+**Returns:** [*ConfigurableRegistration*](configurableregistration.md)
+
+___
+
 ### private
 
 ▸ **private**(): [*ConfigurableRegistration*](configurableregistration.md)

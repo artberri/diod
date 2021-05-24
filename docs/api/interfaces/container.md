@@ -5,6 +5,30 @@ Instances of Container are created by a [ContainerBuilder](../classes/containerb
 
 ## Methods
 
+### findTaggedServiceIdentifiers
+
+▸ **findTaggedServiceIdentifiers**<T\>(`tag`: *string*): [*Identifier*](../README.md#identifier)<T\>[]
+
+Returns service ids for a given tag.
+
+#### Type parameters
+
+| Name | Default | Description |
+| :------ | :------ | :------ |
+| `T` | *unknown* | The type of the returned services. |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `tag` | *string* | The tag name. |
+
+**Returns:** [*Identifier*](../README.md#identifier)<T\>[]
+
+An array of service identifiers tagged with the given tag.
+
+___
+
 ### get
 
 ▸ **get**<T\>(`identifier`: [*Identifier*](../README.md#identifier)<T\>): T

@@ -35,6 +35,13 @@ export interface Container {
    * @returns
    */
   get<T>(identifier: Identifier<T>): T
+  /**
+   * Returns service ids for a given tag.
+   * @param tag The tag name.
+   * @typeParam T The type of the returned services.
+   * @returns An array of service identifiers tagged with the given tag.
+   */
+  findTaggedServiceIdentifiers<T = unknown>(tag: string): Array<Identifier<T>>
 }
 
 /**
@@ -73,6 +80,11 @@ export interface ConfigurableRegistration {
    * @returns
    */
   private(): this
+  /**
+   * Tag the service (the tag will be added to previously added tags if there are).
+   * @returns
+   */
+  addTag(tag: string): this
 }
 
 export interface WithScopeChange {
@@ -111,7 +123,7 @@ export interface Registration<T> {
   /**
    * Configure the class implementation that the identifier will provide.
    * @param newable The implementation that the identifier will provide.
-   * @returns
+   * @returns Configuration fluent API for classes
    */
   useClass(
     newable: Newable<T>
@@ -130,6 +142,7 @@ export interface Registration<T> {
   /**
    * Configure the instance that the identifier will provide.
    * @param instance The instance that the identifier will provide.
+   * @returns Configuration fluent API for instances
    */
   useInstance(instance: Instance<T>): ConfigurableRegistration
 
@@ -138,5 +151,5 @@ export interface Registration<T> {
    * @param factory The factory that will be executed when the identifier is requested.
    * @returns Configuration fluent API for factories
    */
-  useFactory(factory: Factory<T>): WithScopeChange
+  useFactory(factory: Factory<T>): ConfigurableRegistration & WithScopeChange
 }

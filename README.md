@@ -46,11 +46,11 @@ It might sound ridiculous but [Typescript needs types](https://www.typescriptnee
   By default every service is transient, but they can be registered as singletons or as 'per request' (the same instance of a service will be used within a single request).
 - **Visibility**  
   Services can be marked as private. Private services will be available only as dependencies and they will not be able to be queried from the IoC container.
+- **Tagging**  
+  Ability to tag services in the container and to query services based on tags.
 
 #### Coming soon
 
-- **Tagging**  
-  Ability to tag services in the container and to query services based on tags.
 - **Auto registration**  
   A global option that will enable to use service without registering them in the container.
 

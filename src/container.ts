@@ -21,6 +21,14 @@ export class DiodContainer implements Container {
     )
   }
 
+  public findTaggedServiceIdentifiers<T = unknown>(
+    tag: string
+  ): Array<Identifier<T>> {
+    return Array.from(this.services)
+      .filter(([, data]) => data.tags.indexOf(tag) >= 0)
+      .map(([id]) => id) as Array<Identifier<T>>
+  }
+
   private getService<T>(
     identifier: Identifier<T>,
     perRequestServices: Map<Identifier<unknown>, unknown>,
@@ -51,6 +59,8 @@ export class DiodContainer implements Container {
         get: <TNew>(id: Identifier<TNew>): TNew => {
           return this.getService(id, perRequestServices, true)
         },
+        findTaggedServiceIdentifiers: (tag) =>
+          this.findTaggedServiceIdentifiers(tag),
       })
     }
 

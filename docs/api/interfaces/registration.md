@@ -41,11 +41,13 @@ Configure the class implementation that the identifier will provide.
 
 **Returns:** [*ConfigurableRegistration*](configurableregistration.md) & [*WithScopeChange*](withscopechange.md) & [*WithDependencies*](withdependencies.md)
 
+Configuration fluent API for classes
+
 ___
 
 ### useFactory
 
-▸ **useFactory**(`factory`: [*Factory*](../README.md#factory)<T\>): [*WithScopeChange*](withscopechange.md)
+▸ **useFactory**(`factory`: [*Factory*](../README.md#factory)<T\>): [*ConfigurableRegistration*](configurableregistration.md) & [*WithScopeChange*](withscopechange.md)
 
 Configure a factory that returns the instance that the identifier will provide.
 
@@ -55,7 +57,7 @@ Configure a factory that returns the instance that the identifier will provide.
 | :------ | :------ | :------ |
 | `factory` | [*Factory*](../README.md#factory)<T\> | The factory that will be executed when the identifier is requested. |
 
-**Returns:** [*WithScopeChange*](withscopechange.md)
+**Returns:** [*ConfigurableRegistration*](configurableregistration.md) & [*WithScopeChange*](withscopechange.md)
 
 Configuration fluent API for factories
 
@@ -74,3 +76,5 @@ Configure the instance that the identifier will provide.
 | `instance` | T | The instance that the identifier will provide. |
 
 **Returns:** [*ConfigurableRegistration*](configurableregistration.md)
+
+Configuration fluent API for instances

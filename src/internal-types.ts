@@ -2,30 +2,32 @@ import { RegistrationType } from './registration-type'
 import { ScopeType } from './scope-type'
 import { Abstract, BuildOptions, Factory, Instance, Newable } from './types'
 
-export type ClassServiceData<T> = {
+type ConfigurationServiceData = {
   isPrivate: boolean
+  tags: string[]
+}
+
+export type ClassServiceData<T> = {
   scope: ScopeType
   class: Newable<T>
   autowire: boolean
   type: RegistrationType.Class
   dependencies: Array<Abstract<unknown>>
-}
+} & ConfigurationServiceData
 
 export type FactoryServiceData<T> = {
-  isPrivate: boolean
   scope: ScopeType
   factory: Factory<T>
   dependencies: never[]
   type: RegistrationType.Factory
-}
+} & ConfigurationServiceData
 
 export type InstanceServiceData<T> = {
-  isPrivate: boolean
   scope: ScopeType.Singleton
   instance: Instance<T>
   type: RegistrationType.Instance
   dependencies: never[]
-}
+} & ConfigurationServiceData
 
 export type ServiceData<T> =
   | ClassServiceData<T>

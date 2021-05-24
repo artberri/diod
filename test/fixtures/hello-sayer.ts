@@ -3,7 +3,7 @@ import { Logger } from './logger'
 import { Sayer } from './sayer'
 
 @Service()
-class OtherSayer implements Sayer {
+export class OtherSayer implements Sayer {
   public readonly rand = Math.random()
   public constructor(protected readonly logger: Logger) {}
   public say(): void {
