@@ -35,7 +35,7 @@ It might sound ridiculous but [Typescript needs types](https://www.typescriptnee
 - **Custom decorators**  
   DIOD requires decorators for dependency guessing while autowiring, but it accepts any class decorator if you don't want to use the one it provides.
 - **Compiler**  
-  After all needed services are registered the container needs to be built. During this build, DIOD will check for errors like missing dependencies, wrong configurations or circular dependencies. An inmutable container will be finally created if there aren't any errors in the building.
+  After all needed services are registered the container needs to be built. During this build, DIOD will check for errors like missing dependencies, wrong configurations, or circular dependencies. An immutable container will be finally created if there aren't any errors in the building.
 - **Support for vanilla JS**  
   Usage with vanilla Javascript is possible by manually defining service dependencies.
 - **Multiple containers**  
@@ -45,13 +45,13 @@ It might sound ridiculous but [Typescript needs types](https://www.typescriptnee
 - **Instance**  
   Using a manually created instance to define a service.
 - **Scope**  
-  By default every service is transient, but they can be registered as singletons or as 'per request' (the same instance of a service will be used within a single request).
+  By default every service is transient, but they can be registered as singletons or as 'per request' (the same service instance will be used within a single request).
 - **Visibility**  
   Services can be marked as private. Private services will be available only as dependencies and they will not be able to be queried from the IoC container.
 - **Tagging**  
   Ability to tag services in the container and to query services based on tags.
 - **Lightweight**  
-  DIOD will be always dependency free and under 2kB.
+  DIOD will be always dependency-free and under 2kB.
 
 ## Quick Start Guide
 
