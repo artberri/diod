@@ -2,6 +2,7 @@
 
 ![DIOD - Dependency Injection On Demand](https://raw.githubusercontent.com/artberri/diod/main/cover.jpg)
 
+[![Rate on Openbase](https://badges.openbase.com/js/rating/diod.svg)](https://openbase.com/js/diod?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](./CODE_OF_CONDUCT.md)
 [![MIT license](https://img.shields.io/npm/l/diod)](./LICENSE)
 [![Build status](https://github.com/artberri/diod/actions/workflows/qa.yml/badge.svg)](https://github.com/artberri/diod/actions)
