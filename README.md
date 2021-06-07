@@ -28,6 +28,8 @@ Both reasons are related with some TypeScript constraints: whenever you want to 
 
 It might sound ridiculous but [Typescript needs types](https://www.typescriptneedstypes.com).
 
+Read [this article in my blog](https://www.berriart.com/blog/2021/06/diod-dependency-injection-typescript/) if you want more context about the reasons behind DIOD.
+
 ### Features
 
 - **Autowire**  
