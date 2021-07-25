@@ -104,7 +104,7 @@ void void tap.test(
 )
 
 void void tap.test(
-  'throws no circular dependency error when the same classes with the same name are used',
+  'throws no circular dependency error when different classes with the same name are used',
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
