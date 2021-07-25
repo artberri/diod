@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import tap from 'tap'
 import { ContainerBuilder } from '../src/diod'
 import { Agenda } from './fixtures/agenda'
-import { Circular1, Circular2, Circular3 } from './fixtures/circular'
+import { circular1, circular2, Circular1, Circular2, Circular3 } from './fixtures/circular'
 import { Clock } from './fixtures/clock'
 import { NotDecorated } from './fixtures/not-decorated'
 import { NotPerson } from './fixtures/not-person'
@@ -99,6 +99,24 @@ void void tap.test(
       // Act
       builder.build({ autowire: false })
     }, new Error('Circular dependency detected: Circular1 -> Circular2 -> Circular3 -> Circular1'))
+    t.end()
+  }
+)
+
+void void tap.test(
+  'throws no circular dependency error when the same classes with the same name are used',
+  (t) => {
+    // Arrange
+    const builder = new ContainerBuilder()
+    builder.registerAndUse(circular1.Circular1)
+    builder.registerAndUse(circular2.Circular1).withDependencies([circular2.Circular2])
+    builder.registerAndUse(circular2.Circular2).withDependencies([circular1.Circular1])
+
+    // Assert
+    t.doesNotThrow(() => {
+      // Act
+      builder.build({ autowire: false })
+    })
     t.end()
   }
 )
