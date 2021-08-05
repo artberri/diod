@@ -10,14 +10,16 @@ Represents an abstract class.
 
 ## Hierarchy
 
-- *Function*
+- `Function`
 
-  ↳ **Abstract**
+  ↳ **`Abstract`**
 
 ## Properties
 
 ### prototype
 
-• **prototype**: T
+• **prototype**: `T`
 
-Overrides: Function.prototype
+#### Overrides
+
+Function.prototype

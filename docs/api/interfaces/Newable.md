@@ -10,22 +10,22 @@ Represents a newable class.
 
 ## Hierarchy
 
-- *Function*
+- `Function`
 
-  ↳ **Newable**
+  ↳ **`Newable`**
 
 ## Constructors
 
 ### constructor
 
-\+ **new Newable**(...`args`: *any*[]): T
+• **new Newable**(...`args`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `...args` | *any*[] |
+| `...args` | `any`[] |
 
-**Returns:** T
+#### Inherited from
 
-Inherited from: Function.constructor
+Function.constructor
