@@ -2,7 +2,13 @@ import 'reflect-metadata'
 import tap from 'tap'
 import { ContainerBuilder } from '../src/diod'
 import { Agenda } from './fixtures/agenda'
-import { circular1, circular2, Circular1, Circular2, Circular3 } from './fixtures/circular'
+import {
+  circular1,
+  Circular1,
+  circular2,
+  Circular2,
+  Circular3,
+} from './fixtures/circular'
 import { Clock } from './fixtures/clock'
 import { NotDecorated } from './fixtures/not-decorated'
 import { NotPerson } from './fixtures/not-person'
@@ -85,32 +91,33 @@ void tap.test(
   }
 )
 
-void void tap.test(
-  'throws error if circular dependencies are detected',
-  (t) => {
-    // Arrange
-    const builder = new ContainerBuilder()
-    builder.registerAndUse(Circular1).withDependencies([Circular2])
-    builder.registerAndUse(Circular2).withDependencies([Circular3])
-    builder.registerAndUse(Circular3).withDependencies([Circular1])
+void tap.test('throws error if circular dependencies are detected', (t) => {
+  // Arrange
+  const builder = new ContainerBuilder()
+  builder.registerAndUse(Circular1).withDependencies([Circular2])
+  builder.registerAndUse(Circular2).withDependencies([Circular3])
+  builder.registerAndUse(Circular3).withDependencies([Circular1])
 
-    // Assert
-    t.throws(() => {
-      // Act
-      builder.build({ autowire: false })
-    }, new Error('Circular dependency detected: Circular1 -> Circular2 -> Circular3 -> Circular1'))
-    t.end()
-  }
-)
+  // Assert
+  t.throws(() => {
+    // Act
+    builder.build({ autowire: false })
+  }, new Error('Circular dependency detected: Circular1 -> Circular2 -> Circular3 -> Circular1'))
+  t.end()
+})
 
-void void tap.test(
-  'throws no circular dependency error when different classes with the same name are used',
+void tap.test(
+  'does not throw circular dependency error when different classes with the same name are used',
   (t) => {
     // Arrange
     const builder = new ContainerBuilder()
     builder.registerAndUse(circular1.Circular1)
-    builder.registerAndUse(circular2.Circular1).withDependencies([circular2.Circular2])
-    builder.registerAndUse(circular2.Circular2).withDependencies([circular1.Circular1])
+    builder
+      .registerAndUse(circular2.Circular1)
+      .withDependencies([circular2.Circular2])
+    builder
+      .registerAndUse(circular2.Circular2)
+      .withDependencies([circular1.Circular1])
 
     // Assert
     t.doesNotThrow(() => {

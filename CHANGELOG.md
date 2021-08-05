@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - This CHANGELOG file.
 
+### Fixed
+
+- Circular dependency detection expects unique class names ([#1](https://github.com/artberri/diod/issues/1)) from [@witrin](https://github.com/witrin).
+
 ## [1.0.0] - 2021-06-03
 
 ### Added

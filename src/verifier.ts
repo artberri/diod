@@ -31,9 +31,11 @@ const verifyCircularDependencies = <T>(
   for (const dependencyIdentifier of metadata.dependencies) {
     if (identifier === dependencyIdentifier) {
       throw new Error(
-        `Circular dependency detected: ${
-          [identifier.name, ...dependencyTree].join(" -> ")
-        } -> ${identifier.name}`
+        `Circular dependency detected: ${[
+          identifier.name,
+          ...dependencyTree,
+          identifier.name,
+        ].join(' -> ')}`
       )
     }
     const dependencyMetadata = services.get(
