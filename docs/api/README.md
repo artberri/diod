@@ -1,4 +1,4 @@
-# DIOD - v1.0.0
+# DIOD - v1.0.1
 
 ## Classes
 

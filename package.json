@@ -1,6 +1,6 @@
 {
   "name": "diod",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A very opinionated and different inversion of control container and dependency injector for Typescript, Node.js or browser apps",
   "keywords": [
     "dependency injection",
