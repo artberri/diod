@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import tap from 'tap'
 import { ContainerBuilder } from '../src/diod'
-import { Agenda } from './fixtures/agenda'
+import { Agenda, Schedule } from './fixtures/agenda'
 import {
   circular1,
   Circular1,
@@ -55,6 +55,23 @@ void tap.test(
       // Act
       builder.build()
     }, new Error('Service not registered for the following dependencies of Agenda: Clock, Calendar'))
+    t.end()
+  }
+)
+
+void tap.test(
+  'throws error building a container with a registered service which has a dependency with unregistered dependencies',
+  (t) => {
+    // Arrange
+    const builder = new ContainerBuilder()
+    builder.register(Schedule).use(Schedule)
+    builder.register(Agenda).use(Agenda)
+
+    // Assert
+    t.throws(() => {
+      // Act
+      builder.build()
+    }, new Error('Service not registered for the following dependencies of Agenda: Clock'))
     t.end()
   }
 )

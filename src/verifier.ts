@@ -50,9 +50,20 @@ const verifyCircularDependencies = <T>(
   }
 }
 
-export const verify = (services: ServiceListMetadata): void => {
+const verifyAllServices = (
+  services: ServiceListMetadata,
+  callback: (
+    identifier: Abstract<unknown>,
+    metadata: ServiceData<unknown>,
+    services: ServiceListMetadata
+  ) => void
+): void => {
   for (const [identifier, metadata] of services) {
-    verifyMetadata(identifier, metadata, services)
-    verifyCircularDependencies(identifier, metadata, services)
+    callback(identifier, metadata, services)
   }
+}
+
+export const verify = (services: ServiceListMetadata): void => {
+  verifyAllServices(services, verifyMetadata)
+  verifyAllServices(services, verifyCircularDependencies)
 }

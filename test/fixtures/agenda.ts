@@ -15,3 +15,8 @@ export class Agenda {
     return `${this.calendar.nowCalendar()}-${this.clock.now()}`
   }
 }
+
+@Service()
+export class Schedule {
+  public constructor(public readonly calendar: Agenda) {}
+}
