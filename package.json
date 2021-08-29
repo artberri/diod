@@ -1,6 +1,6 @@
 {
   "name": "diod",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A very opinionated and different inversion of control container and dependency injector for Typescript, Node.js or browser apps",
   "keywords": [
     "dependency injection",
@@ -56,7 +56,7 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
-    "@size-limit/preset-small-lib": "^5.0.2",
+    "@size-limit/preset-small-lib": "^5.0.3",
     "@types/tap": "^15.0.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
@@ -69,9 +69,9 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rollup": "^2.48.0",
-    "rollup-plugin-dts": "^3.0.2",
+    "rollup-plugin-dts": "^4.0.0",
     "rollup-plugin-esbuild": "^4.2.3",
-    "size-limit": "^5.0.2",
+    "size-limit": "^5.0.3",
     "tap": "^15.0.6",
     "ts-node": "^10.1.0",
     "typedoc": "^0.21.5",

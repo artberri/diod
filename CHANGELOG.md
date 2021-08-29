@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2021-08-29
+
+### Changed
+
+- Dev dependencies updated.
+
+### Fixed
+
+- Unexpected error: TypeError: Cannot read property 'dependencies' of undefined if a direct dependency is missing other dependency ([#3](https://github.com/artberri/diod/issues/3)) from [@alemarcha](https://github.com/alemarcha).
+
 ## [1.0.1] - 2021-08-05
 
 ### Added
