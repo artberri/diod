@@ -23,8 +23,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     'no-shadow': ['off'],
     '@typescript-eslint/no-shadow': ['error'],
-    'brace-style': ['error'],
-    '@typescript-eslint/brace-style': ['error'],
 
     '@typescript-eslint/no-floating-promises': ['error'],
     '@typescript-eslint/explicit-member-accessibility': ['error'],

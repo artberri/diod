@@ -45,12 +45,10 @@ void tap.test('service identifiers can be get based on tag', (t) => {
   const container = builder.build()
 
   // Assert
-  const serviceIdentifiersTaggedWithTag1 = container.findTaggedServiceIdentifiers(
-    'tag1'
-  )
-  const sayerIdentifiers = container.findTaggedServiceIdentifiers<Sayer>(
-    'sayer'
-  )
+  const serviceIdentifiersTaggedWithTag1 =
+    container.findTaggedServiceIdentifiers('tag1')
+  const sayerIdentifiers =
+    container.findTaggedServiceIdentifiers<Sayer>('sayer')
   const sayers = sayerIdentifiers.map((id) => container.get(id))
   const agenda = container.get(Agenda)
   t.equal(serviceIdentifiersTaggedWithTag1.length, 3)

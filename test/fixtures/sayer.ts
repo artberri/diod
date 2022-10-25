@@ -1,4 +1,4 @@
 export abstract class Sayer {
-  abstract rand: number
-  abstract say(): void
+  public abstract rand: number
+  public abstract say(): void
 }

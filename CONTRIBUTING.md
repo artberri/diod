@@ -32,8 +32,8 @@ Help is welcome and much appreciated, whether you are an experienced developer o
    git config core.hooksPath .githooks
    ```
 
-5. Install npm dependencies
+5. Install npm dependencies (PNPM should be used)
 
    ```sh
-   npm ci
+   pnpm install --frozen-lockfile
    ```

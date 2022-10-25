@@ -12,15 +12,15 @@ Used to build an [Container](../interfaces/Container.md) from service registrati
 
 ### build
 
-▸ **build**(`__namedParameters?`): [`Container`](../interfaces/Container.md)
+▸ **build**(`options?`): [`Container`](../interfaces/Container.md)
 
 Builds an inmutable [Container](../interfaces/Container.md).
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | [`BuildOptions`](../README.md#buildoptions) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options` | [`BuildOptions`](../README.md#buildoptions) | Build options. |
 
 #### Returns
 

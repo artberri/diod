@@ -3,7 +3,8 @@ import { ScopeType } from '../scope-type'
 import { BuildOptions, ConfigurableRegistration } from '../types'
 
 export abstract class ServiceConfiguration<T>
-  implements ConfigurableRegistration {
+  implements ConfigurableRegistration
+{
   protected abstract scope: ScopeType
   protected isPrivate = false
   protected tags: string[] = []

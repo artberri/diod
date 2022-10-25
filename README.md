@@ -22,10 +22,10 @@ A very opinionated and lightweight (under 2kB minified and gzipped) inversion of
 
 These are the reasons that have led me to reinvent the wheel and create DIOD:
 
-- I don't like the string-based solutions that current Typescript dependency injection libraries use to bypass the Typescript compiler inabilty to emit Javascript constructs. DIOD autowiring will always be based on constructor typings and property injection will be avoided, even when it implies to work with abstract classes instead of interfaces.
-- I don't like to couple my domain or application layers (see [hexagonal arquitecture](<https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>)) with a dependency injection library. Despite DIOD provides a decorator for ease of usage, you are encouraged to [create and use your own](.docs/custom-decorator.md) keeping your inner layers free of DIOD.
+- I don't like the string-based solutions that current Typescript dependency injection libraries use to bypass the Typescript compiler's inability to emit Javascript constructs. DIOD autowiring will always be based on constructor typings and property injection will be avoided, even when it implies working with abstract classes instead of interfaces.
+- I don't like to couple my domain or application layers (see [hexagonal architecture](<https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>)) with a dependency injection library. Despite DIOD providing a decorator for ease of usage, you are encouraged to [create and use your own](.docs/custom-decorator.md) keeping your inner layers free of DIOD.
 
-Both reasons are related with some TypeScript constraints: whenever you want to work with type information in runtime (in compiled JS), you inevitably need to use decorators. Even so, you won't be able to have information about interfaces at runtime.
+Both reasons are related to some TypeScript constraints: whenever you want to work with type information in runtime (in compiled JS), you inevitably need to use decorators. Even so, you won't be able to have information about interfaces at runtime.
 
 It might sound ridiculous but [Typescript needs types](https://www.typescriptneedstypes.com).
 
@@ -64,6 +64,8 @@ Read [this article in my blog](https://www.berriart.com/blog/2021/06/diod-depend
 npm install diod
 # or
 yarn add diod
+# or
+pnpm add diod
 ```
 
 #### Usage with Typescript
@@ -79,7 +81,7 @@ Modify your `tsconfig.json` to include the following settings
 }
 ```
 
-Add a polyfill for the Reflect API (example below use reflect-metadata). You can use:
+Add a polyfill for the Reflect API (the example below uses reflect-metadata). You can use:
 
 - [reflect-metadata](https://www.npmjs.com/package/reflect-metadata)
 - [core-js (core-js/es7/reflect)](https://www.npmjs.com/package/core-js)
@@ -91,6 +93,8 @@ The Reflect polyfill import should be added only once in your code base and befo
 npm install reflect-metadata
 # or
 yarn add reflect-metadata
+# or
+pnpm add reflect-metadata
 ```
 
 ```ts
@@ -102,7 +106,7 @@ import 'reflect-metadata'
 
 ### Basic usage
 
-All the registered services must be decorated because [this is the only way to make type metadata available at runtime](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata) in Typescript. DIOD provides the `@Service()` decorator for ease of usage, but you can [create your own decorator](./docs/custom-decorator.md) to avoid coupling your inner arquitecture layers with DIOD.
+All the registered services must be decorated because [this is the only way to make type metadata available at runtime](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata) in Typescript. DIOD provides the `@Service()` decorator for ease of usage, but you can [create your own decorator](./docs/custom-decorator.md) to avoid coupling your inner architecture layers with DIOD.
 
 Imagine that you want to have a class like this:
 
@@ -124,7 +128,7 @@ export class SignUpUseCase {
 }
 ```
 
-The **D** of the [SOLID](https://en.wikipedia.org/wiki/SOLID) principles refers to [dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle). This principle encourages developers to use abstractions to define dependencies in certain situations. Abstractions are usually defined with interfaces in other languages, but Typescript interfaces are not available at runtime and that's why DIOD requires abstract classes for abstractions if you want them to be autowired. More information available in the [Motivation](#motivation) section.
+The **D** of the [SOLID](https://en.wikipedia.org/wiki/SOLID) principles refers to [dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle). This principle encourages developers to use abstractions to define dependencies in certain situations. Abstractions are usually defined with interfaces in other languages, but Typescript interfaces are not available at runtime and that's why DIOD requires abstract classes for abstractions if you want them to be autowired. There is more information available in the [Motivation](#motivation) section.
 
 ```ts
 // application/services/Mailer.ts
@@ -142,7 +146,7 @@ export abstract class UserRepository {
 }
 ```
 
-Finally, we need to create a configuration file where we will register every dependency of our app. This should be the only place where our dependencies will be coupled with a concrete implementation. We use to name this file as `diod.config.ts`.
+Finally, we need to create a configuration file where we will register every dependency of our app. This should be the only place where our dependencies will be coupled with a concrete implementation. We use to name this file `diod.config.ts`.
 
 ```ts
 // infrastructure/diod.config.ts
@@ -195,15 +199,15 @@ export class SqliteUserRepository implements UserRepository {
 }
 ```
 
-More usage information in the [official documentation](./docs/README.md).
+There is more useful information in the [official documentation](./docs/README.md).
 
-## Acknowledgements
+## Acknowledgments
 
 A special thanks to every open source contributor that helped or inspired me to create DIOD, including but not limited to all the contributors of the following libraries: [InversifyJS](https://github.com/inversify/InversifyJS), [Node Dependency Injection](https://github.com/zazoomauro/node-dependency-injection), [TSyringe](https://github.com/microsoft/tsyringe), [Autofac](https://github.com/autofac/Autofac), [Ninject](https://github.com/ninject/Ninject) and the [Symfony DependencyInjection Component](https://github.com/symfony/dependency-injection)
 
 ## Pronunciation and name origin
 
-DIOD will be pronounced like the English word 'diode' _/ˈdaɪəʊd/_. DIOD is the abbreviation of **Dependency Injection On Demand**, which is the first I was able to elaborate after I realised that the short `diod` package name was free on the NPM registry.
+DIOD will be pronounced like the English word 'diode' _/ˈdaɪəʊd/_. DIOD is the abbreviation of **Dependency Injection On Demand**, which is the first I was able to elaborate after I realized that the short `diod` package name was free on the NPM registry.
 
 ## License
 

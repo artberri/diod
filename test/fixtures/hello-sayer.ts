@@ -13,7 +13,7 @@ export class OtherSayer implements Sayer {
 
 @Service()
 export abstract class HelloSayer extends OtherSayer implements Sayer {
-  abstract rand: number
+  public abstract rand: number
   public say(): void {
     this.logger.info('hello')
   }

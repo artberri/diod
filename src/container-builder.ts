@@ -14,7 +14,7 @@ import {
 import { verify } from './verifier'
 
 /**
- * Used to build an [[Container]] from service registrations.
+ * Used to build an {@link Container} from service registrations.
  */
 export class ContainerBuilder {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -79,7 +79,7 @@ export class ContainerBuilder {
   }
 
   /**
-   * Builds an inmutable [[Container]].
+   * Builds an inmutable {@link Container}.
    * @param options Build options.
    * @returns
    */

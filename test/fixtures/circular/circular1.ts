@@ -1,2 +1,1 @@
-export class Circular1 {
-}
+export class Circular1 {}

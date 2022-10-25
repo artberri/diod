@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-npm run hook:pre-commit
+pnpm run hook:pre-commit
 npm_precommit_exit_status=$?
 if [ $npm_precommit_exit_status -ne 0 ]; then
     exit 1

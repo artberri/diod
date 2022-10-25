@@ -79,7 +79,7 @@ Configure the instance that the identifier will provide.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `instance` | `T` | The instance that the identifier will provide. |
+| `instance` | [`Instance`](../README.md#instance)<`T`\> | The instance that the identifier will provide. |
 
 #### Returns
 

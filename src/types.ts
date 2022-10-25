@@ -25,7 +25,7 @@ export type Identifier<T> = Newable<T> | Abstract<T>
 
 /**
  * Creates, wires dependencies and manages lifetime for a set of services.
- * Instances of Container are created by a [[ContainerBuilder]].
+ * Instances of Container are created by a {@link ContainerBuilder}.
  */
 export interface Container {
   /**
@@ -46,20 +46,20 @@ export interface Container {
 
 /**
  * Represents a factory to create instances of a class.
- * The [[Container]] will be passed to the registered factory to be able to
+ * The {@link Container } will be passed to the registered factory to be able to
  * get any other service.
  * @typeParam T Class type.
  */
 export type Factory<T> = (container: Container) => T
 
 /**
- * Service instance.
- * @internal
+ * Represents an instance of a class.
+ * @typeParam T Class type.
  */
-export type Instance<T extends Object> = T
+export type Instance<T> = T & Object
 
 /**
- * Options for the [[Container]] build method.
+ * Options for the {@link Container} build method.
  */
 export type BuildOptions = {
   /** Whether to autowire dependencies based on types or not. Default value: `true`.  */
@@ -100,7 +100,7 @@ export interface WithScopeChange {
   asSingleton(): this
   /**
    * Configure the service so that the same shared instance is used during
-   * within a [[Container]].get request.
+   * within a {@link Container}.get request.
    * @returns
    */
   asInstancePerRequest(): this

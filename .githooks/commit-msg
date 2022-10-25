@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-npm run hook:commit-msg $1
+pnpm run hook:commit-msg $1

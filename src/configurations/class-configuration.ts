@@ -13,7 +13,8 @@ import { ServiceConfiguration } from './service-configuration'
 
 export class ClassConfiguration<T>
   extends ServiceConfiguration<T>
-  implements WithScopeChange, WithDependencies {
+  implements WithScopeChange, WithDependencies
+{
   protected scope = ScopeType.Transient
   private dependencies: Array<Identifier<unknown>> = []
   private autowire = true

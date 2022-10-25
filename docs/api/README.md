@@ -14,7 +14,7 @@
 - [WithDependencies](interfaces/WithDependencies.md)
 - [WithScopeChange](interfaces/WithScopeChange.md)
 
-## Type aliases
+## Type Aliases
 
 ### BuildOptions
 
@@ -72,11 +72,25 @@ Service identifier. Can be a concrete implementation or an abstraction.
 | :------ | :------ |
 | `T` | Class type. |
 
+___
+
+### Instance
+
+Ƭ **Instance**<`T`\>: `T` & `Object`
+
+Represents an instance of a class.
+
+#### Type parameters
+
+| Name | Description |
+| :------ | :------ |
+| `T` | Class type. |
+
 ## Functions
 
 ### Service
 
-▸ `Const` **Service**(): `ClassDecorator`
+▸ **Service**(): `ClassDecorator`
 
 Decorator for injectable classes. Every registered service must
 be decorated because without decorators Typescript won't emit

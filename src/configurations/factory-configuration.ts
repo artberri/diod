@@ -6,7 +6,8 @@ import { ServiceConfiguration } from './service-configuration'
 
 export class FactoryConfiguration<T>
   extends ServiceConfiguration<T>
-  implements WithScopeChange {
+  implements WithScopeChange
+{
   protected scope = ScopeType.Transient
 
   private constructor(private readonly factory: Factory<T>) {

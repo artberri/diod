@@ -1,3 +1,3 @@
 export abstract class Logger {
-  abstract info(message: string): void
+  public abstract info(message: string): void
 }
