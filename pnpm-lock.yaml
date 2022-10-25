@@ -9,7 +9,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.41.0
   '@typescript-eslint/parser': ^5.41.0
   cross-env: ^7.0.3
-  esbuild: ^0.12.29
+  esbuild: ^0.15.12
   eslint: ^8.26.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-import: ^2.26.0
@@ -35,7 +35,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
   '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
   cross-env: 7.0.3
-  esbuild: 0.12.29
+  esbuild: 0.15.12
   eslint: 8.26.0
   eslint-config-prettier: 8.5.0_eslint@8.26.0
   eslint-plugin-import: 2.26.0_c2flhriocdzler6lrwbyxxyoca
@@ -44,7 +44,7 @@ devDependencies:
   rimraf: 3.0.2
   rollup: 2.79.1
   rollup-plugin-dts: 4.2.3_gypgyaqhine6mwjfvh7icfhviq
-  rollup-plugin-esbuild: 4.10.1_a3lzt7iayvbsuv5iypu22sont4
+  rollup-plugin-esbuild: 4.10.1_lecm7whau5ub3cwxpurr6hs4em
   size-limit: 8.1.0
   tap: 16.3.0_mwhvu7sfp6vq5ryuwb6hlbjfka
   ts-node: 10.9.1_uwvrucnxy7xmunb7f53wnhbsze
@@ -1563,12 +1563,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /esbuild/0.12.29:
-    resolution: {integrity: sha512-w/XuoBCSwepyiZtIRsKsetiLDUVGPVw1E/R3VTFSecIy8UR7Cq3SOtwKHJMFoVqqVG36aGkzh4e8BvpO1Fdc7g==}
-    hasBin: true
-    requiresBuild: true
-    dev: true
 
   /esbuild/0.15.12:
     resolution: {integrity: sha512-PcT+/wyDqJQsRVhaE9uX/Oq4XLrFh0ce/bs2TJh4CSaw9xuvI+xFrH2nAYOADbhQjUgAhNWC5LKoUsakm4dxng==}
@@ -3189,7 +3183,7 @@ packages:
       '@babel/code-frame': 7.18.6
     dev: true
 
-  /rollup-plugin-esbuild/4.10.1_a3lzt7iayvbsuv5iypu22sont4:
+  /rollup-plugin-esbuild/4.10.1_lecm7whau5ub3cwxpurr6hs4em:
     resolution: {integrity: sha512-/ymcRB283zjFp1JTBXO8ekxv0c9vRc2L6OTljghsLthQ4vqeDSDWa9BVz1tHiVrx6SbUnUpDPLC0K/MXK7j5TA==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -3199,7 +3193,7 @@ packages:
       '@rollup/pluginutils': 4.2.1
       debug: 4.3.4
       es-module-lexer: 0.9.3
-      esbuild: 0.12.29
+      esbuild: 0.15.12
       joycon: 3.1.1
       jsonc-parser: 3.2.0
       rollup: 2.79.1
