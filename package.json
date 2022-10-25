@@ -18,7 +18,8 @@
   "browser": "lib/diod.umd.js",
   "typings": "lib/diod.d.ts",
   "files": [
-    "lib"
+    "lib",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "pnpm run clean && pnpm run compile && pnpm run size",
