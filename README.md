@@ -29,7 +29,7 @@ Both reasons are related to some TypeScript constraints: whenever you want to wo
 
 It might sound ridiculous but [Typescript needs types](https://www.typescriptneedstypes.com).
 
-Read [this article in my blog](https://www.berriart.com/blog/2021/06/diod-dependency-injection-typescript/) if you want more context about the reasons behind DIOD.
+Read [this article in my blog](https://www.albertovarela.net/blog/2021/06/diod-dependency-injection-typescript/) if you want more context about the reasons behind DIOD.
 
 ### Features
 
@@ -81,7 +81,7 @@ Modify your `tsconfig.json` to include the following settings
 }
 ```
 
-Add a polyfill for the Reflect API (the example below uses reflect-metadata). You can use:
+Add a polyfill for the Reflect API (the example below uses `reflect-metadata`). You can use:
 
 - [reflect-metadata](https://www.npmjs.com/package/reflect-metadata)
 - [core-js (core-js/es7/reflect)](https://www.npmjs.com/package/core-js)

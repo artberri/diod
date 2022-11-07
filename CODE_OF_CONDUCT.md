@@ -34,7 +34,7 @@ Examples of unacceptable behavior include:
 - Publishing others' private information, such as a physical or email
   address, without their explicit permission
 - Inappropriate physical contact. You should have someone's consent before touching them.
-- Unwelcome sexual attention. This includes, sexualized comments or jokes; inappropriate touching, groping, and unwelcomed sexual advances.
+- Unwelcome sexual attention. This includes sexualized comments or jokes, inappropriate touching, groping, and unwelcome sexual advances.
 - Deliberate intimidation, stalking or following (online or in person).
 - Other conduct which could reasonably be considered inappropriate in a
   professional setting
@@ -53,7 +53,7 @@ decisions when appropriate.
 
 ## Scope
 
-This Code of Conduct applies within all community spaces, and also applies when
+This Code of Conduct applies within all community spaces and also applies when
 an individual is officially representing the community in public spaces.
 Examples of representing our community include using an official e-mail address,
 posting via an official social media account, or acting as an appointed
@@ -63,7 +63,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported via email to the community leaders responsible for enforcement at:
-alberto@berriart.com.
+hello@albertovarela.net.
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
@@ -79,7 +79,7 @@ the consequences for any action they deem in violation of this Code of Conduct:
 **Community Impact**: Use of inappropriate language or other behavior deemed
 unprofessional or unwelcome in the community.
 
-**Consequence**: A private, written warning from community leaders, providing
+**Consequence**: A private written warning from community leaders, providing
 clarity around the nature of the violation and an explanation of why the
 behavior was inappropriate. A public apology may be requested.
 
