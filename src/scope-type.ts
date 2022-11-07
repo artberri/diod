@@ -1,5 +1,5 @@
 export enum ScopeType {
-  Transient = 'transient',
-  Request = 'request',
-  Singleton = 'singleton',
+	Transient = 'transient',
+	Request = 'request',
+	Singleton = 'singleton',
 }

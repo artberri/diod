@@ -1,14 +1,14 @@
 {
-  "name": "DIOD",
-  "includeVersion": true,
-  "entryPoints": ["./src/diod.ts"],
-  "out": "docs/api",
-  "readme": "none",
-  "excludeExternals": true,
-  "excludePrivate": true,
-  "excludeProtected": true,
-  "excludeInternal": true,
-  "hideBreadcrumbs": true,
-  "hideInPageTOC": true,
-  "disableSources": true
+	"name": "DIOD",
+	"includeVersion": true,
+	"entryPoints": ["./src/diod.ts"],
+	"out": "docs/api",
+	"readme": "none",
+	"excludeExternals": true,
+	"excludePrivate": true,
+	"excludeProtected": true,
+	"excludeInternal": true,
+	"hideBreadcrumbs": true,
+	"hideInPageTOC": true,
+	"disableSources": true
 }

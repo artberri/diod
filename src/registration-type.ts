@@ -1,5 +1,5 @@
 export enum RegistrationType {
-  Class = 'class',
-  Factory = 'factory',
-  Instance = 'instance',
+	Class = 'class',
+	Factory = 'factory',
+	Instance = 'instance',
 }
