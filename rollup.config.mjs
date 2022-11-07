@@ -1,7 +1,7 @@
 import dts from 'rollup-plugin-dts'
 import esbuild from 'rollup-plugin-esbuild'
 
-const name = require('./package.json').main.replace(/\.js$/, '')
+const outputBaseName = 'lib/diod'
 
 const bundle = (config) => ({
   ...config,
@@ -11,20 +11,20 @@ const bundle = (config) => ({
 
 export default [
   bundle({
-    plugins: [esbuild({ target: 'es2015' })],
+    plugins: [esbuild({ target: 'es2016' })],
     output: [
       {
-        file: `${name}.js`,
+        file: `${outputBaseName}.js`,
         format: 'cjs',
         sourcemap: false,
       },
       {
-        file: `${name}.es.js`,
+        file: `${outputBaseName}.es.js`,
         format: 'es',
         sourcemap: false,
       },
       {
-        file: `${name}.umd.js`,
+        file: `${outputBaseName}.umd.js`,
         format: 'umd',
         name: 'diod',
         sourcemap: false,
@@ -34,7 +34,7 @@ export default [
   bundle({
     plugins: [dts()],
     output: {
-      file: `${name}.d.ts`,
+      file: `${outputBaseName}.d.ts`,
       format: 'es',
     },
   }),
