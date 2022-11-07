@@ -1,6 +1,6 @@
 {
   "name": "diod",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "A very opinionated and different inversion of control container and dependency injector for Typescript, Node.js or browser apps",
   "keywords": [
     "dependency injection",
@@ -14,12 +14,14 @@
   ],
   "main": "lib/diod.js",
   "module": "lib/diod.es.js",
-  "es2015": "lib/diod.es.js",
   "browser": "lib/diod.umd.js",
   "typings": "lib/diod.d.ts",
   "files": [
     "lib",
     "CHANGELOG.md"
+  ],
+  "browserslist": [
+    "> 1%, not dead, not ie 11, not op_mini all"
   ],
   "scripts": {
     "build": "pnpm run clean && pnpm run compile && pnpm run size",
