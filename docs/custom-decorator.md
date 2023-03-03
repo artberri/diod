@@ -1,6 +1,6 @@
 # Using your own decorator
 
-Create your own decorator to avoid coupling your inner arquitecture layers with DIOD. It does not need to do anything, but [without decorators Typescript won't emit constructor metadata](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata).
+Create your own decorator to avoid coupling your inner architecture layers with DIOD. It does not need to do anything, but [without decorators Typescript won't emit constructor metadata](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata).
 
 ```ts
 export const MyAppService = (): ClassDecorator => {
