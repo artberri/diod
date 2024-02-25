@@ -6,7 +6,7 @@ Configuration that allows scope change
 
 ### addTag
 
-▸ **addTag**(`tag`): [`ConfigurableRegistration`](ConfigurableRegistration.md)
+▸ **addTag**(`tag`): `this`
 
 Tag the service (the tag will be added to previously added tags if there are).
 
@@ -18,28 +18,28 @@ Tag the service (the tag will be added to previously added tags if there are).
 
 #### Returns
 
-[`ConfigurableRegistration`](ConfigurableRegistration.md)
+`this`
 
 ___
 
 ### private
 
-▸ **private**(): [`ConfigurableRegistration`](ConfigurableRegistration.md)
+▸ **private**(): `this`
 
 The service can only be used as a dependency and it can't be queried from the container.
 
 #### Returns
 
-[`ConfigurableRegistration`](ConfigurableRegistration.md)
+`this`
 
 ___
 
 ### public
 
-▸ **public**(): [`ConfigurableRegistration`](ConfigurableRegistration.md)
+▸ **public**(): `this`
 
 The service can be used as a dependency and it can be queried from the container.
 
 #### Returns
 
-[`ConfigurableRegistration`](ConfigurableRegistration.md)
+`this`

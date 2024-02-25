@@ -1,4 +1,4 @@
-# Interface: Newable<T\>
+# Interface: Newable\<T\>
 
 Represents a newable class.
 
@@ -18,13 +18,17 @@ Represents a newable class.
 
 ### constructor
 
-• **new Newable**(...`args`)
+• **new Newable**(`...args`): `T`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `...args` | `any`[] |
+
+#### Returns
+
+`T`
 
 #### Inherited from
 

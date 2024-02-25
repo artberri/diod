@@ -1,4 +1,4 @@
-# Interface: Abstract<T\>
+# Interface: Abstract\<T\>
 
 Represents an abstract class.
 
