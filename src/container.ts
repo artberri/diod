@@ -10,19 +10,19 @@ export class DiodContainer implements Container {
 		private readonly services: ReadonlyMap<
 			Identifier<unknown>,
 			ServiceData<unknown>
-		>
+		>,
 	) {}
 
 	public get<T>(identifier: Identifier<T>): T {
 		return this.getService(
 			identifier,
 			new Map<Identifier<unknown>, unknown>(),
-			false
+			false,
 		)
 	}
 
 	public findTaggedServiceIdentifiers<T = unknown>(
-		tag: string
+		tag: string,
 	): Array<Identifier<T>> {
 		return Array.from(this.services)
 			.filter(([, data]) => data.tags.indexOf(tag) >= 0)
@@ -32,7 +32,7 @@ export class DiodContainer implements Container {
 	private getService<T>(
 		identifier: Identifier<T>,
 		perRequestServices: Map<Identifier<unknown>, unknown>,
-		isDependency: boolean
+		isDependency: boolean,
 	): T {
 		const data = this.findServiceDataOrThrow(identifier, isDependency)
 
@@ -51,7 +51,7 @@ export class DiodContainer implements Container {
 		} else if (data.type === RegistrationType.Class) {
 			const dependencies = this.getDependencies(
 				data.dependencies,
-				perRequestServices
+				perRequestServices,
 			)
 			instance = new data.class(...dependencies)
 		} else {
@@ -75,7 +75,7 @@ export class DiodContainer implements Container {
 
 	private findServiceDataOrThrow<T>(
 		identifier: Identifier<T>,
-		isDependency: boolean
+		isDependency: boolean,
 	): ServiceData<T> {
 		const service = this.services.get(identifier)
 
@@ -87,7 +87,7 @@ export class DiodContainer implements Container {
 
 		if (!isDependency && data.isPrivate) {
 			throw new Error(
-				`The ${identifier.name} service has been registered as private and can not be directly get from the container`
+				`The ${identifier.name} service has been registered as private and can not be directly get from the container`,
 			)
 		}
 
@@ -96,12 +96,12 @@ export class DiodContainer implements Container {
 
 	private getDependencies(
 		dependencyIdentifiers: Array<Identifier<unknown>>,
-		perRequestServices: Map<Identifier<unknown>, unknown>
+		perRequestServices: Map<Identifier<unknown>, unknown>,
 	): unknown[] {
 		const dependencies = new Array<unknown>()
 		for (const dependencyIdentifier of dependencyIdentifiers) {
 			dependencies.push(
-				this.getService(dependencyIdentifier, perRequestServices, true)
+				this.getService(dependencyIdentifier, perRequestServices, true),
 			)
 		}
 

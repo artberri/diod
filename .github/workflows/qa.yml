@@ -46,7 +46,8 @@ jobs:
         run: pnpm run qa
       - name: Run coverage
         run: pnpm run coverage:cobertura
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v4
         name: Upload coverage to codecov
         with:
-          directory: ./coverage/
+          directory: ./.tap/report
+          token: ${{ secrets.CODECOV_TOKEN }}

@@ -23,7 +23,7 @@ export class InstanceConfiguration<T> extends ServiceConfiguration<T> {
 	}
 
 	public static createBuildable<TIdentifier>(
-		instance: Instance<TIdentifier>
+		instance: Instance<TIdentifier>,
 	): Buildable<InstanceConfiguration<TIdentifier>, TIdentifier> {
 		const use = new InstanceConfiguration(instance)
 		return {

@@ -2,11 +2,11 @@ import { Service } from '../../src/decorators'
 
 @Service()
 export class Clock {
-  public readonly rand = Math.random()
+	public readonly rand = Math.random()
 
-  public now(): string {
-    const currentDate = new Date()
+	public now(): string {
+		const currentDate = new Date()
 
-    return `${currentDate.getMinutes()}:${currentDate.getSeconds()}`
-  }
+		return `${currentDate.getMinutes()}:${currentDate.getSeconds()}`
+	}
 }

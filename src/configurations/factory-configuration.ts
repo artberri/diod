@@ -38,7 +38,7 @@ export class FactoryConfiguration<T>
 	}
 
 	public static createBuildable<TIdentifier>(
-		factory: Factory<TIdentifier>
+		factory: Factory<TIdentifier>,
 	): Buildable<FactoryConfiguration<TIdentifier>, TIdentifier> {
 		const use = new FactoryConfiguration(factory)
 		return {

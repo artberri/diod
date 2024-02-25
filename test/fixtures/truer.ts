@@ -1,3 +1,3 @@
 export abstract class Truer {
-  public abstract returnTrue(): true
+	public abstract returnTrue(): true
 }

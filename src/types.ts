@@ -126,7 +126,7 @@ export interface Registration<T> {
 	 * @returns Configuration fluent API for classes
 	 */
 	useClass(
-		newable: Newable<T>
+		newable: Newable<T>,
 	): ConfigurableRegistration & WithScopeChange & WithDependencies
 
 	/**
@@ -136,7 +136,7 @@ export interface Registration<T> {
 	 * @returns Configuration fluent API for classes
 	 */
 	use(
-		newable: Newable<T>
+		newable: Newable<T>,
 	): ConfigurableRegistration & WithScopeChange & WithDependencies
 
 	/**

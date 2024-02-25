@@ -21,7 +21,7 @@ export class DiodRegistration<T> implements Registration<T> {
 	private constructor(public readonly identifier: Identifier<T>) {}
 
 	public useClass(
-		newable: Newable<T>
+		newable: Newable<T>,
 	): ConfigurableRegistration & WithScopeChange & WithDependencies {
 		const buildable = ClassConfiguration.createBuildable(newable)
 		this.buildable = buildable
@@ -29,7 +29,7 @@ export class DiodRegistration<T> implements Registration<T> {
 	}
 
 	public use(
-		newable: Newable<T>
+		newable: Newable<T>,
 	): ConfigurableRegistration & WithScopeChange & WithDependencies {
 		return this.useClass(newable)
 	}
@@ -41,7 +41,7 @@ export class DiodRegistration<T> implements Registration<T> {
 	}
 
 	public useFactory(
-		factory: Factory<T>
+		factory: Factory<T>,
 	): ConfigurableRegistration & WithScopeChange {
 		const buildable = FactoryConfiguration.createBuildable(factory)
 		this.buildable = buildable
@@ -51,7 +51,7 @@ export class DiodRegistration<T> implements Registration<T> {
 	private build(options: BuildOptions): ServiceData<T> {
 		if (this.buildable === undefined) {
 			throw new Error(
-				`Service ${this.identifier.name} registration is not completed. Use .registerAndUse(${this.identifier.name}) instead of .register(${this.identifier.name}) to use it directly or set any other registration use`
+				`Service ${this.identifier.name} registration is not completed. Use .registerAndUse(${this.identifier.name}) instead of .register(${this.identifier.name}) to use it directly or set any other registration use`,
 			)
 		}
 
@@ -59,7 +59,7 @@ export class DiodRegistration<T> implements Registration<T> {
 	}
 
 	public static createBuildable<TIdentifier>(
-		identifier: Identifier<TIdentifier>
+		identifier: Identifier<TIdentifier>,
 	): Buildable<Registration<TIdentifier>, TIdentifier> {
 		const registration = new DiodRegistration(identifier)
 		return {

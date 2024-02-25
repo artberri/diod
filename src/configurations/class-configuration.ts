@@ -43,7 +43,7 @@ export class ClassConfiguration<T>
 
 	private setDependencyInformationIfNotExist(
 		identifier: Newable<T>,
-		options: BuildOptions
+		options: BuildOptions,
 	): void {
 		const autowire = options.autowire && this.autowire
 		if (
@@ -51,7 +51,7 @@ export class ClassConfiguration<T>
 			getDependencyCount(this.newable) > this.dependencies.length
 		) {
 			throw new Error(
-				`Dependencies must be provided for non autowired services. Service with missing dependencies: ${identifier.name}`
+				`Dependencies must be provided for non autowired services. Service with missing dependencies: ${identifier.name}`,
 			)
 		}
 
@@ -75,7 +75,7 @@ export class ClassConfiguration<T>
 	}
 
 	public static createBuildable<TIdentifier>(
-		newable: Newable<TIdentifier>
+		newable: Newable<TIdentifier>,
 	): Buildable<ClassConfiguration<TIdentifier>, TIdentifier> {
 		const use = new ClassConfiguration(newable)
 		return {
