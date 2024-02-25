@@ -4,7 +4,7 @@ import { Abstract } from './types'
 const verifyMetadata = <T>(
 	identifier: Abstract<T>,
 	metadata: ServiceData<T>,
-	services: ServiceListMetadata
+	services: ServiceListMetadata,
 ): void => {
 	const missing = new Array<string>()
 	for (const dependencyIdentifier of metadata.dependencies) {
@@ -17,7 +17,7 @@ const verifyMetadata = <T>(
 		throw new Error(
 			`Service not registered for the following dependencies of ${
 				identifier.name
-			}: ${missing.join(', ')}`
+			}: ${missing.join(', ')}`,
 		)
 	}
 }
@@ -26,7 +26,7 @@ const verifyCircularDependencies = <T>(
 	identifier: Abstract<T>,
 	metadata: ServiceData<T>,
 	services: ServiceListMetadata,
-	dependencyTree: string[] = []
+	dependencyTree: string[] = [],
 ): void => {
 	for (const dependencyIdentifier of metadata.dependencies) {
 		if (identifier === dependencyIdentifier) {
@@ -35,11 +35,11 @@ const verifyCircularDependencies = <T>(
 					identifier.name,
 					...dependencyTree,
 					identifier.name,
-				].join(' -> ')}`
+				].join(' -> ')}`,
 			)
 		}
 		const dependencyMetadata = services.get(
-			dependencyIdentifier
+			dependencyIdentifier,
 		) as ServiceData<unknown>
 		if (dependencyMetadata.dependencies.length > 0) {
 			verifyCircularDependencies(identifier, dependencyMetadata, services, [
@@ -55,8 +55,8 @@ const verifyAllServices = (
 	callback: (
 		identifier: Abstract<unknown>,
 		metadata: ServiceData<unknown>,
-		services: ServiceListMetadata
-	) => void
+		services: ServiceListMetadata,
+	) => void,
 ): void => {
 	for (const [identifier, metadata] of services) {
 		callback(identifier, metadata, services)

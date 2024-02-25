@@ -1,0 +1,6 @@
+# Ignore artifacts:
+lib
+.tap
+
+# Ignore all MD files:
+**/*.md

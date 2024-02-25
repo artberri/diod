@@ -3,7 +3,7 @@ import { NotDecorated } from './not-decorated'
 
 @Service()
 export class NotPerson extends NotDecorated {
-  public hasNose(): boolean {
-    return false
-  }
+	public hasNose(): boolean {
+		return false
+	}
 }

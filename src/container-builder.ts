@@ -34,7 +34,7 @@ export class ContainerBuilder {
 	public register<T>(identifier: Identifier<T>): Registration<T> {
 		if (this.buildables.has(identifier)) {
 			throw new Error(
-				`A service identified as ${identifier.name} has been already registered. You need to unregister it before you can register it again.`
+				`A service identified as ${identifier.name} has been already registered. You need to unregister it before you can register it again.`,
 			)
 		}
 
@@ -73,7 +73,7 @@ export class ContainerBuilder {
 	 * @returns
 	 */
 	public registerAndUse<T>(
-		newable: Newable<T>
+		newable: Newable<T>,
 	): ConfigurableRegistration & WithScopeChange & WithDependencies {
 		return this.register(newable).use(newable)
 	}

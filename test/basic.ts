@@ -5,33 +5,33 @@ import { Clock } from './fixtures/clock'
 import { ConsoleLogger } from './fixtures/console-logger'
 
 void tap.test(
-  'returns registered parameter-less constructor class instance',
-  (t) => {
-    // Arrange
-    const builder = new ContainerBuilder()
-    builder.registerAndUse(Clock)
-    const container = builder.build()
+	'returns registered parameter-less constructor class instance',
+	(t) => {
+		// Arrange
+		const builder = new ContainerBuilder()
+		builder.registerAndUse(Clock)
+		const container = builder.build()
 
-    // Act
-    const clock = container.get(Clock)
+		// Act
+		const clock = container.get(Clock)
 
-    // Assert
-    t.equal(clock.constructor.name, 'Clock')
-    t.not(clock.now(), '')
-    t.end()
-  }
+		// Assert
+		t.equal(clock.constructor.name, 'Clock')
+		t.not(clock.now(), '')
+		t.end()
+	},
 )
 
 void tap.test('throws error when asked for an unregistered service', (t) => {
-  // Arrange
-  const builder = new ContainerBuilder()
-  builder.registerAndUse(Clock)
-  const container = builder.build()
+	// Arrange
+	const builder = new ContainerBuilder()
+	builder.registerAndUse(Clock)
+	const container = builder.build()
 
-  // Assert
-  t.throws(() => {
-    // Act
-    container.get(ConsoleLogger)
-  }, new Error('Service not registered for: ConsoleLogger'))
-  t.end()
+	// Assert
+	t.throws(() => {
+		// Act
+		container.get(ConsoleLogger)
+	}, new Error('Service not registered for: ConsoleLogger'))
+	t.end()
 })

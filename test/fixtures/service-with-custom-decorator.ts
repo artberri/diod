@@ -3,9 +3,9 @@ import { Truer } from './truer'
 
 @MyAppService()
 export class ServiceWithCustomDecorator {
-  public constructor(protected readonly truer: Truer) {}
+	public constructor(protected readonly truer: Truer) {}
 
-  public execDep(): boolean {
-    return this.truer.returnTrue()
-  }
+	public execDep(): boolean {
+		return this.truer.returnTrue()
+	}
 }

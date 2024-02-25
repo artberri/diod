@@ -4,12 +4,12 @@ const PARAM_TYPES = 'design:paramtypes'
 
 const getDependenciesFromDecoratedServiceOrThrow = <T>(
 	target: Abstract<T>,
-	parents: string[]
+	parents: string[],
 ): Array<Abstract<unknown>> => {
 	const dependencies = Reflect.getMetadata(PARAM_TYPES, target) || []
 	if (dependencies.length < target.length) {
 		throw new Error(
-			`Service not decorated: ${[...parents, target.name].join(' -> ')}`
+			`Service not decorated: ${[...parents, target.name].join(' -> ')}`,
 		)
 	}
 
@@ -17,7 +17,7 @@ const getDependenciesFromDecoratedServiceOrThrow = <T>(
 }
 
 const getBaseClass = <T extends B, B>(
-	target: Abstract<T>
+	target: Abstract<T>,
 ): Abstract<B> | undefined => {
 	const baseClass = Object.getPrototypeOf(target.prototype).constructor
 	if (baseClass === Object) {
@@ -29,11 +29,11 @@ const getBaseClass = <T extends B, B>(
 
 export const getDependencies = <T>(
 	target: Abstract<T>,
-	parents: string[] = []
+	parents: string[] = [],
 ): Array<Abstract<unknown>> => {
 	const dependencies = getDependenciesFromDecoratedServiceOrThrow(
 		target,
-		parents
+		parents,
 	)
 
 	if (dependencies.length > 0) {
