@@ -32,7 +32,11 @@ ___
 
 ### Factory
 
-Ƭ **Factory**<`T`\>: (`container`: [`Container`](interfaces/Container.md)) => `T`
+Ƭ **Factory**\<`T`\>: (`container`: [`Container`](interfaces/Container.md)) => `T`
+
+Represents a factory to create instances of a class.
+The [Container](interfaces/Container.md) will be passed to the registered factory to be able to
+get any other service.
 
 #### Type parameters
 
@@ -43,10 +47,6 @@ ___
 #### Type declaration
 
 ▸ (`container`): `T`
-
-Represents a factory to create instances of a class.
-The [Container](interfaces/Container.md) will be passed to the registered factory to be able to
-get any other service.
 
 ##### Parameters
 
@@ -62,7 +62,7 @@ ___
 
 ### Identifier
 
-Ƭ **Identifier**<`T`\>: [`Newable`](interfaces/Newable.md)<`T`\> \| [`Abstract`](interfaces/Abstract.md)<`T`\>
+Ƭ **Identifier**\<`T`\>: [`Newable`](interfaces/Newable.md)\<`T`\> \| [`Abstract`](interfaces/Abstract.md)\<`T`\>
 
 Service identifier. Can be a concrete implementation or an abstraction.
 
@@ -76,7 +76,7 @@ ___
 
 ### Instance
 
-Ƭ **Instance**<`T`\>: `T` & `Object`
+Ƭ **Instance**\<`T`\>: `T` & `Object`
 
 Represents an instance of a class.
 

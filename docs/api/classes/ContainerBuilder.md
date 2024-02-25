@@ -6,7 +6,11 @@ Used to build an [Container](../interfaces/Container.md) from service registrati
 
 ### constructor
 
-• **new ContainerBuilder**()
+• **new ContainerBuilder**(): [`ContainerBuilder`](ContainerBuilder.md)
+
+#### Returns
+
+[`ContainerBuilder`](ContainerBuilder.md)
 
 ## Methods
 
@@ -30,7 +34,7 @@ ___
 
 ### isRegistered
 
-▸ **isRegistered**<`T`\>(`identifier`): `boolean`
+▸ **isRegistered**\<`T`\>(`identifier`): `boolean`
 
 Checks whether a service is registered or not.
 
@@ -44,7 +48,7 @@ Checks whether a service is registered or not.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `identifier` | [`Identifier`](../README.md#identifier)<`T`\> | The class that identifies this service to be checked. |
+| `identifier` | [`Identifier`](../README.md#identifier)\<`T`\> | The class that identifies this service to be checked. |
 
 #### Returns
 
@@ -54,7 +58,7 @@ ___
 
 ### register
 
-▸ **register**<`T`\>(`identifier`): [`Registration`](../interfaces/Registration.md)<`T`\>
+▸ **register**\<`T`\>(`identifier`): [`Registration`](../interfaces/Registration.md)\<`T`\>
 
 Registers a service.
 
@@ -68,17 +72,17 @@ Registers a service.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `identifier` | [`Identifier`](../README.md#identifier)<`T`\> | The class that identifies this service. This class identifier must be used to get the service from the container or when defining it as a dependency. |
+| `identifier` | [`Identifier`](../README.md#identifier)\<`T`\> | The class that identifies this service. This class identifier must be used to get the service from the container or when defining it as a dependency. |
 
 #### Returns
 
-[`Registration`](../interfaces/Registration.md)<`T`\>
+[`Registration`](../interfaces/Registration.md)\<`T`\>
 
 ___
 
 ### registerAndUse
 
-▸ **registerAndUse**<`T`\>(`newable`): [`ConfigurableRegistration`](../interfaces/ConfigurableRegistration.md) & [`WithScopeChange`](../interfaces/WithScopeChange.md) & [`WithDependencies`](../interfaces/WithDependencies.md)
+▸ **registerAndUse**\<`T`\>(`newable`): [`ConfigurableRegistration`](../interfaces/ConfigurableRegistration.md) & [`WithScopeChange`](../interfaces/WithScopeChange.md) & [`WithDependencies`](../interfaces/WithDependencies.md)
 
 Alias for `.register(newable).use(newable)`.
 
@@ -92,7 +96,7 @@ Alias for `.register(newable).use(newable)`.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `newable` | [`Newable`](../interfaces/Newable.md)<`T`\> | The concrete class implementation to be registered as itself. |
+| `newable` | [`Newable`](../interfaces/Newable.md)\<`T`\> | The concrete class implementation to be registered as itself. |
 
 #### Returns
 
@@ -102,7 +106,7 @@ ___
 
 ### unregister
 
-▸ **unregister**<`T`\>(`identifier`): `void`
+▸ **unregister**\<`T`\>(`identifier`): `void`
 
 Unregister previously registered service.
 
@@ -116,7 +120,7 @@ Unregister previously registered service.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `identifier` | [`Identifier`](../README.md#identifier)<`T`\> | The class that identifies this service to be unregistered. |
+| `identifier` | [`Identifier`](../README.md#identifier)\<`T`\> | The class that identifies this service to be unregistered. |
 
 #### Returns
 

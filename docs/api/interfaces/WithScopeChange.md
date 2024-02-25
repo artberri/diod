@@ -4,35 +4,35 @@
 
 ### asInstancePerRequest
 
-▸ **asInstancePerRequest**(): [`WithScopeChange`](WithScopeChange.md)
+▸ **asInstancePerRequest**(): `this`
 
 Configure the service so that the same shared instance is used during
 within a [Container](Container.md).get request.
 
 #### Returns
 
-[`WithScopeChange`](WithScopeChange.md)
+`this`
 
 ___
 
 ### asSingleton
 
-▸ **asSingleton**(): [`WithScopeChange`](WithScopeChange.md)
+▸ **asSingleton**(): `this`
 
 Configure the service so that always gets the same, shared instance.
 
 #### Returns
 
-[`WithScopeChange`](WithScopeChange.md)
+`this`
 
 ___
 
 ### asTransient
 
-▸ **asTransient**(): [`WithScopeChange`](WithScopeChange.md)
+▸ **asTransient**(): `this`
 
 Configure the service so that always gets a new instance.
 
 #### Returns
 
-[`WithScopeChange`](WithScopeChange.md)
+`this`

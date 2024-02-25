@@ -6,7 +6,7 @@ Configuration that allows to manage dependencies manually
 
 ### withDependencies
 
-▸ **withDependencies**(`dependencies`): [`WithDependencies`](WithDependencies.md)
+▸ **withDependencies**(`dependencies`): `this`
 
 Declare class dependencies manually
 
@@ -14,8 +14,8 @@ Declare class dependencies manually
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `dependencies` | [`Identifier`](../README.md#identifier)<`unknown`\>[] | List of class dependency identifiers to inject in order to the constructor. |
+| `dependencies` | [`Identifier`](../README.md#identifier)\<`unknown`\>[] | List of class dependency identifiers to inject in order to the constructor. |
 
 #### Returns
 
-[`WithDependencies`](WithDependencies.md)
+`this`

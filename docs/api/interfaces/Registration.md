@@ -1,4 +1,4 @@
-# Interface: Registration<T\>
+# Interface: Registration\<T\>
 
 ## Type parameters
 
@@ -19,7 +19,7 @@ Alias of `useClass`.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `newable` | [`Newable`](Newable.md)<`T`\> | The implementation that the identifier will provide. |
+| `newable` | [`Newable`](Newable.md)\<`T`\> | The implementation that the identifier will provide. |
 
 #### Returns
 
@@ -39,7 +39,7 @@ Configure the class implementation that the identifier will provide.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `newable` | [`Newable`](Newable.md)<`T`\> | The implementation that the identifier will provide. |
+| `newable` | [`Newable`](Newable.md)\<`T`\> | The implementation that the identifier will provide. |
 
 #### Returns
 
@@ -59,7 +59,7 @@ Configure a factory that returns the instance that the identifier will provide.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `factory` | [`Factory`](../README.md#factory)<`T`\> | The factory that will be executed when the identifier is requested. |
+| `factory` | [`Factory`](../README.md#factory)\<`T`\> | The factory that will be executed when the identifier is requested. |
 
 #### Returns
 
@@ -79,7 +79,7 @@ Configure the instance that the identifier will provide.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `instance` | [`Instance`](../README.md#instance)<`T`\> | The instance that the identifier will provide. |
+| `instance` | [`Instance`](../README.md#instance)\<`T`\> | The instance that the identifier will provide. |
 
 #### Returns
 
