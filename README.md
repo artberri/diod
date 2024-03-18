@@ -23,11 +23,11 @@ A very opinionated and lightweight (under 2kB minified and gzipped) inversion of
 These are the reasons that have led me to reinvent the wheel and create DIOD:
 
 - I don't like the string-based solutions that current Typescript dependency injection libraries use to bypass the Typescript compiler's inability to emit Javascript constructs. DIOD autowiring will always be based on constructor typings and property injection will be avoided, even when it implies working with abstract classes instead of interfaces.
-- I don't like to couple my domain or application layers (see [hexagonal architecture](<https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>)) with a dependency injection library. Despite DIOD providing a decorator for ease of usage, you are encouraged to [create and use your own](.docs/custom-decorator.md) keeping your inner layers free of DIOD.
+- I don't like to couple my domain or application layers (see [hexagonal architecture](<https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>)) with a dependency injection library. Despite DIOD providing a decorator for ease of usage, you are encouraged to [create and use your own](./custom-decorator.md) keeping your inner layers free of DIOD.
 
 Both reasons are related to some TypeScript constraints: whenever you want to work with type information in runtime (in compiled JS), you inevitably need to use decorators. Even so, you won't be able to have information about interfaces at runtime.
 
-It might sound ridiculous but [Typescript needs types](https://www.typescriptneedstypes.com).
+It might sound ridiculous but [Typescript needs types](https://github.com/akutruff/typescript-needs-types).
 
 Read [this article in my blog](https://www.albertovarela.net/blog/2021/06/diod-dependency-injection-typescript/) if you want more context about the reasons behind DIOD.
 
