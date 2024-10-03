@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 21.x]
+        node-version: [18.x, 20.x, 22.x]
 
     steps:
       - name: Checkout
@@ -24,9 +24,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install pnpm
         id: pnpm-install
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
-          version: '8.15.4'
+          version: '9.12.0'
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
