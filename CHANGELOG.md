@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Dev dependencies updated.
+- Remove Eslint and Prettier and use Biome instead
+- Add documentation for autoregistering services
 
 ## [2.0.0] - 2022-11-08
 

@@ -54,6 +54,8 @@ Read [this article in my blog](https://www.albertovarela.net/blog/2021/06/diod-d
   Ability to tag services in the container and to query services based on tags.
 - **Lightweight**  
   DIOD will be always dependency-free and under 2kB.
+- **Automatic registration**  
+  It is not included by default but it can be achieved easily, check the [documentation](./docs/automatic-registration.md).
 
 ## Quick Start Guide
 

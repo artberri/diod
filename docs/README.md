@@ -14,4 +14,5 @@ Welcome to the DIOD Documentation!
 - [Disabling autowire (or declaring dependencies manually)](./disable-autowire.md)
 - [Register private services](./visibility.md)
 - [Tagging services](./tagging.md)
+- [Automatic registration](./automatic-registration.md)
 - [API Reference](./api/README.md)
