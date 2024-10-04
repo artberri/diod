@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/ban-types */
-
 /**
  * Represents a newable class.
  * @typeParam T Class type.
  */
+
+// biome-ignore lint/complexity/noBannedTypes: <explanation>
 export interface Newable<T> extends Function {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	new (...args: any[]): T
 }
 
@@ -13,6 +13,8 @@ export interface Newable<T> extends Function {
  * Represents an abstract class.
  * @typeParam T Class type.
  */
+
+// biome-ignore lint/complexity/noBannedTypes: <explanation>
 export interface Abstract<T> extends Function {
 	prototype: T
 }
@@ -41,7 +43,7 @@ export interface Container {
 	 * @typeParam T The type of the returned services.
 	 * @returns An array of service identifiers tagged with the given tag.
 	 */
-	findTaggedServiceIdentifiers<T = unknown>(tag: string): Array<Identifier<T>>
+	findTaggedServiceIdentifiers<T = unknown>(tag: string): Identifier<T>[]
 }
 
 /**
@@ -56,6 +58,7 @@ export type Factory<T> = (container: Container) => T
  * Represents an instance of a class.
  * @typeParam T Class type.
  */
+// biome-ignore lint/complexity/noBannedTypes: <explanation>
 export type Instance<T> = T & Object
 
 /**
@@ -116,7 +119,7 @@ export interface WithDependencies {
 	 * order to the constructor.
 	 * @returns
 	 */
-	withDependencies(dependencies: Array<Identifier<unknown>>): this
+	withDependencies(dependencies: Identifier<unknown>[]): this
 }
 
 export interface Registration<T> {

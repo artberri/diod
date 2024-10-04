@@ -4,8 +4,8 @@ import { ContainerBuilder } from '../src/diod'
 import {
 	BankUser,
 	SessionManager,
-	ShoppingCart,
 	ShopUser,
+	ShoppingCart,
 } from './fixtures/user'
 
 void tap.test(

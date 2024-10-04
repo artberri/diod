@@ -1,7 +1,7 @@
-import { Buildable, ServiceData } from '../internal-types'
+import type { Buildable, ServiceData } from '../internal-types'
 import { RegistrationType } from '../registration-type'
 import { ScopeType } from '../scope-type'
-import { Instance } from '../types'
+import type { Instance } from '../types'
 import { ServiceConfiguration } from './service-configuration'
 
 export class InstanceConfiguration<T> extends ServiceConfiguration<T> {

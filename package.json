@@ -16,13 +16,8 @@
 	"module": "lib/diod.es.js",
 	"browser": "lib/diod.umd.js",
 	"typings": "lib/diod.d.ts",
-	"files": [
-		"lib",
-		"CHANGELOG.md"
-	],
-	"browserslist": [
-		"> 1%, not dead, not ie 11, not op_mini all"
-	],
+	"files": ["lib", "CHANGELOG.md"],
+	"browserslist": ["> 1%, not dead, not ie 11, not op_mini all"],
 	"scripts": {
 		"build": "pnpm run clean && pnpm run compile && pnpm run size",
 		"clean": "rimraf lib/ .tap/",
@@ -32,7 +27,7 @@
 		"docs": "rimraf docs/api && typedoc --plugin typedoc-plugin-markdown",
 		"hook:commit-msg": "commitlint -e",
 		"hook:pre-commit": "pnpm run qa",
-		"lint": "eslint .",
+		"lint": "biome check",
 		"qa": "pnpm run lint && pnpm run type-check && pnpm run test",
 		"prepack": "pnpm run qa && pnpm run build",
 		"size": "size-limit",
@@ -55,18 +50,13 @@
 	},
 	"homepage": "https://github.com/artberri/diod#readme",
 	"devDependencies": {
+		"@biomejs/biome": "1.9.3",
 		"@commitlint/cli": "^19.5.0",
 		"@commitlint/config-conventional": "^19.5.0",
 		"@size-limit/preset-small-lib": "^11.1.6",
 		"@types/node": "^22.7.4",
 		"@types/tap": "^15.0.12",
-		"@typescript-eslint/eslint-plugin": "^7.0.2",
-		"@typescript-eslint/parser": "^7.0.2",
 		"esbuild": "^0.24.0",
-		"eslint": "^8.57.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-import": "^2.29.1",
-		"prettier": "3.2.5",
 		"reflect-metadata": "^0.2.2",
 		"rimraf": "^6.0.1",
 		"rollup": "^4.24.0",

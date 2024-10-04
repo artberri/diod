@@ -1,9 +1,9 @@
 import { ClassConfiguration } from './configurations/class-configuration'
 import { FactoryConfiguration } from './configurations/factory-configuration'
 import { InstanceConfiguration } from './configurations/instance-configuration'
-import { ServiceConfiguration } from './configurations/service-configuration'
-import { Buildable, ServiceData } from './internal-types'
-import {
+import type { ServiceConfiguration } from './configurations/service-configuration'
+import type { Buildable, ServiceData } from './internal-types'
+import type {
 	BuildOptions,
 	ConfigurableRegistration,
 	Factory,

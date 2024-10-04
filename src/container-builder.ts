@@ -1,7 +1,7 @@
 import { DiodContainer } from './container'
-import { Buildable, ServiceData } from './internal-types'
+import type { Buildable, ServiceData } from './internal-types'
 import { DiodRegistration } from './registration'
-import {
+import type {
 	BuildOptions,
 	ConfigurableRegistration,
 	Container,
@@ -17,7 +17,6 @@ import { verify } from './verifier'
  * Used to build an {@link Container} from service registrations.
  */
 export class ContainerBuilder {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	private readonly buildables = new Map<
 		Identifier<unknown>,
 		Buildable<Registration<unknown>, unknown>

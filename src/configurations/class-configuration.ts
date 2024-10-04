@@ -1,8 +1,8 @@
-import { Buildable, ServiceData } from '../internal-types'
+import type { Buildable, ServiceData } from '../internal-types'
 import { getDependencies, getDependencyCount } from '../reflection'
 import { RegistrationType } from '../registration-type'
 import { ScopeType } from '../scope-type'
-import {
+import type {
 	BuildOptions,
 	Identifier,
 	Newable,
@@ -16,14 +16,14 @@ export class ClassConfiguration<T>
 	implements WithScopeChange, WithDependencies
 {
 	protected scope = ScopeType.Transient
-	private dependencies: Array<Identifier<unknown>> = []
+	private dependencies: Identifier<unknown>[] = []
 	private autowire = true
 
 	private constructor(private readonly newable: Newable<T>) {
 		super()
 	}
 
-	public withDependencies(dependencies: Array<Identifier<unknown>>): this {
+	public withDependencies(dependencies: Identifier<unknown>[]): this {
 		this.dependencies = dependencies
 		this.autowire = false
 		return this

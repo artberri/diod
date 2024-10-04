@@ -3,11 +3,11 @@ import tap from 'tap'
 import { ContainerBuilder } from '../src/diod'
 import { Agenda, Schedule } from './fixtures/agenda'
 import {
-	circular1,
 	Circular1,
-	circular2,
 	Circular2,
 	Circular3,
+	circular1,
+	circular2,
 } from './fixtures/circular'
 import { Clock } from './fixtures/clock'
 import { Routes } from './fixtures/extended-classes'
@@ -24,7 +24,9 @@ void tap.test('throws error when there is not completed registration', (t) => {
 	t.throws(() => {
 		// Act
 		builder.build()
-	}, new Error('Service NotDecorated registration is not completed. Use .registerAndUse(NotDecorated) instead of .register(NotDecorated) to use it directly or set any other registration use'))
+	}, new Error(
+		'Service NotDecorated registration is not completed. Use .registerAndUse(NotDecorated) instead of .register(NotDecorated) to use it directly or set any other registration use',
+	))
 	t.end()
 })
 
@@ -55,7 +57,9 @@ void tap.test(
 		t.throws(() => {
 			// Act
 			builder.build()
-		}, new Error('Service not registered for the following dependencies of Agenda: Clock, Calendar'))
+		}, new Error(
+			'Service not registered for the following dependencies of Agenda: Clock, Calendar',
+		))
 		t.end()
 	},
 )
@@ -72,7 +76,9 @@ void tap.test(
 		t.throws(() => {
 			// Act
 			builder.build()
-		}, new Error('Service not registered for the following dependencies of Agenda: Clock'))
+		}, new Error(
+			'Service not registered for the following dependencies of Agenda: Clock',
+		))
 		t.end()
 	},
 )
@@ -122,7 +128,9 @@ void tap.test(
 		t.throws(() => {
 			// Act
 			builder.build({ autowire: false })
-		}, new Error('Dependencies must be provided for non autowired services. Service with missing dependencies: BankUser'))
+		}, new Error(
+			'Dependencies must be provided for non autowired services. Service with missing dependencies: BankUser',
+		))
 		t.end()
 	},
 )
@@ -138,7 +146,9 @@ void tap.test('throws error if circular dependencies are detected', (t) => {
 	t.throws(() => {
 		// Act
 		builder.build({ autowire: false })
-	}, new Error('Circular dependency detected: Circular1 -> Circular2 -> Circular3 -> Circular1'))
+	}, new Error(
+		'Circular dependency detected: Circular1 -> Circular2 -> Circular3 -> Circular1',
+	))
 	t.end()
 })
 
@@ -173,7 +183,9 @@ void tap.test('throws error if service is registered twice', (t) => {
 	t.throws(() => {
 		// Act
 		builder.registerAndUse(Clock)
-	}, new Error('A service identified as Clock has been already registered. You need to unregister it before you can register it again.'))
+	}, new Error(
+		'A service identified as Clock has been already registered. You need to unregister it before you can register it again.',
+	))
 	t.end()
 })
 

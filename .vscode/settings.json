@@ -1,0 +1,17 @@
+{
+	"editor.defaultFormatter": "biomejs.biome",
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"editor.codeActionsOnSave": {
+		"quickfix.biome": "explicit",
+		"source.organizeImports.biome": "explicit"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"biome.lspBin": "node_modules/.bin/biome"
+}

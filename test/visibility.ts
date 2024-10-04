@@ -26,7 +26,9 @@ void tap.test(
 		t.throws(() => {
 			// Act
 			container.get(Calendar)
-		}, new Error('The Calendar service has been registered as private and can not be directly get from the container'))
+		}, new Error(
+			'The Calendar service has been registered as private and can not be directly get from the container',
+		))
 		t.end()
 	},
 )

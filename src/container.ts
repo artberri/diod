@@ -1,7 +1,7 @@
-import { ServiceData } from './internal-types'
+import type { ServiceData } from './internal-types'
 import { RegistrationType } from './registration-type'
 import { ScopeType } from './scope-type'
-import { Container, Identifier } from './types'
+import type { Container, Identifier } from './types'
 
 export class DiodContainer implements Container {
 	private readonly singletons = new Map<Identifier<unknown>, unknown>()
@@ -23,10 +23,10 @@ export class DiodContainer implements Container {
 
 	public findTaggedServiceIdentifiers<T = unknown>(
 		tag: string,
-	): Array<Identifier<T>> {
+	): Identifier<T>[] {
 		return Array.from(this.services)
 			.filter(([, data]) => data.tags.indexOf(tag) >= 0)
-			.map(([id]) => id) as Array<Identifier<T>>
+			.map(([id]) => id) as Identifier<T>[]
 	}
 
 	private getService<T>(
@@ -38,7 +38,9 @@ export class DiodContainer implements Container {
 
 		if (data.scope === ScopeType.Singleton && this.singletons.has(identifier)) {
 			return this.singletons.get(identifier) as T
-		} else if (
+		}
+
+		if (
 			data.scope === ScopeType.Request &&
 			perRequestServices.has(identifier)
 		) {
@@ -95,7 +97,7 @@ export class DiodContainer implements Container {
 	}
 
 	private getDependencies(
-		dependencyIdentifiers: Array<Identifier<unknown>>,
+		dependencyIdentifiers: Identifier<unknown>[],
 		perRequestServices: Map<Identifier<unknown>, unknown>,
 	): unknown[] {
 		const dependencies = new Array<unknown>()

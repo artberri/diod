@@ -1,11 +1,11 @@
-import { Abstract } from './types'
+import type { Abstract } from './types'
 
 const PARAM_TYPES = 'design:paramtypes'
 
 const getDependenciesFromDecoratedServiceOrThrow = <T>(
 	target: Abstract<T>,
 	parents: string[],
-): Array<Abstract<unknown>> => {
+): Abstract<unknown>[] => {
 	const dependencies = Reflect.getMetadata(PARAM_TYPES, target) || []
 	if (dependencies.length < target.length) {
 		throw new Error(
@@ -28,12 +28,13 @@ const getBaseClass = <T extends B, B>(
 }
 
 function stripComments(code: string): string {
-	// Remove single-line comments (// ...)
-	code = code.replace(/\/\/.*$/gm, '')
-	// Remove multi-line comments (/* ... */)
-	code = code.replace(/\/\*[\s\S]*?\*\//g, '')
+	const codeWithoutSingleLineComments = code.replace(/\/\/.*$/gm, '')
+	const codeWithoutComments = codeWithoutSingleLineComments.replace(
+		/\/\*[\s\S]*?\*\//g,
+		'',
+	)
 
-	return code
+	return codeWithoutComments
 }
 
 // This function is used to determine if a class has a constructor without parameters
@@ -50,7 +51,7 @@ const hasOwnConstructorWithoutParams = <T>(target: Abstract<T>): boolean => {
 export const getDependencies = <T>(
 	target: Abstract<T>,
 	parents: string[] = [],
-): Array<Abstract<unknown>> => {
+): Abstract<unknown>[] => {
 	const dependencies = getDependenciesFromDecoratedServiceOrThrow(
 		target,
 		parents,

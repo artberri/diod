@@ -1,6 +1,12 @@
-import { RegistrationType } from './registration-type'
-import { ScopeType } from './scope-type'
-import { Abstract, BuildOptions, Factory, Instance, Newable } from './types'
+import type { RegistrationType } from './registration-type'
+import type { ScopeType } from './scope-type'
+import type {
+	Abstract,
+	BuildOptions,
+	Factory,
+	Instance,
+	Newable,
+} from './types'
 
 type ConfigurationServiceData = {
 	isPrivate: boolean
@@ -12,7 +18,7 @@ export type ClassServiceData<T> = {
 	class: Newable<T>
 	autowire: boolean
 	type: RegistrationType.Class
-	dependencies: Array<Abstract<unknown>>
+	dependencies: Abstract<unknown>[]
 } & ConfigurationServiceData
 
 export type FactoryServiceData<T> = {

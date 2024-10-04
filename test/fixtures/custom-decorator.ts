@@ -1,5 +1,5 @@
 export const MyAppService = (): ClassDecorator => {
-	// eslint-disable-next-line @typescript-eslint/ban-types
+	// biome-ignore lint/complexity/noBannedTypes: <explanation>
 	return <TFunction extends Function>(target: TFunction): TFunction => {
 		return target
 	}

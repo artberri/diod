@@ -1,6 +1,6 @@
-import { ServiceData } from '../internal-types'
+import type { ServiceData } from '../internal-types'
 import { ScopeType } from '../scope-type'
-import { BuildOptions, ConfigurableRegistration } from '../types'
+import type { BuildOptions, ConfigurableRegistration } from '../types'
 
 export abstract class ServiceConfiguration<T>
 	implements ConfigurableRegistration
