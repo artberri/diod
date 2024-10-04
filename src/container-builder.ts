@@ -79,7 +79,7 @@ export class ContainerBuilder {
 	}
 
 	/**
-	 * Builds an inmutable {@link Container}.
+	 * Builds an immutable {@link Container}.
 	 * @param options Build options.
 	 * @returns
 	 */

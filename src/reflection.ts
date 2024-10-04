@@ -27,6 +27,26 @@ const getBaseClass = <T extends B, B>(
 	return baseClass
 }
 
+function stripComments(code: string): string {
+	// Remove single-line comments (// ...)
+	code = code.replace(/\/\/.*$/gm, '')
+	// Remove multi-line comments (/* ... */)
+	code = code.replace(/\/\*[\s\S]*?\*\//g, '')
+
+	return code
+}
+
+// This function is used to determine if a class has a constructor without parameters
+// not derived from a base class. It is a hacky way to determine if a class has a constructor
+// defined. Open to suggestions on how to improve this.
+const hasOwnConstructorWithoutParams = <T>(target: Abstract<T>): boolean => {
+	const prototype = target.prototype as object
+	const classString = stripComments(prototype.constructor.toString())
+	const constructorRegex = /\s*constructor\s*\(\s*\)\s*\{/
+
+	return constructorRegex.test(classString)
+}
+
 export const getDependencies = <T>(
 	target: Abstract<T>,
 	parents: string[] = [],
@@ -38,6 +58,10 @@ export const getDependencies = <T>(
 
 	if (dependencies.length > 0) {
 		return dependencies
+	}
+
+	if (hasOwnConstructorWithoutParams(target)) {
+		return []
 	}
 
 	const baseClass = getBaseClass(target)

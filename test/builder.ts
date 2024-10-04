@@ -10,6 +10,7 @@ import {
 	Circular3,
 } from './fixtures/circular'
 import { Clock } from './fixtures/clock'
+import { Routes } from './fixtures/extended-classes'
 import { NotDecorated } from './fixtures/not-decorated'
 import { NotPerson } from './fixtures/not-person'
 import { BankUser } from './fixtures/user'
@@ -88,6 +89,24 @@ void tap.test(
 			// Act
 			builder.build()
 		}, new Error('Service not decorated: NotPerson -> NotDecorated'))
+		t.end()
+	},
+)
+
+void tap.test(
+	'does not throw error when service with contructor without parameters extends not decorated service with constructor dependencies',
+	(t) => {
+		// Arrange
+		const builder = new ContainerBuilder()
+		builder.registerAndUse(Routes)
+		const container = builder.build()
+
+		// Act
+		const routes = container.get(Routes)
+
+		// Assert
+		t.equal(routes.constructor.name, 'Routes')
+		t.equal(routes.getRoute(), 'aRoute')
 		t.end()
 	},
 )

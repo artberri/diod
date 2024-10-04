@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Drop support for Node.js v17 and lower.
 
+### Fixed
+
+- Derived classes with parameterless constructor should not require base class registration ([#16](https://github.com/artberri/diod/issues/16)) from [@ADRFranklin](https://github.com/ADRFranklin).
+
 ### Changed
 
 - Dev dependencies updated.

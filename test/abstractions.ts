@@ -10,6 +10,8 @@ import { Sayer } from './fixtures/sayer'
 void tap.test(
 	'the constructor of the extended class is injected if target has not constructor',
 	(t) => {
+		t.capture(console, 'log')
+
 		// Arrange
 		const builder = new ContainerBuilder()
 		builder.registerAndUse(Person)
@@ -29,6 +31,8 @@ void tap.test(
 void tap.test(
 	'abstractions can be used as identifiers but concrete class instances are recovered',
 	(t) => {
+		t.capture(console, 'log')
+
 		// Arrange
 		const builder = new ContainerBuilder()
 		builder.register(Sayer).use(Person)
