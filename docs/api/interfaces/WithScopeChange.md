@@ -1,10 +1,14 @@
+[**DIOD v3.0.0**](../README.md) • **Docs**
+
+***
+
 # Interface: WithScopeChange
 
 ## Methods
 
-### asInstancePerRequest
+### asInstancePerRequest()
 
-▸ **asInstancePerRequest**(): `this`
+> **asInstancePerRequest**(): `this`
 
 Configure the service so that the same shared instance is used during
 within a [Container](Container.md).get request.
@@ -13,11 +17,11 @@ within a [Container](Container.md).get request.
 
 `this`
 
-___
+***
 
-### asSingleton
+### asSingleton()
 
-▸ **asSingleton**(): `this`
+> **asSingleton**(): `this`
 
 Configure the service so that always gets the same, shared instance.
 
@@ -25,11 +29,11 @@ Configure the service so that always gets the same, shared instance.
 
 `this`
 
-___
+***
 
-### asTransient
+### asTransient()
 
-▸ **asTransient**(): `this`
+> **asTransient**(): `this`
 
 Configure the service so that always gets a new instance.
 

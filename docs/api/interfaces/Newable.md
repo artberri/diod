@@ -1,30 +1,30 @@
+[**DIOD v3.0.0**](../README.md) • **Docs**
+
+***
+
 # Interface: Newable\<T\>
 
 Represents a newable class.
 
-## Type parameters
-
-| Name | Description |
-| :------ | :------ |
-| `T` | Class type. |
-
-## Hierarchy
+## Extends
 
 - `Function`
 
-  ↳ **`Newable`**
+## Type Parameters
+
+• **T**
+
+Class type.
 
 ## Constructors
 
-### constructor
+### new Newable()
 
-• **new Newable**(`...args`): `T`
+> **new Newable**(...`args`): `T`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...args` | `any`[] |
+• ...**args**: `any`[]
 
 #### Returns
 
@@ -32,4 +32,4 @@ Represents a newable class.
 
 #### Inherited from
 
-Function.constructor
+`Function.constructor`

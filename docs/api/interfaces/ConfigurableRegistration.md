@@ -1,30 +1,32 @@
+[**DIOD v3.0.0**](../README.md) • **Docs**
+
+***
+
 # Interface: ConfigurableRegistration
 
 Configuration that allows scope change
 
 ## Methods
 
-### addTag
+### addTag()
 
-▸ **addTag**(`tag`): `this`
+> **addTag**(`tag`): `this`
 
 Tag the service (the tag will be added to previously added tags if there are).
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `tag` | `string` |
+• **tag**: `string`
 
 #### Returns
 
 `this`
 
-___
+***
 
-### private
+### private()
 
-▸ **private**(): `this`
+> **private**(): `this`
 
 The service can only be used as a dependency and it can't be queried from the container.
 
@@ -32,11 +34,11 @@ The service can only be used as a dependency and it can't be queried from the co
 
 `this`
 
-___
+***
 
-### public
+### public()
 
-▸ **public**(): `this`
+> **public**(): `this`
 
 The service can be used as a dependency and it can be queried from the container.
 

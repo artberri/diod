@@ -1,25 +1,27 @@
+[**DIOD v3.0.0**](../README.md) • **Docs**
+
+***
+
 # Interface: Registration\<T\>
 
-## Type parameters
+## Type Parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 ## Methods
 
-### use
+### use()
 
-▸ **use**(`newable`): [`ConfigurableRegistration`](ConfigurableRegistration.md) & [`WithScopeChange`](WithScopeChange.md) & [`WithDependencies`](WithDependencies.md)
+> **use**(`newable`): [`ConfigurableRegistration`](ConfigurableRegistration.md) & [`WithScopeChange`](WithScopeChange.md) & [`WithDependencies`](WithDependencies.md)
 
 Configure the class implementation that the identifier will provide.
 Alias of `useClass`.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `newable` | [`Newable`](Newable.md)\<`T`\> | The implementation that the identifier will provide. |
+• **newable**: [`Newable`](Newable.md)\<`T`\>
+
+The implementation that the identifier will provide.
 
 #### Returns
 
@@ -27,19 +29,19 @@ Alias of `useClass`.
 
 Configuration fluent API for classes
 
-___
+***
 
-### useClass
+### useClass()
 
-▸ **useClass**(`newable`): [`ConfigurableRegistration`](ConfigurableRegistration.md) & [`WithScopeChange`](WithScopeChange.md) & [`WithDependencies`](WithDependencies.md)
+> **useClass**(`newable`): [`ConfigurableRegistration`](ConfigurableRegistration.md) & [`WithScopeChange`](WithScopeChange.md) & [`WithDependencies`](WithDependencies.md)
 
 Configure the class implementation that the identifier will provide.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `newable` | [`Newable`](Newable.md)\<`T`\> | The implementation that the identifier will provide. |
+• **newable**: [`Newable`](Newable.md)\<`T`\>
+
+The implementation that the identifier will provide.
 
 #### Returns
 
@@ -47,19 +49,19 @@ Configure the class implementation that the identifier will provide.
 
 Configuration fluent API for classes
 
-___
+***
 
-### useFactory
+### useFactory()
 
-▸ **useFactory**(`factory`): [`ConfigurableRegistration`](ConfigurableRegistration.md) & [`WithScopeChange`](WithScopeChange.md)
+> **useFactory**(`factory`): [`ConfigurableRegistration`](ConfigurableRegistration.md) & [`WithScopeChange`](WithScopeChange.md)
 
 Configure a factory that returns the instance that the identifier will provide.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `factory` | [`Factory`](../README.md#factory)\<`T`\> | The factory that will be executed when the identifier is requested. |
+• **factory**: [`Factory`](../type-aliases/Factory.md)\<`T`\>
+
+The factory that will be executed when the identifier is requested.
 
 #### Returns
 
@@ -67,19 +69,19 @@ Configure a factory that returns the instance that the identifier will provide.
 
 Configuration fluent API for factories
 
-___
+***
 
-### useInstance
+### useInstance()
 
-▸ **useInstance**(`instance`): [`ConfigurableRegistration`](ConfigurableRegistration.md)
+> **useInstance**(`instance`): [`ConfigurableRegistration`](ConfigurableRegistration.md)
 
 Configure the instance that the identifier will provide.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `instance` | [`Instance`](../README.md#instance)\<`T`\> | The instance that the identifier will provide. |
+• **instance**: [`Instance`](../type-aliases/Instance.md)\<`T`\>
+
+The instance that the identifier will provide.
 
 #### Returns
 

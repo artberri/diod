@@ -1,25 +1,27 @@
+[**DIOD v3.0.0**](../README.md) • **Docs**
+
+***
+
 # Interface: Abstract\<T\>
 
 Represents an abstract class.
 
-## Type parameters
-
-| Name | Description |
-| :------ | :------ |
-| `T` | Class type. |
-
-## Hierarchy
+## Extends
 
 - `Function`
 
-  ↳ **`Abstract`**
+## Type Parameters
+
+• **T**
+
+Class type.
 
 ## Properties
 
 ### prototype
 
-• **prototype**: `T`
+> **prototype**: `T`
 
 #### Overrides
 
-Function.prototype
+`Function.prototype`

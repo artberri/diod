@@ -9,6 +9,5 @@
 	"excludeProtected": true,
 	"excludeInternal": true,
 	"hideBreadcrumbs": true,
-	"hideInPageTOC": true,
 	"disableSources": true
 }
