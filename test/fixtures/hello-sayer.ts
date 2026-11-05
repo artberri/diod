@@ -13,8 +13,8 @@ export class OtherSayer implements Sayer {
 
 @Service()
 export abstract class HelloSayer extends OtherSayer implements Sayer {
-	public abstract rand: number
-	public say(): void {
+	public abstract override rand: number
+	public override say(): void {
 		this.logger.info('hello')
 	}
 }

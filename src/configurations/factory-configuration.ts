@@ -14,15 +14,15 @@ export class FactoryConfiguration<T>
 		super()
 	}
 
-	public asTransient(): this {
+	public override asTransient(): this {
 		return super.asTransient()
 	}
 
-	public asSingleton(): this {
+	public override asSingleton(): this {
 		return super.asSingleton()
 	}
 
-	public asInstancePerRequest(): this {
+	public override asInstancePerRequest(): this {
 		return super.asInstancePerRequest()
 	}
 
