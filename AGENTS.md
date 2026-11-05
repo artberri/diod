@@ -22,11 +22,11 @@ DIOD is a dependency injection container for TypeScript and JavaScript, publishe
 - `pnpm run qa` runs lint, type-check and tests. A change is done when it passes. The pre-commit hook runs it too, once `git config core.hooksPath .githooks` is set.
 - Run `pnpm run build` after changing `src/`. It bundles `lib/` and fails if the bundle goes over the size limit.
 - `pnpm exec biome check --write` fixes formatting and import order.
-- tap requires 100% coverage: if coverage is lower, the run fails even when every test passes. Running a single test file gives partial coverage, so add `--allow-incomplete-coverage` while you work (`pnpm exec tap --allow-incomplete-coverage test/scope.ts`), and finish with a full `pnpm run qa`.
+- `pnpm run test` requires 100% coverage: if coverage is lower, the run fails even when every test passes. While you work, run single files without coverage (`pnpm exec vitest run test/scope.ts`), and finish with a full `pnpm run qa`.
 
 ## Tests
 
-- Each feature has one test file in `test/`. Classes shared between tests go in `test/fixtures/`. tap skips any `fixtures` folder, so a test file put there never runs.
+- Each feature has one test file in `test/`. Classes shared between tests go in `test/fixtures/`. Vitest only runs `test/*.ts`, so a test file put in `test/fixtures/` never runs.
 - Tests import `reflect-metadata` first and then use only `../src/diod`. Internal code gets its coverage through the public API.
 - Fix bugs test-first: write a test that fails because of the bug, then fix it.
 

@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import tap from 'tap'
+import { expect, test } from 'vitest'
 import { ContainerBuilder } from '../src/diod'
 import { Agenda } from './fixtures/agenda'
 import { Calendar } from './fixtures/calendar'
@@ -8,7 +8,7 @@ import { ConsoleLogger } from './fixtures/console-logger'
 import { Person } from './fixtures/person'
 import { Sayer } from './fixtures/sayer'
 
-void tap.test('returns manually created class instance', (t) => {
+test('returns manually created class instance', () => {
 	// Arrange
 	const clock = new Clock()
 	const person = new Person(new ConsoleLogger())
@@ -23,8 +23,7 @@ void tap.test('returns manually created class instance', (t) => {
 	const container = builder.build()
 
 	// Assert
-	t.equal(container.get(Sayer).rand, person.rand)
-	t.equal(container.get(Clock).rand, clock.rand)
-	t.equal(container.get(Agenda).clock.rand, clock.rand)
-	t.end()
+	expect(container.get(Sayer).rand).toBe(person.rand)
+	expect(container.get(Clock).rand).toBe(clock.rand)
+	expect(container.get(Agenda).clock.rand).toBe(clock.rand)
 })

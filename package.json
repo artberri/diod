@@ -20,10 +20,10 @@
 	"browserslist": ["> 1%, not dead, not ie 11, not op_mini all"],
 	"scripts": {
 		"build": "pnpm run clean && pnpm run compile && pnpm run size",
-		"clean": "rimraf lib/ .tap/",
+		"clean": "rimraf lib/ coverage/",
 		"compile": "rollup -c",
-		"coverage:html": "tap report html",
-		"coverage:cobertura": "tap report cobertura",
+		"coverage:html": "vitest run --coverage --coverage.reporter=html",
+		"coverage:cobertura": "vitest run --coverage --coverage.reporter=cobertura",
 		"docs": "rimraf docs/api && typedoc --plugin typedoc-plugin-markdown",
 		"hook:commit-msg": "commitlint -e",
 		"hook:pre-commit": "pnpm run qa",
@@ -31,8 +31,8 @@
 		"qa": "pnpm run lint && pnpm run type-check && pnpm run test",
 		"prepack": "pnpm run qa && pnpm run build",
 		"size": "size-limit",
-		"test": "pnpm run clean && tap ",
-		"test:watch": "tap --watch",
+		"test": "vitest run --coverage",
+		"test:watch": "vitest",
 		"type-check": "tsc -p tsconfig.json --noEmit"
 	},
 	"author": {
@@ -55,7 +55,7 @@
 		"@commitlint/config-conventional": "^19.5.0",
 		"@size-limit/preset-small-lib": "^11.1.6",
 		"@types/node": "^22.7.4",
-		"@types/tap": "^15.0.12",
+		"@vitest/coverage-v8": "^5.1.0",
 		"esbuild": "^0.24.0",
 		"reflect-metadata": "^0.2.2",
 		"rimraf": "^6.0.1",
@@ -63,11 +63,10 @@
 		"rollup-plugin-dts": "^6.1.1",
 		"rollup-plugin-esbuild": "^6.1.1",
 		"size-limit": "^11.1.6",
-		"tap": "^21.0.1",
-		"ts-node": "^10.9.2",
 		"typedoc": "^0.26.7",
 		"typedoc-plugin-markdown": "^4.2.9",
-		"typescript": "^5.6.2"
+		"typescript": "^5.6.2",
+		"vitest": "^5.1.0"
 	},
 	"size-limit": [
 		{

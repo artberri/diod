@@ -7,9 +7,13 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Tap current file",
-			"program": "${workspaceFolder}/${relativeFile}",
-			"cwd": "${workspaceFolder}"
+			"name": "Debug current test file",
+			"autoAttachChildProcesses": true,
+			"skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+			"program": "${workspaceRoot}/node_modules/vitest/vitest.mjs",
+			"args": ["run", "${relativeFile}"],
+			"smartStep": true,
+			"console": "integratedTerminal"
 		}
 	]
 }

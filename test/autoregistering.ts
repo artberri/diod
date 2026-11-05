@@ -1,10 +1,10 @@
 import 'reflect-metadata'
-import tap from 'tap'
+import { expect, test } from 'vitest'
 import { ContainerBuilder } from '../src/diod'
 import { AutoRegisteredServiceSample } from './fixtures/autoregistered-services'
 import { autoregister } from './fixtures/register-service-decorator'
 
-void tap.test('autoregisters classes with custom decorator', (t) => {
+test('autoregisters classes with custom decorator', () => {
 	// Act
 	const builder = new ContainerBuilder()
 	autoregister(builder)
@@ -12,7 +12,6 @@ void tap.test('autoregisters classes with custom decorator', (t) => {
 
 	// Assert
 	const service = container.get(AutoRegisteredServiceSample)
-	t.equal(service.constructor.name, 'AutoRegisteredServiceSample')
-	t.not(service.now(), '')
-	t.end()
+	expect(service.constructor.name).toBe('AutoRegisteredServiceSample')
+	expect(service.now()).not.toBe('')
 })

@@ -3,4 +3,4 @@ node_modules/
 .nvmrc
 lib/
 *.log
-.tap
+coverage/

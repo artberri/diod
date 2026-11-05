@@ -1,11 +1,11 @@
 import 'reflect-metadata'
-import tap from 'tap'
+import { expect, test } from 'vitest'
 import { ContainerBuilder } from '../src/diod'
 import { OtherServiceWithCustomDecorator } from './fixtures/other-service-with-custom-decorator'
 import { ServiceWithCustomDecorator } from './fixtures/service-with-custom-decorator'
 import { Truer } from './fixtures/truer'
 
-void tap.test('user defined decorators can be used', (t) => {
+test('user defined decorators can be used', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 	builder.registerAndUse(ServiceWithCustomDecorator)
@@ -16,7 +16,6 @@ void tap.test('user defined decorators can be used', (t) => {
 	const service = container.get(ServiceWithCustomDecorator)
 
 	// Assert
-	t.equal(service.constructor.name, 'ServiceWithCustomDecorator')
-	t.equal(service.execDep(), true)
-	t.end()
+	expect(service.constructor.name).toBe('ServiceWithCustomDecorator')
+	expect(service.execDep()).toBe(true)
 })

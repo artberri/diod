@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import tap from 'tap'
+import { expect, test } from 'vitest'
 import { ContainerBuilder } from '../src/diod'
 import { Agenda, Schedule } from './fixtures/agenda'
 import {
@@ -15,127 +15,110 @@ import { NotDecorated } from './fixtures/not-decorated'
 import { NotPerson } from './fixtures/not-person'
 import { BankUser } from './fixtures/user'
 
-void tap.test('throws error when there is not completed registration', (t) => {
+test('throws error when there is not completed registration', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 	builder.register(NotDecorated)
 
 	// Assert
-	t.throws(() => {
+	expect(() => {
 		// Act
 		builder.build()
-	}, new Error(
-		'Service NotDecorated registration is not completed. Use .registerAndUse(NotDecorated) instead of .register(NotDecorated) to use it directly or set any other registration use',
-	))
-	t.end()
+	}).toThrow(
+		new Error(
+			'Service NotDecorated registration is not completed. Use .registerAndUse(NotDecorated) instead of .register(NotDecorated) to use it directly or set any other registration use',
+		),
+	)
 })
 
-void tap.test(
-	'throws error when asked for a not decorated service with constructor dependencies',
-	(t) => {
-		// Arrange
-		const builder = new ContainerBuilder()
-		builder.registerAndUse(NotDecorated)
+test('throws error when asked for a not decorated service with constructor dependencies', () => {
+	// Arrange
+	const builder = new ContainerBuilder()
+	builder.registerAndUse(NotDecorated)
 
-		// Assert
-		t.throws(() => {
-			// Act
-			builder.build()
-		}, new Error('Service not decorated: NotDecorated'))
-		t.end()
-	},
-)
-
-void tap.test(
-	'throws error building a container with a registered service which has unregistered dependencies',
-	(t) => {
-		// Arrange
-		const builder = new ContainerBuilder()
-		builder.registerAndUse(Agenda)
-
-		// Assert
-		t.throws(() => {
-			// Act
-			builder.build()
-		}, new Error(
-			'Service not registered for the following dependencies of Agenda: Clock, Calendar',
-		))
-		t.end()
-	},
-)
-
-void tap.test(
-	'throws error building a container with a registered service which has a dependency with unregistered dependencies',
-	(t) => {
-		// Arrange
-		const builder = new ContainerBuilder()
-		builder.register(Schedule).use(Schedule)
-		builder.register(Agenda).use(Agenda)
-
-		// Assert
-		t.throws(() => {
-			// Act
-			builder.build()
-		}, new Error(
-			'Service not registered for the following dependencies of Agenda: Clock',
-		))
-		t.end()
-	},
-)
-
-void tap.test(
-	'throws error when service without contructor extends not decorated service with constructor dependencies',
-	(t) => {
-		// Arrange
-		const builder = new ContainerBuilder()
-		builder.registerAndUse(NotPerson)
-
-		// Assert
-		t.throws(() => {
-			// Act
-			builder.build()
-		}, new Error('Service not decorated: NotPerson -> NotDecorated'))
-		t.end()
-	},
-)
-
-void tap.test(
-	'does not throw error when service with contructor without parameters extends not decorated service with constructor dependencies',
-	(t) => {
-		// Arrange
-		const builder = new ContainerBuilder()
-		builder.registerAndUse(Routes)
-		const container = builder.build()
-
+	// Assert
+	expect(() => {
 		// Act
-		const routes = container.get(Routes)
+		builder.build()
+	}).toThrow(new Error('Service not decorated: NotDecorated'))
+})
 
-		// Assert
-		t.equal(routes.constructor.name, 'Routes')
-		t.equal(routes.getRoute(), 'aRoute')
-		t.end()
-	},
-)
+test('throws error building a container with a registered service which has unregistered dependencies', () => {
+	// Arrange
+	const builder = new ContainerBuilder()
+	builder.registerAndUse(Agenda)
 
-void tap.test(
-	'throws error when needed dependencies are not provided for non autowired service',
-	(t) => {
-		// Arrange
-		const builder = new ContainerBuilder()
-		builder.registerAndUse(BankUser)
+	// Assert
+	expect(() => {
+		// Act
+		builder.build()
+	}).toThrow(
+		new Error(
+			'Service not registered for the following dependencies of Agenda: Clock, Calendar',
+		),
+	)
+})
 
-		// Assert
-		t.throws(() => {
-			// Act
-			builder.build({ autowire: false })
-		}, new Error(
+test('throws error building a container with a registered service which has a dependency with unregistered dependencies', () => {
+	// Arrange
+	const builder = new ContainerBuilder()
+	builder.register(Schedule).use(Schedule)
+	builder.register(Agenda).use(Agenda)
+
+	// Assert
+	expect(() => {
+		// Act
+		builder.build()
+	}).toThrow(
+		new Error(
+			'Service not registered for the following dependencies of Agenda: Clock, Calendar',
+		),
+	)
+})
+
+test('throws error when service without contructor extends not decorated service with constructor dependencies', () => {
+	// Arrange
+	const builder = new ContainerBuilder()
+	builder.registerAndUse(NotPerson)
+
+	// Assert
+	expect(() => {
+		// Act
+		builder.build()
+	}).toThrow(new Error('Service not decorated: NotPerson -> NotDecorated'))
+})
+
+test('does not throw error when service with contructor without parameters extends not decorated service with constructor dependencies', () => {
+	// Arrange
+	const builder = new ContainerBuilder()
+	builder.registerAndUse(Routes)
+	const container = builder.build()
+
+	// Act
+	const routes = container.get(Routes)
+
+	// Assert
+	expect(routes.constructor.name).toBe('Routes')
+	expect(routes.getRoute()).toBe('aRoute')
+})
+
+test('throws error when needed dependencies are not provided for non autowired service', () => {
+	// Arrange
+	const builder = new ContainerBuilder()
+	builder.registerAndUse(BankUser)
+
+	// Assert
+	expect(() => {
+		// Act
+		builder.build({ autowire: false })
+	}).toThrow(
+		new Error(
 			'Dependencies must be provided for non autowired services. Service with missing dependencies: BankUser',
-		))
-		t.end()
-	},
-)
+		),
+	)
+})
 
-void tap.test('throws error if circular dependencies are detected', (t) => {
+test('throws error if circular dependencies are detected', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 	builder.registerAndUse(Circular1).withDependencies([Circular2])
@@ -143,79 +126,75 @@ void tap.test('throws error if circular dependencies are detected', (t) => {
 	builder.registerAndUse(Circular3).withDependencies([Circular1])
 
 	// Assert
-	t.throws(() => {
+	expect(() => {
 		// Act
 		builder.build({ autowire: false })
-	}, new Error(
-		'Circular dependency detected: Circular1 -> Circular2 -> Circular3 -> Circular1',
-	))
-	t.end()
+	}).toThrow(
+		new Error(
+			'Circular dependency detected: Circular1 -> Circular2 -> Circular3 -> Circular1',
+		),
+	)
 })
 
-void tap.test(
-	'does not throw circular dependency error when different classes with the same name are used',
-	(t) => {
-		// Arrange
-		const builder = new ContainerBuilder()
-		builder.registerAndUse(circular1.Circular1)
-		builder
-			.registerAndUse(circular2.Circular1)
-			.withDependencies([circular2.Circular2])
-		builder
-			.registerAndUse(circular2.Circular2)
-			.withDependencies([circular1.Circular1])
+test('does not throw circular dependency error when different classes with the same name are used', () => {
+	// Arrange
+	const builder = new ContainerBuilder()
+	builder.registerAndUse(circular1.Circular1)
+	builder
+		.registerAndUse(circular2.Circular1)
+		.withDependencies([circular2.Circular2])
+	builder
+		.registerAndUse(circular2.Circular2)
+		.withDependencies([circular1.Circular1])
 
-		// Assert
-		t.doesNotThrow(() => {
-			// Act
-			builder.build({ autowire: false })
-		})
-		t.end()
-	},
-)
+	// Assert
+	expect(() => {
+		// Act
+		builder.build({ autowire: false })
+	}).not.toThrow()
+})
 
-void tap.test('throws error if service is registered twice', (t) => {
+test('throws error if service is registered twice', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 	builder.registerAndUse(Clock)
 
 	// Assert
-	t.throws(() => {
+	expect(() => {
 		// Act
 		builder.registerAndUse(Clock)
-	}, new Error(
-		'A service identified as Clock has been already registered. You need to unregister it before you can register it again.',
-	))
-	t.end()
+	}).toThrow(
+		new Error(
+			'A service identified as Clock has been already registered. You need to unregister it before you can register it again.',
+		),
+	)
 })
 
-void tap.test('throws unregistering not registered service', (t) => {
+test('throws unregistering not registered service', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 	builder.registerAndUse(Clock)
 
 	// Assert
-	t.throws(() => {
+	expect(() => {
 		// Act
 		builder.unregister(Circular1)
-	}, new Error('There is no service registered as Circular1.'))
-	t.end()
+	}).toThrow(new Error('There is no service registered as Circular1.'))
 })
 
-void tap.test('throws unregistering not registered service', (t) => {
+test('throws unregistering not registered service', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 	builder.registerAndUse(Clock)
 
 	// Assert
-	t.throws(() => {
+	expect(() => {
 		// Act
 		builder.unregister(Circular1)
-	}, new Error('There is no service registered as Circular1.'))
-	t.end()
+	}).toThrow(new Error('There is no service registered as Circular1.'))
 })
 
-void tap.test('services can be unregistered', (t) => {
+test('services can be unregistered', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 	builder.registerAndUse(Clock)
@@ -224,11 +203,10 @@ void tap.test('services can be unregistered', (t) => {
 	builder.unregister(Clock)
 
 	// Assert
-	t.equal(builder.isRegistered(Clock), false)
-	t.end()
+	expect(builder.isRegistered(Clock)).toBe(false)
 })
 
-void tap.test('can query if a service is registered', (t) => {
+test('can query if a service is registered', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 	builder.registerAndUse(Clock)
@@ -238,7 +216,6 @@ void tap.test('can query if a service is registered', (t) => {
 	const isCircular1Registered = builder.isRegistered(Circular1)
 
 	// Assert
-	t.equal(isClockRegistered, true)
-	t.equal(isCircular1Registered, false)
-	t.end()
+	expect(isClockRegistered).toBe(true)
+	expect(isCircular1Registered).toBe(false)
 })

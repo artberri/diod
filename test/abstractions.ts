@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import tap from 'tap'
+import { expect, test, vi } from 'vitest'
 import { ContainerBuilder } from '../src/diod'
 import { ConsoleLogger } from './fixtures/console-logger'
 import { Conversation } from './fixtures/conversation'
@@ -7,45 +7,37 @@ import { Logger } from './fixtures/logger'
 import { Person } from './fixtures/person'
 import { Sayer } from './fixtures/sayer'
 
-void tap.test(
-	'the constructor of the extended class is injected if target has not constructor',
-	(t) => {
-		t.capture(console, 'log')
+test('the constructor of the extended class is injected if target has not constructor', () => {
+	vi.spyOn(console, 'log').mockReturnValue(undefined)
 
-		// Arrange
-		const builder = new ContainerBuilder()
-		builder.registerAndUse(Person)
-		builder.register(Logger).use(ConsoleLogger)
-		const container = builder.build()
+	// Arrange
+	const builder = new ContainerBuilder()
+	builder.registerAndUse(Person)
+	builder.register(Logger).use(ConsoleLogger)
+	const container = builder.build()
 
-		// Act
-		const person = container.get(Person)
+	// Act
+	const person = container.get(Person)
 
-		// Assert
-		t.equal(person.constructor.name, 'Person')
-		t.doesNotThrow(() => person.say())
-		t.end()
-	},
-)
+	// Assert
+	expect(person.constructor.name).toBe('Person')
+	expect(() => person.say()).not.toThrow()
+})
 
-void tap.test(
-	'abstractions can be used as identifiers but concrete class instances are recovered',
-	(t) => {
-		t.capture(console, 'log')
+test('abstractions can be used as identifiers but concrete class instances are recovered', () => {
+	vi.spyOn(console, 'log').mockReturnValue(undefined)
 
-		// Arrange
-		const builder = new ContainerBuilder()
-		builder.register(Sayer).use(Person)
-		builder.register(Logger).use(ConsoleLogger)
-		builder.registerAndUse(Conversation)
-		const container = builder.build()
+	// Arrange
+	const builder = new ContainerBuilder()
+	builder.register(Sayer).use(Person)
+	builder.register(Logger).use(ConsoleLogger)
+	builder.registerAndUse(Conversation)
+	const container = builder.build()
 
-		// Act
-		const sayer = container.get(Sayer)
+	// Act
+	const sayer = container.get(Sayer)
 
-		// Assert
-		t.equal(sayer.constructor.name, 'Person')
-		t.doesNotThrow(() => sayer.say())
-		t.end()
-	},
-)
+	// Assert
+	expect(sayer.constructor.name).toBe('Person')
+	expect(() => sayer.say()).not.toThrow()
+})

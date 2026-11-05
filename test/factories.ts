@@ -1,11 +1,11 @@
 import 'reflect-metadata'
-import tap from 'tap'
+import { expect, test } from 'vitest'
 import { ContainerBuilder } from '../src/diod'
 import { Agenda } from './fixtures/agenda'
 import { Calendar } from './fixtures/calendar'
 import { Clock } from './fixtures/clock'
 
-void tap.test('returns instances created with factories', (t) => {
+test('returns instances created with factories', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 	builder.registerAndUse(Calendar)
@@ -18,6 +18,5 @@ void tap.test('returns instances created with factories', (t) => {
 	const container = builder.build()
 
 	// Assert
-	t.equal(container.get(Agenda).constructor.name, 'Agenda')
-	t.end()
+	expect(container.get(Agenda).constructor.name).toBe('Agenda')
 })

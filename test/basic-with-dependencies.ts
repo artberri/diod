@@ -1,11 +1,11 @@
 import 'reflect-metadata'
-import tap from 'tap'
+import { expect, test } from 'vitest'
 import { ContainerBuilder } from '../src/diod'
 import { Agenda } from './fixtures/agenda'
 import { Calendar } from './fixtures/calendar'
 import { Clock } from './fixtures/clock'
 
-void tap.test('returns registered instance with basic dependencies', (t) => {
+test('returns registered instance with basic dependencies', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 	builder.register(Clock).use(Clock)
@@ -17,7 +17,6 @@ void tap.test('returns registered instance with basic dependencies', (t) => {
 	const agenda = container.get(Agenda)
 
 	// Assert
-	t.equal(agenda.constructor.name, 'Agenda')
-	t.not(agenda.now(), '')
-	t.end()
+	expect(agenda.constructor.name).toBe('Agenda')
+	expect(agenda.now()).not.toBe('')
 })

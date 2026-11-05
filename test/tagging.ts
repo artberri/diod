@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import tap from 'tap'
+import { expect, test } from 'vitest'
 import { ContainerBuilder, Identifier } from '../src/diod'
 import { Agenda } from './fixtures/agenda'
 import { Calendar } from './fixtures/calendar'
@@ -11,7 +11,7 @@ import { MultiAgenda } from './fixtures/multi-agenda'
 import { Person } from './fixtures/person'
 import { Sayer } from './fixtures/sayer'
 
-void tap.test('service identifiers can be get based on tag', (t) => {
+test('service identifiers can be get based on tag', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 
@@ -51,10 +51,9 @@ void tap.test('service identifiers can be get based on tag', (t) => {
 		container.findTaggedServiceIdentifiers<Sayer>('sayer')
 	const sayers = sayerIdentifiers.map((id) => container.get(id))
 	const agenda = container.get(Agenda)
-	t.equal(serviceIdentifiersTaggedWithTag1.length, 3)
-	t.equal(sayers.length, 2)
-	t.not(sayers[0]?.rand, undefined)
-	t.not(sayers[1]?.rand, undefined)
-	t.not(agenda.now(), '')
-	t.end()
+	expect(serviceIdentifiersTaggedWithTag1.length).toBe(3)
+	expect(sayers.length).toBe(2)
+	expect(sayers[0]?.rand).not.toBe(undefined)
+	expect(sayers[1]?.rand).not.toBe(undefined)
+	expect(agenda.now()).not.toBe('')
 })

@@ -1,37 +1,32 @@
 import 'reflect-metadata'
-import tap from 'tap'
+import { expect, test } from 'vitest'
 import { ContainerBuilder } from '../src/diod'
 import { Clock } from './fixtures/clock'
 import { ConsoleLogger } from './fixtures/console-logger'
 
-void tap.test(
-	'returns registered parameter-less constructor class instance',
-	(t) => {
-		// Arrange
-		const builder = new ContainerBuilder()
-		builder.registerAndUse(Clock)
-		const container = builder.build()
+test('returns registered parameter-less constructor class instance', () => {
+	// Arrange
+	const builder = new ContainerBuilder()
+	builder.registerAndUse(Clock)
+	const container = builder.build()
 
-		// Act
-		const clock = container.get(Clock)
+	// Act
+	const clock = container.get(Clock)
 
-		// Assert
-		t.equal(clock.constructor.name, 'Clock')
-		t.not(clock.now(), '')
-		t.end()
-	},
-)
+	// Assert
+	expect(clock.constructor.name).toBe('Clock')
+	expect(clock.now()).not.toBe('')
+})
 
-void tap.test('throws error when asked for an unregistered service', (t) => {
+test('throws error when asked for an unregistered service', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
 	builder.registerAndUse(Clock)
 	const container = builder.build()
 
 	// Assert
-	t.throws(() => {
+	expect(() => {
 		// Act
 		container.get(ConsoleLogger)
-	}, new Error('Service not registered for: ConsoleLogger'))
-	t.end()
+	}).toThrow(new Error('Service not registered for: ConsoleLogger'))
 })
