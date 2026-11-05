@@ -24,7 +24,7 @@
 		"compile": "rollup -c",
 		"coverage:html": "vitest run --coverage --coverage.reporter=html",
 		"coverage:cobertura": "vitest run --coverage --coverage.reporter=cobertura",
-		"docs": "rimraf docs/api && typedoc --plugin typedoc-plugin-markdown",
+		"docs": "pnpm --dir tools/docs run docs",
 		"hook:commit-msg": "commitlint -e",
 		"hook:pre-commit": "pnpm run qa",
 		"lint": "biome check",
@@ -63,8 +63,6 @@
 		"rollup-plugin-dts": "^6.1.1",
 		"rollup-plugin-esbuild": "^6.1.1",
 		"size-limit": "^11.1.6",
-		"typedoc": "^0.26.7",
-		"typedoc-plugin-markdown": "^4.2.9",
 		"typescript": "^7.0.2",
 		"vitest": "^5.1.0"
 	},
