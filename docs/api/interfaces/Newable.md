@@ -1,4 +1,4 @@
-[**DIOD v3.0.0**](../README.md) • **Docs**
+[**DIOD v3.0.0**](../README.md)
 
 ***
 
@@ -12,19 +12,23 @@ Represents a newable class.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 Class type.
 
 ## Constructors
 
-### new Newable()
+### Constructor
 
 > **new Newable**(...`args`): `T`
 
 #### Parameters
 
-• ...**args**: `any`[]
+##### args
+
+...`any`[]
 
 #### Returns
 

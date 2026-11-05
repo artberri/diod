@@ -1,4 +1,4 @@
-[**DIOD v3.0.0**](../README.md) • **Docs**
+[**DIOD v3.0.0**](../README.md)
 
 ***
 
@@ -6,7 +6,9 @@
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Methods
 
@@ -19,7 +21,9 @@ Alias of `useClass`.
 
 #### Parameters
 
-• **newable**: [`Newable`](Newable.md)\<`T`\>
+##### newable
+
+[`Newable`](Newable.md)\<`T`\>
 
 The implementation that the identifier will provide.
 
@@ -39,7 +43,9 @@ Configure the class implementation that the identifier will provide.
 
 #### Parameters
 
-• **newable**: [`Newable`](Newable.md)\<`T`\>
+##### newable
+
+[`Newable`](Newable.md)\<`T`\>
 
 The implementation that the identifier will provide.
 
@@ -59,7 +65,9 @@ Configure a factory that returns the instance that the identifier will provide.
 
 #### Parameters
 
-• **factory**: [`Factory`](../type-aliases/Factory.md)\<`T`\>
+##### factory
+
+[`Factory`](../type-aliases/Factory.md)\<`T`\>
 
 The factory that will be executed when the identifier is requested.
 
@@ -79,7 +87,9 @@ Configure the instance that the identifier will provide.
 
 #### Parameters
 
-• **instance**: [`Instance`](../type-aliases/Instance.md)\<`T`\>
+##### instance
+
+[`Instance`](../type-aliases/Instance.md)\<`T`\>
 
 The instance that the identifier will provide.
 

@@ -1,4 +1,4 @@
-[**DIOD v3.0.0**](../README.md) • **Docs**
+[**DIOD v3.0.0**](../README.md)
 
 ***
 
@@ -8,25 +8,27 @@ Used to build an [Container](../interfaces/Container.md) from service registrati
 
 ## Constructors
 
-### new ContainerBuilder()
+### Constructor
 
-> **new ContainerBuilder**(): [`ContainerBuilder`](ContainerBuilder.md)
+> **new ContainerBuilder**(): `ContainerBuilder`
 
 #### Returns
 
-[`ContainerBuilder`](ContainerBuilder.md)
+`ContainerBuilder`
 
 ## Methods
 
 ### build()
 
-> **build**(`options`): [`Container`](../interfaces/Container.md)
+> **build**(`options?`): [`Container`](../interfaces/Container.md)
 
 Builds an immutable [Container](../interfaces/Container.md).
 
 #### Parameters
 
-• **options**: [`BuildOptions`](../type-aliases/BuildOptions.md) = `{}`
+##### options?
+
+[`BuildOptions`](../type-aliases/BuildOptions.md) = `{}`
 
 Build options.
 
@@ -44,13 +46,17 @@ Checks whether a service is registered or not.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 The type of the service.
 
 #### Parameters
 
-• **identifier**: [`Identifier`](../type-aliases/Identifier.md)\<`T`\>
+##### identifier
+
+[`Identifier`](../type-aliases/Identifier.md)\<`T`\>
 
 The class that identifies this service to be checked.
 
@@ -68,13 +74,17 @@ Registers a service.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 The type of the service.
 
 #### Parameters
 
-• **identifier**: [`Identifier`](../type-aliases/Identifier.md)\<`T`\>
+##### identifier
+
+[`Identifier`](../type-aliases/Identifier.md)\<`T`\>
 
 The class that identifies this service. This class
 identifier must be used to get the service from the container or when
@@ -94,13 +104,17 @@ Alias for `.register(newable).use(newable)`.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 The type of the service.
 
 #### Parameters
 
-• **newable**: [`Newable`](../interfaces/Newable.md)\<`T`\>
+##### newable
+
+[`Newable`](../interfaces/Newable.md)\<`T`\>
 
 The concrete class implementation to be registered as itself.
 
@@ -118,13 +132,17 @@ Unregister previously registered service.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 The type of the service.
 
 #### Parameters
 
-• **identifier**: [`Identifier`](../type-aliases/Identifier.md)\<`T`\>
+##### identifier
+
+[`Identifier`](../type-aliases/Identifier.md)\<`T`\>
 
 The class that identifies this service to be unregistered.
 

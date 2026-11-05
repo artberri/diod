@@ -1,4 +1,4 @@
-[**DIOD v3.0.0**](../README.md) • **Docs**
+[**DIOD v3.0.0**](../README.md)
 
 ***
 
@@ -16,7 +16,9 @@ Tag the service (the tag will be added to previously added tags if there are).
 
 #### Parameters
 
-• **tag**: `string`
+##### tag
+
+`string`
 
 #### Returns
 

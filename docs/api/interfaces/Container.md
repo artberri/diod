@@ -1,4 +1,4 @@
-[**DIOD v3.0.0**](../README.md) • **Docs**
+[**DIOD v3.0.0**](../README.md)
 
 ***
 
@@ -17,13 +17,17 @@ Returns service ids for a given tag.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 The type of the returned services.
 
 #### Parameters
 
-• **tag**: `string`
+##### tag
+
+`string`
 
 The tag name.
 
@@ -43,13 +47,17 @@ Gets the service object of the registered identifier.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 The type of the service.
 
 #### Parameters
 
-• **identifier**: [`Identifier`](../type-aliases/Identifier.md)\<`T`\>
+##### identifier
+
+[`Identifier`](../type-aliases/Identifier.md)\<`T`\>
 
 Class of the service to get.
 

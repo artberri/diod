@@ -1,4 +1,4 @@
-[**DIOD v3.0.0**](../README.md) • **Docs**
+[**DIOD v3.0.0**](../README.md)
 
 ***
 
@@ -16,7 +16,9 @@ Declare class dependencies manually
 
 #### Parameters
 
-• **dependencies**: [`Identifier`](../type-aliases/Identifier.md)\<`unknown`\>[]
+##### dependencies
+
+[`Identifier`](../type-aliases/Identifier.md)\<`unknown`\>[]
 
 List of class dependency identifiers to inject in
 order to the constructor.
