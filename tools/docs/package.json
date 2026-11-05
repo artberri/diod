@@ -2,7 +2,7 @@
 	"name": "diod-docs",
 	"private": true,
 	"description": "Generates docs/api with typedoc on TypeScript 6, isolated from the TypeScript 7 the rest of the repo uses.",
-	"//": "TODO: revisit once TypeScript 7.1 is out. When typedoc supports it (https://github.com/TypeStrong/typedoc/issues/3098), move typedoc back to the root package.json and delete tools/docs and its pnpm-workspace.yaml entry.",
+	"//": "TODO: revisit once TypeScript 7.1 is out. When typedoc supports it (https://github.com/TypeStrong/typedoc/issues/3098), move typedoc back to the root package.json and delete tools/docs and its pnpm-workspace.yaml entry. When rollup-plugin-dts supports it too, remove @typescript/typescript6 from the root package.json.",
 	"scripts": {
 		"docs": "rimraf ../../docs/api && typedoc --options ../../typedoc.json --tsconfig ../../tsconfig.json --plugin typedoc-plugin-markdown"
 	},
