@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Breaking changes
 
 - Drop support for Node.js v21 and lower.
+- `useInstance()` only accepts objects. The `Instance<T>` type is now `T & object` instead of `T & Object`, so primitive values (strings, numbers...) registered as instances of a class without members no longer compile.
 
 ### Changed
 

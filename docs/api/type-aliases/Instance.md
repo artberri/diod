@@ -4,7 +4,7 @@
 
 # Type Alias: Instance\<T\>
 
-> **Instance**\<`T`\> = `T` & `Object`
+> **Instance**\<`T`\> = `T` & `object`
 
 Represents an instance of a class.
 

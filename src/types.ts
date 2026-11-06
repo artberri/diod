@@ -58,8 +58,7 @@ export type Factory<T> = (container: Container) => T
  * Represents an instance of a class.
  * @typeParam T Class type.
  */
-// biome-ignore lint/complexity/noBannedTypes: public type; replacing Object would be a breaking change
-export type Instance<T> = T & Object
+export type Instance<T> = T & object
 
 /**
  * Options for the {@link Container} build method.
