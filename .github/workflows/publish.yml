@@ -5,14 +5,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Trusted publishing: npm exchanges the GitHub OIDC token for a short-lived publish token.
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-      - name: Setup Node v22
+      - name: Setup Node v24
         uses: actions/setup-node@v7
         with:
-          node-version: '22.x'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: '24.x'
+      # npm stage publish needs npm 11.15.0 or later.
+      - name: Update npm
+        run: npm install -g npm@11 && npm --version
       - name: Install pnpm
         id: pnpm-install
         uses: pnpm/action-setup@v6
@@ -35,7 +41,7 @@ jobs:
         run: pnpm install --frozen-lockfile --strict-peer-dependencies
       - name: Build
         run: pnpm run build
-      - name: Publish to NPM
-        run: pnpm publish --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Staged: the version stays unpublished until a maintainer approves it on npmjs.com
+      # or with `npm stage approve <stage-id>`.
+      - name: Stage on npm
+        run: npm stage publish
