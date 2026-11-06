@@ -69,6 +69,14 @@ yarn add diod
 pnpm add diod
 ```
 
+DIOD is also published on [JSR](https://jsr.io/@artberri/diod) as `@artberri/diod`. Installed from there, import it from `@artberri/diod` instead of `diod`:
+
+```sh
+deno add jsr:@artberri/diod
+# or
+npx jsr add @artberri/diod
+```
+
 #### Usage with Typescript
 
 Modify your `tsconfig.json` to include the following settings

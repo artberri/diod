@@ -12,6 +12,15 @@ Or using yarn
 yarn add diod
 ```
 
+Or from [JSR](https://jsr.io/@artberri/diod), where it is published as `@artberri/diod`. Import it from `@artberri/diod` instead of `diod`:
+
+```sh
+# Deno
+deno add jsr:@artberri/diod
+# Node.js, Bun and others
+npx jsr add @artberri/diod
+```
+
 ## Usage with Typescript
 
 Modify your `tsconfig.json` to include the following settings
