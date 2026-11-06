@@ -3,9 +3,9 @@
  * @typeParam T Class type.
  */
 
-// biome-ignore lint/complexity/noBannedTypes: <explanation>
+// biome-ignore lint/complexity/noBannedTypes: identifiers are classes, so they inherit Function members such as name
 export interface Newable<T> extends Function {
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	// biome-ignore lint/suspicious/noExplicitAny: unknown[] would reject constructors with typed parameters
 	new (...args: any[]): T
 }
 
@@ -14,7 +14,7 @@ export interface Newable<T> extends Function {
  * @typeParam T Class type.
  */
 
-// biome-ignore lint/complexity/noBannedTypes: <explanation>
+// biome-ignore lint/complexity/noBannedTypes: abstract classes are functions at runtime, so they inherit Function members such as name
 export interface Abstract<T> extends Function {
 	prototype: T
 }
@@ -58,7 +58,7 @@ export type Factory<T> = (container: Container) => T
  * Represents an instance of a class.
  * @typeParam T Class type.
  */
-// biome-ignore lint/complexity/noBannedTypes: <explanation>
+// biome-ignore lint/complexity/noBannedTypes: public type; replacing Object would be a breaking change
 export type Instance<T> = T & Object
 
 /**
