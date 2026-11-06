@@ -4,8 +4,8 @@ import { ContainerBuilder } from '../src/diod'
 import {
 	BankUser,
 	SessionManager,
-	ShopUser,
 	ShoppingCart,
+	ShopUser,
 } from './fixtures/user'
 
 test('the constructor of the extended class is injected if target has not constructor', () => {

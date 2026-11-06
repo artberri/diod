@@ -9,5 +9,11 @@ indent_style = tab
 trim_trailing_whitespace = true
 insert_final_newline = true
 
+[*.{yml,yaml}]
+indent_style = space
+
+[*.{json,md}]
+indent_style = space
+
 [*.md]
 trim_trailing_whitespace = false

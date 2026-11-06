@@ -100,7 +100,7 @@ export class DiodContainer implements Container {
 		dependencyIdentifiers: Identifier<unknown>[],
 		perRequestServices: Map<Identifier<unknown>, unknown>,
 	): unknown[] {
-		const dependencies = new Array<unknown>()
+		const dependencies: unknown[] = []
 		for (const dependencyIdentifier of dependencyIdentifiers) {
 			dependencies.push(
 				this.getService(dependencyIdentifier, perRequestServices, true),

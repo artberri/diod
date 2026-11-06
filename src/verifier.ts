@@ -6,7 +6,7 @@ const verifyMetadata = <T>(
 	metadata: ServiceData<T>,
 	services: ServiceListMetadata,
 ): void => {
-	const missing = new Array<string>()
+	const missing: string[] = []
 	for (const dependencyIdentifier of metadata.dependencies) {
 		if (!services.has(dependencyIdentifier)) {
 			missing.push(dependencyIdentifier.name)

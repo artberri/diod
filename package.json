@@ -1,80 +1,85 @@
 {
-	"name": "diod",
-	"version": "3.0.0",
-	"description": "A very opinionated and different inversion of control container and dependency injector for Typescript, Node.js or browser apps",
-	"keywords": [
-		"dependency injection",
-		"inversion of control",
-		"service locator",
-		"dependency",
-		"injection",
-		"service",
-		"container",
-		"typescript"
-	],
-	"main": "lib/diod.js",
-	"module": "lib/diod.es.js",
-	"browser": "lib/diod.umd.js",
-	"typings": "lib/diod.d.ts",
-	"files": ["lib", "CHANGELOG.md"],
-	"browserslist": ["> 1%, not dead, not ie 11, not op_mini all"],
-	"scripts": {
-		"build": "pnpm run clean && pnpm run compile && pnpm run size",
-		"clean": "rimraf lib/ coverage/",
-		"compile": "rollup -c",
-		"coverage:html": "vitest run --coverage --coverage.reporter=html",
-		"coverage:cobertura": "vitest run --coverage --coverage.reporter=cobertura",
-		"docs": "pnpm --dir tools/docs run docs",
-		"hook:commit-msg": "commitlint -e",
-		"hook:pre-commit": "pnpm run qa",
-		"lint": "biome check",
-		"qa": "pnpm run lint && pnpm run type-check && pnpm run test",
-		"prepack": "pnpm run qa && pnpm run build",
-		"size": "size-limit",
-		"test": "vitest run --coverage",
-		"test:watch": "vitest",
-		"type-check": "tsc -p tsconfig.json --noEmit"
-	},
-	"author": {
-		"name": "Alberto Varela",
-		"email": "hello@albertovarela.net",
-		"url": "https://www.albertovarela.net"
-	},
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/artberri/diod.git"
-	},
-	"bugs": {
-		"url": "https://github.com/artberri/diod/issues"
-	},
-	"homepage": "https://github.com/artberri/diod#readme",
-	"devDependencies": {
-		"@biomejs/biome": "1.9.3",
-		"@commitlint/cli": "^21.2.4",
-		"@commitlint/config-conventional": "^21.2.4",
-		"@size-limit/preset-small-lib": "^14.3.0",
-		"@types/node": "^22.20.5",
-		"@typescript/typescript6": "^6.0.2",
-		"@vitest/coverage-v8": "^5.1.0",
-		"esbuild": "^0.28.2",
-		"reflect-metadata": "^0.2.2",
-		"rimraf": "^6.1.4",
-		"rollup": "^4.67.5",
-		"rollup-plugin-dts": "^6.5.1",
-		"rollup-plugin-esbuild": "^6.2.1",
-		"size-limit": "^14.3.0",
-		"typescript": "^7.0.2",
-		"vitest": "^5.1.0"
-	},
-	"size-limit": [
-		{
-			"limit": "2 kB",
-			"path": "lib/diod.es.js"
-		}
-	],
-	"packageManager": "pnpm@12.15.0",
-	"engines": {
-		"node": ">=22"
-	}
+  "name": "diod",
+  "version": "3.0.0",
+  "description": "A very opinionated and different inversion of control container and dependency injector for Typescript, Node.js or browser apps",
+  "keywords": [
+    "dependency injection",
+    "inversion of control",
+    "service locator",
+    "dependency",
+    "injection",
+    "service",
+    "container",
+    "typescript"
+  ],
+  "main": "lib/diod.js",
+  "module": "lib/diod.es.js",
+  "browser": "lib/diod.umd.js",
+  "typings": "lib/diod.d.ts",
+  "files": [
+    "lib",
+    "CHANGELOG.md"
+  ],
+  "browserslist": [
+    "> 1%, not dead, not ie 11, not op_mini all"
+  ],
+  "scripts": {
+    "build": "pnpm run clean && pnpm run compile && pnpm run size",
+    "clean": "rimraf lib/ coverage/",
+    "compile": "rollup -c",
+    "coverage:html": "vitest run --coverage --coverage.reporter=html",
+    "coverage:cobertura": "vitest run --coverage --coverage.reporter=cobertura",
+    "docs": "pnpm --dir tools/docs run docs",
+    "hook:commit-msg": "commitlint -e",
+    "hook:pre-commit": "pnpm run qa",
+    "lint": "biome check",
+    "qa": "pnpm run lint && pnpm run type-check && pnpm run test",
+    "prepack": "pnpm run qa && pnpm run build",
+    "size": "size-limit",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest",
+    "type-check": "tsc -p tsconfig.json --noEmit"
+  },
+  "author": {
+    "name": "Alberto Varela",
+    "email": "hello@albertovarela.net",
+    "url": "https://www.albertovarela.net"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artberri/diod.git"
+  },
+  "bugs": {
+    "url": "https://github.com/artberri/diod/issues"
+  },
+  "homepage": "https://github.com/artberri/diod#readme",
+  "devDependencies": {
+    "@biomejs/biome": "2.6.5",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "@size-limit/preset-small-lib": "^14.3.0",
+    "@types/node": "^22.20.5",
+    "@typescript/typescript6": "^6.0.2",
+    "@vitest/coverage-v8": "^5.1.0",
+    "esbuild": "^0.28.2",
+    "reflect-metadata": "^0.2.2",
+    "rimraf": "^6.1.4",
+    "rollup": "^4.67.5",
+    "rollup-plugin-dts": "^6.5.1",
+    "rollup-plugin-esbuild": "^6.2.1",
+    "size-limit": "^14.3.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  },
+  "size-limit": [
+    {
+      "limit": "2 kB",
+      "path": "lib/diod.es.js"
+    }
+  ],
+  "packageManager": "pnpm@12.15.0",
+  "engines": {
+    "node": ">=22"
+  }
 }
