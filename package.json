@@ -47,7 +47,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/artberri/diod.git"
+    "url": "git+https://github.com/artberri/diod.git"
   },
   "bugs": {
     "url": "https://github.com/artberri/diod/issues"
