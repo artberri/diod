@@ -37,7 +37,7 @@
     "size": "size-limit",
     "test": "vitest run --coverage",
     "test:watch": "vitest",
-    "type-check": "tsc -p tsconfig.json --noEmit"
+    "type-check": "tsc -p tsconfig.json --noEmit && tsc -p test/tsconfig.json --noEmit"
   },
   "author": {
     "name": "Alberto Varela",
