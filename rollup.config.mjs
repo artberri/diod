@@ -23,12 +23,6 @@ export default [
 				format: 'es',
 				sourcemap: false,
 			},
-			{
-				file: `${outputBaseName}.umd.js`,
-				format: 'umd',
-				name: 'diod',
-				sourcemap: false,
-			},
 		],
 	}),
 	bundle({

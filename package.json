@@ -14,7 +14,6 @@
   ],
   "main": "lib/diod.js",
   "module": "lib/diod.es.js",
-  "browser": "lib/diod.umd.js",
   "typings": "lib/diod.d.ts",
   "files": [
     "lib",

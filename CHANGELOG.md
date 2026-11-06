@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Drop support for Node.js v21 and lower.
 - `useInstance()` only accepts objects. The `Instance<T>` type is now `T & object` instead of `T & Object`, so primitive values (strings, numbers...) registered as instances of a class without members no longer compile.
+- Drop the UMD build (`lib/diod.umd.js`) and the `browser` field. Bundlers use the ES module build; to load DIOD from a `<script>` tag, use an ESM CDN such as `https://cdn.jsdelivr.net/npm/diod/+esm`.
 
 ### Changed
 
