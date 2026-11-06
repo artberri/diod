@@ -182,18 +182,6 @@ test('throws unregistering not registered service', () => {
 	}).toThrow(new Error('There is no service registered as Circular1.'))
 })
 
-test('throws unregistering not registered service', () => {
-	// Arrange
-	const builder = new ContainerBuilder()
-	builder.registerAndUse(Clock)
-
-	// Assert
-	expect(() => {
-		// Act
-		builder.unregister(Circular1)
-	}).toThrow(new Error('There is no service registered as Circular1.'))
-})
-
 test('services can be unregistered', () => {
 	// Arrange
 	const builder = new ContainerBuilder()
