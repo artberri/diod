@@ -1,0 +1,10 @@
+{
+  "$schema": "https://jsr.io/schema/config-file.v1.json",
+  "name": "@artberri/diod",
+  "version": "4.0.0",
+  "license": "MIT",
+  "exports": "./src/diod.ts",
+  "publish": {
+    "include": ["src", "README.md", "LICENSE", "CHANGELOG.md"]
+  }
+}

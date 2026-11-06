@@ -45,3 +45,28 @@ jobs:
       # or with `npm stage approve <stage-id>`.
       - name: Stage on npm
         run: npm stage publish
+  jsr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # JSR authenticates GitHub Actions through OIDC, linked in the package settings on jsr.io.
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup Node v24
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24.x'
+      - name: Check jsr.json and package.json versions match
+        run: |
+          node -e "
+            const npm = require('./package.json').version
+            const jsr = require('./jsr.json').version
+            if (npm !== jsr) {
+              console.error('Version mismatch: package.json ' + npm + ', jsr.json ' + jsr)
+              process.exit(1)
+            }
+          "
+      - name: Publish to JSR
+        run: npx jsr@0.14.3 publish
