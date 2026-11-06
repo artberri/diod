@@ -27,7 +27,7 @@ export const RegisterService = (): ClassDecorator => {
     if (isNewable(target)) {
       autoregisteredClasses.push(target)
     } else {
-      throw new Error('Abstract classes cannot be auto registered')
+      throw new Error('Only classes can be auto registered')
     }
 
     return target
@@ -42,6 +42,10 @@ export const autoregister = (builder: ContainerBuilder): ContainerBuilder => {
   return builder
 }
 ```
+
+Use the decorator only on concrete classes. TypeScript removes `abstract` when
+it compiles, so JavaScript can't tell abstract classes apart at runtime and the
+decorator registers them too.
 
 Once you have created it you can just use the custom decorator instead of the
 default one and register all the classes automatically like this:

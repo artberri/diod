@@ -21,7 +21,7 @@ export const RegisterService = (): ClassDecorator => {
 		if (isNewable(target)) {
 			autoregisteredClasses.push(target)
 		} else {
-			throw new Error('Abstract classes cannot be auto registered')
+			throw new Error('Only classes can be auto registered')
 		}
 
 		return target
