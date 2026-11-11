@@ -1,0 +1,222 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["eslint", "typescript", "unicorn", "oxc", "import"],
+  "categories": {
+    "correctness": "off"
+  },
+  "options": {
+    "typeAware": true
+  },
+  "env": {
+    "builtin": true,
+    "es2024": true,
+    "node": true,
+    "browser": true
+  },
+  "ignorePatterns": ["**/build/", "**/coverage/", "**/lib/"],
+  "rules": {
+    "array-callback-return": [
+      "error",
+      {
+        "checkForEach": true
+      }
+    ],
+    "constructor-super": "error",
+    "default-case-last": "warn",
+    "eqeqeq": [
+      "error",
+      "always",
+      {
+        "null": "ignore"
+      }
+    ],
+    "for-direction": "error",
+    "getter-return": "error",
+    "no-array-constructor": "warn",
+    "no-async-promise-executor": "error",
+    "no-case-declarations": "error",
+    "no-class-assign": "error",
+    "no-compare-neg-zero": "error",
+    "no-cond-assign": ["error", "always"],
+    "no-const-assign": "error",
+    "no-constant-condition": "error",
+    "no-constructor-return": "error",
+    "no-control-regex": "error",
+    "no-debugger": "error",
+    "no-dupe-class-members": "error",
+    "no-dupe-else-if": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-empty": "error",
+    "no-empty-character-class": "error",
+    "no-empty-function": "error",
+    "no-empty-pattern": "error",
+    "no-empty-static-block": "error",
+    "no-eval": "error",
+    "no-ex-assign": "error",
+    "no-extra-boolean-cast": "error",
+    "no-extra-label": "warn",
+    "no-fallthrough": "error",
+    "no-func-assign": "error",
+    "no-global-assign": "error",
+    "no-import-assign": "error",
+    "no-inner-declarations": "error",
+    "no-irregular-whitespace": "warn",
+    "no-label-var": "error",
+    "no-labels": [
+      "warn",
+      {
+        "allowLoop": true
+      }
+    ],
+    "no-lone-blocks": "warn",
+    "no-loss-of-precision": "error",
+    "no-misleading-character-class": "error",
+    "no-new-native-nonconstructor": "error",
+    "no-nonoctal-decimal-escape": "error",
+    "no-obj-calls": "error",
+    "no-proto": "warn",
+    "no-prototype-builtins": "error",
+    "no-redeclare": "error",
+    "no-regex-spaces": "error",
+    "no-restricted-globals": [
+      "warn",
+      {
+        "name": "isNaN",
+        "message": "Use Number.isNaN instead."
+      },
+      {
+        "name": "isFinite",
+        "message": "Use Number.isFinite instead."
+      }
+    ],
+    "no-script-url": "error",
+    "no-self-assign": "error",
+    "no-self-compare": "error",
+    "no-sequences": "warn",
+    "no-setter-return": "error",
+    "no-shadow-restricted-names": "error",
+    "no-sparse-arrays": "error",
+    "no-template-curly-in-string": "warn",
+    "no-this-before-super": "error",
+    "no-undef": "error",
+    "no-unneeded-ternary": "warn",
+    "no-unreachable": "error",
+    "no-unsafe-finally": "error",
+    "no-unsafe-negation": "error",
+    "no-unsafe-optional-chaining": "error",
+    "no-unused-labels": "error",
+    "no-unused-private-class-members": "warn",
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": false,
+        "variables": false,
+        "typedefs": false,
+        "ignoreTypeReferences": true
+      }
+    ],
+    "no-useless-backreference": "warn",
+    "no-useless-catch": "error",
+    "no-useless-constructor": "warn",
+    "no-useless-escape": "warn",
+    "no-useless-rename": "warn",
+    "no-with": "error",
+    "oxc/approx-constant": "warn",
+    "oxc/bad-min-max-func": "error",
+    "oxc/misrefactored-assign-op": "error",
+    "oxc/no-accumulating-spread": "warn",
+    "oxc/no-const-enum": "warn",
+    "prefer-arrow-callback": "warn",
+    "prefer-const": "warn",
+    "prefer-exponentiation-operator": "warn",
+    "prefer-numeric-literals": "warn",
+    "prefer-regex-literals": "warn",
+    "prefer-rest-params": "warn",
+    "prefer-template": "error",
+    "radix": "warn",
+    "require-yield": "error",
+    "typescript/adjacent-overload-signatures": "warn",
+    "typescript/ban-ts-comment": [
+      "warn",
+      {
+        "ts-ignore": true,
+        "ts-expect-error": false,
+        "ts-nocheck": false,
+        "ts-check": false
+      }
+    ],
+    "typescript/consistent-type-exports": "warn",
+    "typescript/consistent-type-imports": "warn",
+    "typescript/dot-notation": "warn",
+    "typescript/no-duplicate-enum-values": "warn",
+    "typescript/no-empty-interface": "error",
+    "typescript/no-empty-object-type": [
+      "warn",
+      {
+        "allowInterfaces": "always"
+      }
+    ],
+    "typescript/no-explicit-any": "warn",
+    "typescript/no-extra-non-null-assertion": "warn",
+    "typescript/no-invalid-void-type": "warn",
+    "typescript/no-misused-new": "error",
+    "typescript/no-non-null-asserted-optional-chain": "error",
+    "typescript/no-non-null-assertion": "warn",
+    "typescript/no-this-alias": "warn",
+    "typescript/no-unnecessary-type-constraint": "warn",
+    "typescript/no-unsafe-declaration-merging": "error",
+    "typescript/no-unsafe-function-type": "warn",
+    "typescript/no-useless-empty-export": "warn",
+    "typescript/no-wrapper-object-types": "warn",
+    "typescript/prefer-function-type": "warn",
+    "typescript/prefer-literal-enum-member": "warn",
+    "typescript/prefer-namespace-keyword": "error",
+    "typescript/prefer-optional-chain": "warn",
+    "unicorn/new-for-builtins": "error",
+    "unicorn/no-document-cookie": "warn",
+    "unicorn/no-instanceof-array": "warn",
+    "unicorn/no-static-only-class": "warn",
+    "unicorn/no-thenable": "error",
+    "unicorn/no-useless-switch-case": "warn",
+    "unicorn/prefer-array-flat-map": "warn",
+    "unicorn/prefer-array-index-of": "warn",
+    "unicorn/prefer-date-now": "warn",
+    "unicorn/prefer-dom-node-text-content": "warn",
+    "unicorn/prefer-math-min-max": "warn",
+    "unicorn/prefer-node-protocol": "warn",
+    "use-isnan": "error",
+    "valid-typeof": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "import/no-default-export": "error",
+        "typescript/array-type": [
+          "error",
+          {
+            "default": "array"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["**/test/**/*.ts"],
+      "rules": {
+        "typescript/consistent-type-imports": "off"
+      }
+    }
+  ]
+}

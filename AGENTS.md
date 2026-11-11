@@ -22,7 +22,7 @@ DIOD is a dependency injection container for TypeScript and JavaScript, publishe
 
 - `pnpm run qa` runs lint, type-check and tests. A change is done when it passes. The pre-commit hook runs it too, once `git config core.hooksPath .githooks` is set.
 - Run `pnpm run build` after changing `src/`. It bundles `lib/` and fails if the bundle goes over the size limit.
-- `pnpm exec biome check --write` fixes formatting and import order.
+- `pnpm exec oxlint --fix && pnpm exec oxfmt` fixes lint issues, formatting and import order. The oxlint rules mirror the Biome set the project used before (`.oxlintrc.json`), and type-aware rules run through `oxlint-tsgolint`.
 - `pnpm run test` requires 100% coverage: if coverage is lower, the run fails even when every test passes. While you work, run single files without coverage (`pnpm exec vitest run test/scope.ts`), and finish with a full `pnpm run qa`.
 
 ## Tests

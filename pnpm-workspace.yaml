@@ -1,5 +1,4 @@
 packages:
   - tools/*
 allowBuilds:
-  '@biomejs/biome': false
   esbuild: false

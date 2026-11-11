@@ -2,9 +2,9 @@ import type { ServiceData } from '../internal-types'
 import { ScopeType } from '../scope-type'
 import type { BuildOptions, ConfigurableRegistration } from '../types'
 
-export abstract class ServiceConfiguration<T>
-	implements ConfigurableRegistration
-{
+export abstract class ServiceConfiguration<
+	T,
+> implements ConfigurableRegistration {
 	protected abstract scope: ScopeType
 	protected isPrivate = false
 	protected tags: string[] = []

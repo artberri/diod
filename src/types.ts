@@ -3,9 +3,9 @@
  * @typeParam T Class type.
  */
 
-// biome-ignore lint/complexity/noBannedTypes: identifiers are classes, so they inherit Function members such as name
+// oxlint-disable-next-line typescript/no-unsafe-function-type -- identifiers are classes, so they inherit Function members such as name
 export interface Newable<T> extends Function {
-	// biome-ignore lint/suspicious/noExplicitAny: unknown[] would reject constructors with typed parameters
+	// oxlint-disable-next-line typescript/no-explicit-any, typescript/prefer-function-type -- unknown[] would reject constructors with typed parameters, and a function type can't extend Function
 	new (...args: any[]): T
 }
 
@@ -14,7 +14,7 @@ export interface Newable<T> extends Function {
  * @typeParam T Class type.
  */
 
-// biome-ignore lint/complexity/noBannedTypes: abstract classes are functions at runtime, so they inherit Function members such as name
+// oxlint-disable-next-line typescript/no-unsafe-function-type -- abstract classes are functions at runtime, so they inherit Function members such as name
 export interface Abstract<T> extends Function {
 	prototype: T
 }
