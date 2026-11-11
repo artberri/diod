@@ -34,6 +34,8 @@ Modify your `tsconfig.json` to include the following settings
 }
 ```
 
+The compiler that runs your code must honour `emitDecoratorMetadata`, because autowiring reads the constructor parameter types that it writes. `tsc`, `ts-node` and SWC (with `jsc.transform.decoratorMetadata` enabled) write them. esbuild doesn't, and neither do the tools built on it, such as `tsx` and the default Vite and Vitest setups. Without the metadata, `build()` throws `Service not decorated: YourService` even though the class is decorated. If you can't change the compiler, use SWC in place of esbuild (for example with `unplugin-swc` in Vite or Vitest), or declare dependencies by hand with `withDependencies([...])` as in [Using vanilla JavaScript](./javascript.md).
+
 Add a polyfill for the Reflect API (example below use reflect-metadata). You can use:
 
 - [reflect-metadata](https://www.npmjs.com/package/reflect-metadata)
